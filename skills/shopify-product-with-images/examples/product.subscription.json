@@ -1,0 +1,233 @@
+{
+  "sections": {
+    "preorder_banner": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"preorder-banner\"><div class=\"preorder-banner__inner\"><span class=\"preorder-banner__pill\">PRE-ORDER</span><div class=\"preorder-banner__copy\"><strong>First boxes ship early August 2026.</strong> Subscribe now to lock in your tier — your card is charged today and your first box arrives the first week of August.</div></div></div>",
+        "color_scheme": "scheme-5",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "GEAR HEAD BOX — MONTHLY SUBSCRIPTION",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title"
+        },
+        "caption": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price"
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description"
+        },
+        "whats_in_box": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What's in this tier",
+            "icon": "box",
+            "content": "<p>4–8 items every month, hand-picked by gearheads. Total retail value always exceeds your subscription price. Items vary month to month so every box is a surprise.</p>",
+            "page": ""
+          }
+        },
+        "shipping_schedule": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping schedule",
+            "icon": "truck",
+            "content": "<p>Boxes ship on the 15th of every month. Order by the 10th to receive that month's box. Free shipping in the US. International rates calculated at checkout.</p>",
+            "page": ""
+          }
+        },
+        "cancel_anytime": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Cancel, skip, or swap anytime",
+            "icon": "check_mark",
+            "content": "<p>Manage your subscription from your account dashboard. No commitments, no fees, no fine print. Pause for a month, swap to a different tier, or cancel completely with one click.</p>",
+            "page": ""
+          }
+        },
+        "guarantee": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Our value guarantee",
+            "icon": "star",
+            "content": "<p>Every box's items add up to more than what you paid. If you ever feel a box didn't deliver, email us — we'll make it right or refund the box, no questions asked.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "caption",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "description",
+        "whats_in_box",
+        "shipping_schedule",
+        "cancel_anytime",
+        "guarantee",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "value_props": {
+      "type": "multicolumn",
+      "blocks": {
+        "value1": {
+          "type": "column",
+          "settings": {
+            "title": "Curated, not random",
+            "text": "<p>Every item is picked by people who actually wrench, drive, and track. No drop-shipped junk, no algorithmic filler.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value2": {
+          "type": "column",
+          "settings": {
+            "title": "Always more than you paid",
+            "text": "<p>Total retail value of each box exceeds your subscription price — guaranteed. We make our money on volume, not on you.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value3": {
+          "type": "column",
+          "settings": {
+            "title": "Cancel whenever",
+            "text": "<p>One-click cancel from your account. Skip a month if life gets busy. Swap tiers anytime, no penalty.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["value1", "value2", "value3"],
+      "settings": {
+        "title": "Why subscribers stay",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true,
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "compare_tiers": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not sure which tier?",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Pit Stop ($54)</strong> — Starter. Stickers, towels, small consumables, 4–5 items.<br><strong>Apex ($84)</strong> — The sweet spot. Apparel, tools, detailing items, 6–7 items.<br><strong>Podium ($119)</strong> — One $60+ hero item every month plus everything in Apex. First dibs on limited drops.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Compare all tiers",
+            "button_link": "/#tiers"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "image": "shopify://shop_images/tier_lineup.png",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Other tiers",
+        "heading_size": "h2",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "preorder_banner",
+    "main",
+    "value_props",
+    "compare_tiers",
+    "related-products"
+  ]
+}

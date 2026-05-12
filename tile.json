@@ -1,0 +1,68 @@
+{
+  "name": "finsi/awesome-subscription-box-skills",
+  "version": "0.1.0",
+  "summary": "Collection of skills for running a subscription box business",
+  "private": true,
+  "skills": {
+    "ads-brief-create": {
+      "path": "skills/ads-brief-create/SKILL.md"
+    },
+    "ads-calendar-plan": {
+      "path": "skills/ads-calendar-plan/SKILL.md"
+    },
+    "ads-campaign-create": {
+      "path": "skills/ads-campaign-create/SKILL.md"
+    },
+    "ads-performance-analysis": {
+      "path": "skills/ads-performance-analysis/SKILL.md"
+    },
+    "brand-voice-extract": {
+      "path": "skills/brand-voice-extract/SKILL.md"
+    },
+    "klaviyo-calendar-plan": {
+      "path": "skills/klaviyo-calendar-plan/SKILL.md"
+    },
+    "klaviyo-campaign-create": {
+      "path": "skills/klaviyo-campaign-create/SKILL.md"
+    },
+    "klaviyo-flow-build": {
+      "path": "skills/klaviyo-flow-build/SKILL.md"
+    },
+    "page-critical-review": {
+      "path": "skills/page-critical-review/SKILL.md"
+    },
+    "shopify-blog-post": {
+      "path": "skills/shopify-blog-post/SKILL.md"
+    },
+    "shopify-journey-acquisition": {
+      "path": "skills/shopify-journey-acquisition/SKILL.md"
+    },
+    "shopify-journey-cohort-retention": {
+      "path": "skills/shopify-journey-cohort-retention/SKILL.md"
+    },
+    "shopify-journey-funnel": {
+      "path": "skills/shopify-journey-funnel/SKILL.md"
+    },
+    "shopify-journey-product-path": {
+      "path": "skills/shopify-journey-product-path/SKILL.md"
+    },
+    "shopify-journey-segments": {
+      "path": "skills/shopify-journey-segments/SKILL.md"
+    },
+    "shopify-landing-page": {
+      "path": "skills/shopify-landing-page/SKILL.md"
+    },
+    "shopify-product-with-images": {
+      "path": "skills/shopify-product-with-images/SKILL.md"
+    },
+    "shopify-theme-clone": {
+      "path": "skills/shopify-theme-clone/SKILL.md"
+    },
+    "shopify-theme-create": {
+      "path": "skills/shopify-theme-create/SKILL.md"
+    },
+    "subscription-homepage-build": {
+      "path": "skills/subscription-homepage-build/SKILL.md"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Built by gearheads, for gearheads.",
+            "heading_size": "hxl"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Started in a two-car garage in Charlotte at 2 AM, somewhere between a sticky valve cover and a cold beer.",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "buttons"],
+      "settings": {
+        "image": "shopify://shop_images/hero_pit_garage.png",
+        "image_overlay_opacity": 60,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "principles": {
+      "type": "multicolumn",
+      "blocks": {
+        "p1": {
+          "type": "column",
+          "settings": {
+            "title": "We don't drop-ship",
+            "text": "<p>Every item passes through our warehouse. It gets inspected, photographed, and packed by a person — not a fulfillment robot in a country whose name you can't pronounce.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "p2": {
+          "type": "column",
+          "settings": {
+            "title": "We don't run on algorithms",
+            "text": "<p>Curation is humans only. Our team has career mechanics, weekend racers, and one ex-OEM product engineer. If we wouldn't put it in our own garage, it doesn't go in your box.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "p3": {
+          "type": "column",
+          "settings": {
+            "title": "We don't lock you in",
+            "text": "<p>Cancel, skip, swap, pause — all one click. No fees. No \"are you sure?\" dialogs. The whole point is monthly fun, not a trap.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3"],
+      "settings": {
+        "title": "Three principles",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true,
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "padding_top": 64,
+        "padding_bottom": 56
+      }
+    },
+    "behind_the_scenes": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "What a Tuesday looks like",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>By 8 AM, three people are at the warehouse pulling the next month's items. Tools from a local supplier in Greensboro. Apparel printed by a friend in Asheville. Detailing supplies from a chemist in California who races on weekends.</p><p>Everything gets unboxed, inspected, photographed, and packed. Quality control flags anything that doesn't pass — wrong stitching, sketchy chrome, off-color print. Those go back. The rest goes in your box.</p><p>Boxes ship the 15th. Then we do it all again.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "image": "shopify://shop_images/how_it_works_hero.png",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "scheme-2",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "cta": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ready for the box?",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Three tiers. Cancel anytime. Pick yours.</p>"
+          }
+        },
+        "cta": {
+          "type": "button",
+          "settings": {
+            "button_label": "Pick your tier",
+            "button_link": "/collections/tiers",
+            "button_style_secondary": false,
+            "button_label_2": "Read the FAQ",
+            "button_link_2": "/pages/faq",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text", "cta"],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": ["hero", "main", "principles", "behind_the_scenes", "cta"]
+}

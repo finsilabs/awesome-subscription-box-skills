@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent fetches multiple page types for richer extraction, produces a complete voice.md with vocabulary lists and sample copy, creates a visual.md with the three required sections, and writes an audience.md with all required audience dimensions. Also checks that source-quotes.md contains properly formatted, word-count-limited, URL-credited quotes.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Multiple pages analyzed",
+      "description": "At least 2 distinct URLs from the brand's website were visited — evidence in source.json 'sources' array or in the documentation referencing different page types (homepage, About, product, blog)",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md — words to use list",
+      "description": "voice.md contains a dedicated section or list of specific words or phrases the brand should use in its copy",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md — words to avoid list",
+      "description": "voice.md contains a dedicated section or list of specific words or phrases that are off-brand or should be avoided",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md — 3-5 sample paragraphs",
+      "description": "voice.md contains at least 3 sample paragraphs written in the brand's voice (and no more than 5)",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md — opening and closing lines",
+      "description": "voice.md includes examples of common opening lines AND common closing lines used by the brand",
+      "max_score": 10
+    },
+    {
+      "name": "visual.md — typography pairing",
+      "description": "visual.md contains a typography pairing recommendation (referencing typeface categories or specific fonts)",
+      "max_score": 10
+    },
+    {
+      "name": "visual.md — photo direction",
+      "description": "visual.md contains a photo direction section describing the style of photography appropriate for the brand",
+      "max_score": 10
+    },
+    {
+      "name": "visual.md — iconography rules",
+      "description": "visual.md contains iconography or illustration style guidance",
+      "max_score": 5
+    },
+    {
+      "name": "audience.md — primary and secondary",
+      "description": "audience.md explicitly distinguishes between a primary audience and a secondary audience (NOT just one audience group)",
+      "max_score": 10
+    },
+    {
+      "name": "audience.md — motivations, life stage, triggers",
+      "description": "audience.md covers all three of: audience motivations, audience life stage, and purchase triggers (what causes them to buy)",
+      "max_score": 15
+    }
+  ]
+}

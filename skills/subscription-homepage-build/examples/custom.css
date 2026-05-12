@@ -1,0 +1,150 @@
+/* Gear Head Box — brand overrides on top of Dawn */
+
+/* Header menu: bigger, condensed, slightly tracked, baseline-aligned */
+.header__menu-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+  padding: 1rem 1.4rem;
+  line-height: 1;
+}
+
+/* Override Dawn's default underline-on-active so it doesn't shift baseline */
+.header__active-menu-item {
+  text-decoration: none !important;
+  position: relative;
+  display: inline-block;
+  line-height: inherit;
+  vertical-align: baseline;
+  color: rgb(225, 6, 0);
+}
+
+.header__active-menu-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.4rem;
+  height: 2px;
+  background: rgb(225, 6, 0);
+}
+
+.header__menu-item:hover {
+  color: rgb(225, 6, 0);
+}
+
+.header__menu-item:hover .header__active-menu-item {
+  color: rgb(225, 6, 0);
+}
+
+/* Tighter header padding so the header isn't a billboard */
+.header {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* Mega-menu / dropdown items match the racing tone */
+.header__submenu .header__menu-item {
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
+}
+
+/* Announcement bar — slightly tighter */
+.announcement-bar__message {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+}
+
+/* Cart and account icons aligned with bigger nav font */
+.header__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+/* Stretched link: when a multicolumn card has a link_label with an href,
+   the whole card becomes clickable. The visible link text stays where it is,
+   but a transparent ::before overlay catches clicks across the whole card. */
+.multicolumn-card {
+  position: relative;
+  transition: transform var(--duration-short) ease, box-shadow var(--duration-short) ease;
+}
+
+.multicolumn-card:has(.multicolumn-card__info a.link[href]) {
+  cursor: pointer;
+}
+
+.multicolumn-card:has(.multicolumn-card__info a.link[href]):hover {
+  transform: translateY(-2px);
+}
+
+.multicolumn-card .multicolumn-card__info a.link[href]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Keep the explicit link arrow above the overlay so it still has its own focus ring */
+.multicolumn-card .multicolumn-card__info a.link[href] {
+  position: relative;
+  z-index: 2;
+}
+
+/* Subtle red glow on tier card hover to telegraph clickability */
+.multicolumn-card:has(.multicolumn-card__info a.link[href]):hover .multicolumn-card__image {
+  filter: brightness(1.05);
+}
+
+/* Pre-order banner — appears above the buy box on tier product pages */
+.preorder-banner {
+  background: rgb(225, 6, 0);
+  color: #ffffff;
+  padding: 1.4rem 2rem;
+}
+
+.preorder-banner__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.preorder-banner__pill {
+  display: inline-block;
+  background: #ffffff;
+  color: rgb(225, 6, 0);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+.preorder-banner__copy {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+.preorder-banner__copy strong {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 749px) {
+  .preorder-banner {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .preorder-banner__copy {
+    font-size: 1.3rem;
+  }
+}

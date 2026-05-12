@@ -1,0 +1,363 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "faq_preorder": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is this a pre-order?",
+            "icon": "stopwatch",
+            "row_content": "<p>Yes. We're launching with a pre-order window. First boxes ship the first week of August 2026. Your card is charged today when you subscribe — this locks in your tier and reserves your spot.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When exactly will my first box arrive?",
+            "icon": "truck",
+            "row_content": "<p>First boxes ship from our warehouse the first week of August 2026. US subscribers should expect arrival by mid-August. Canada and international shipments arrive 7–21 days after the ship date depending on customs.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What happens after the first box?",
+            "icon": "return",
+            "row_content": "<p>The regular monthly cadence kicks in. From September 2026 onward, boxes ship on the 15th of every month. Order by the 10th to receive that month's drop.</p>"
+          }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I cancel during the pre-order window?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes. Cancel anytime from your account dashboard. If you cancel before your first box ships (i.e., before late July 2026), you'll get a full refund of your subscription charge. After the first box ships, normal cancellation rules apply.</p>"
+          }
+        },
+        "q5": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do pre-order subscribers get anything special?",
+            "icon": "star",
+            "row_content": "<p>Yes. Founding pre-order subscribers get a small thank-you item in their first box and first dibs on limited drops throughout the first year.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {
+        "caption": "PRE-ORDER",
+        "heading": "About the pre-order",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": true,
+        "image": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 64,
+        "padding_bottom": 32
+      }
+    },
+    "faq_subscription": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I subscribe?",
+            "icon": "check_mark",
+            "row_content": "<p>Pick a tier on the <a href=\"/collections/tiers\">Tiers page</a>, click subscribe, and follow checkout. Takes about 90 seconds. You'll need a card on file (Shopify Payments, Apple Pay, Google Pay, or Shop Pay all work). No long-term commitment.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I cancel anytime?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes. Cancel from your account dashboard with one click. No fees, no notice period, no minimum commitment. Once canceled, you won't be billed for future months — but boxes already shipped or in preparation are not refunded.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I skip a month?",
+            "icon": "stopwatch",
+            "row_content": "<p>Yes. Skip a single month from your account before the 10th. Your subscription stays active and resumes the next month automatically.</p>"
+          }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I switch tiers?",
+            "icon": "return",
+            "row_content": "<p>Yes. Upgrade or downgrade anytime from your account dashboard. Changes apply to your next billing cycle. The current month's box ships at your old tier.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {
+        "caption": "SUBSCRIPTION",
+        "heading": "About the subscription",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 64,
+        "padding_bottom": 32
+      }
+    },
+    "faq_shipping": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When does my box ship?",
+            "icon": "truck",
+            "row_content": "<p>Boxes ship on the 15th of every month. To receive a given month's box, your subscription must be active by the 10th. Anything later goes in the next batch.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How much is shipping?",
+            "icon": "truck",
+            "row_content": "<p>Free standard shipping on every tier in the US. Canada is a flat $14.99 USD. International is calculated at checkout based on destination.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long until my box arrives?",
+            "icon": "stopwatch",
+            "row_content": "<p>After our 15th-of-the-month ship date: US 3–7 business days, Canada 7–14 days, international 10–21 days plus customs.</p>"
+          }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "icon": "plane",
+            "row_content": "<p>Yes — we ship to most countries. International shipping is calculated at checkout. The recipient is responsible for any customs, import duties, or local taxes. We declare full retail value on customs forms.</p>"
+          }
+        },
+        "q5": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What if my box is lost or damaged?",
+            "icon": "box",
+            "row_content": "<p>Email us at <a href=\"mailto:hello@gearheadbox.com\">hello@gearheadbox.com</a> within 30 days of the ship date. Photos help. We'll either replace the box or refund the month's charge — your call.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {
+        "caption": "SHIPPING",
+        "heading": "Shipping and delivery",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "faq_curation": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What's in a typical box?",
+            "icon": "box",
+            "row_content": "<p>Depends on the tier. <strong>Pit Stop:</strong> 4–5 items (stickers, towel, consumables, surprise). <strong>Apex:</strong> 6–7 items adding apparel and a mid-tier tool. <strong>Podium:</strong> 7–9 items including a $60+ retail hero piece each month. Total retail value always exceeds your subscription price.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Who picks the items?",
+            "icon": "heart",
+            "row_content": "<p>Real people on our team. Career mechanics, weekend racers, and one ex-OEM product engineer. We curate boxes by hand, every month. No drop-shipping, no algorithms.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is this stuff legit, or AliExpress junk?",
+            "icon": "fire",
+            "row_content": "<p>Legit. We work directly with brands like K&N, ARP, OEM tool makers, and small-batch automotive artisans. Items are inspected at our warehouse before shipping. Our value guarantee covers it: if a box ever feels light, we'll refund or replace.</p>"
+          }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What if I already own something you sent?",
+            "icon": "shirt",
+            "row_content": "<p>You can submit an interest profile after subscribing — favorite car platforms, garage setup, sizes — and we use it to avoid duplicates. Apex and Podium subscribers can also swap a single item per box.</p>"
+          }
+        },
+        "q5": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you take requests for specific items?",
+            "icon": "question_mark",
+            "row_content": "<p>Not directly — that would defeat the curation surprise. But if you DM us suggestions for brands or items you'd love to see, we read every message and they often inform what shows up in future boxes.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {
+        "caption": "WHAT'S IN THE BOX",
+        "heading": "Curation and contents",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "faq_gifting": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I gift a subscription?",
+            "icon": "heart",
+            "row_content": "<p>Yes. We offer 3-, 6-, and 12-month prepaid plans on every tier. The gift recipient gets a printed card explaining what's coming. No auto-renewal — gifts end on their own.</p><p><a href=\"/pages/gift\">See the gift page</a> for details.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you offer corporate or bulk gifting?",
+            "icon": "box",
+            "row_content": "<p>Yes — for orders of 10+ subscriptions, we offer a discount and custom card insert. Email <a href=\"mailto:hello@gearheadbox.com\">hello@gearheadbox.com</a> for a quote.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2"],
+      "settings": {
+        "caption": "GIFTS",
+        "heading": "Gifting and prepaid plans",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "faq_account": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I update my address?",
+            "icon": "map_pin",
+            "row_content": "<p>Log into your account and update the shipping address. Updates apply to your next box. If you've already received a shipping confirmation, contact us right away — we'll do our best to redirect.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I update my payment method?",
+            "icon": "lock",
+            "row_content": "<p>Log into your account and update the payment method on file. Failed payments are auto-retried; if we can't collect after multiple attempts, your subscription pauses until you update.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I didn't get a shipping email",
+            "icon": "chat_bubble",
+            "row_content": "<p>Check your spam folder for emails from <strong>hello@gearheadbox.com</strong>. If it's not there, log in to see your order status. Still nothing? Email us and we'll resend.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {
+        "caption": "ACCOUNT",
+        "heading": "Account and billing",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image": "",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 32,
+        "padding_bottom": 64
+      }
+    },
+    "still_questions": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Still have questions?",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Email us at <a href=\"mailto:hello@gearheadbox.com\">hello@gearheadbox.com</a>. We answer everything within one business day, usually faster.</p>"
+          }
+        },
+        "cta": {
+          "type": "button",
+          "settings": {
+            "button_label": "Email support",
+            "button_link": "mailto:hello@gearheadbox.com",
+            "button_style_secondary": false,
+            "button_label_2": "Pick your tier",
+            "button_link_2": "/collections/tiers",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text", "cta"],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": ["main", "faq_preorder", "faq_subscription", "faq_shipping", "faq_curation", "faq_gifting", "faq_account", "still_questions"]
+}

@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent produces a correctly structured source.json metadata file with all required fields, writes properly word-limited and URL-credited quotes in source-quotes.md, uses a kebab-case folder slug, and provides a 5-element brand snapshot covering name, archetype, audience, dominant color, and dominant tone.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "source.json — brand field",
+      "description": "source.json contains a 'brand' field with a non-empty string value matching the brand name",
+      "max_score": 8
+    },
+    {
+      "name": "source.json — slug field",
+      "description": "source.json contains a 'slug' field whose value is in kebab-case (lowercase letters, digits, and hyphens only — no spaces or uppercase)",
+      "max_score": 10
+    },
+    {
+      "name": "source.json — fetched_at ISO format",
+      "description": "source.json contains a 'fetched_at' field whose value is a date in ISO 8601 format (YYYY-MM-DD or full ISO datetime string)",
+      "max_score": 12
+    },
+    {
+      "name": "source.json — sources as array",
+      "description": "source.json contains a 'sources' field that is a JSON array containing at least one URL string",
+      "max_score": 12
+    },
+    {
+      "name": "source.json — notes field",
+      "description": "source.json contains a 'notes' field with a non-empty string summarizing the brand",
+      "max_score": 8
+    },
+    {
+      "name": "source-quotes.md — quotes ≤15 words",
+      "description": "EVERY quote in source-quotes.md is 15 words or fewer (count each quoted passage; none may exceed 15 words)",
+      "max_score": 15
+    },
+    {
+      "name": "source-quotes.md — URL credits",
+      "description": "Each entry in source-quotes.md includes the source URL from which the quote was pulled (a URL appears near each quote, not just a single header URL)",
+      "max_score": 15
+    },
+    {
+      "name": "Folder slug matches source.json",
+      "description": "The brand folder name on disk matches the slug value in source.json exactly",
+      "max_score": 5
+    },
+    {
+      "name": "Brand snapshot — 5 elements",
+      "description": "A brand snapshot or overview document exists that explicitly covers all five of: brand name, brand archetype, audience description, dominant color, and dominant tone of voice",
+      "max_score": 15
+    }
+  ]
+}

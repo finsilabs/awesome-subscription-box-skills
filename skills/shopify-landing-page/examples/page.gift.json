@@ -1,0 +1,234 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gift a year of gear.",
+            "heading_size": "hxl"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Prepaid 3-, 6-, or 12-month plans. No auto-renewal. The gift card explains what's coming.",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "See gift options",
+            "button_link_1": "#gift-options",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "buttons"],
+      "settings": {
+        "image": "shopify://shop_images/gift_hero.png",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "anchor_options": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<a id=\"gift-options\" style=\"display:block;scroll-margin-top:120px\"></a>",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "tiers_for_gifting": {
+      "type": "multicolumn",
+      "blocks": {
+        "pit_stop": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/tier_pit_stop_box.png",
+            "title": "PIT STOP",
+            "text": "<p><strong>$54/mo</strong></p><p>3 months: $162 · 6 months: $324 · 12 months: $648</p><p>The starter — fun monthly drops. Stickers, towels, garage consumables.</p>",
+            "link_label": "Pick Pit Stop",
+            "link": "/products/pit-stop"
+          }
+        },
+        "apex": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/tier_apex_box.png",
+            "title": "APEX  ★ Most popular gift",
+            "text": "<p><strong>$84/mo</strong></p><p>3 months: $252 · 6 months: $504 · 12 months: $1,008</p><p>The sweet spot — apparel, real tools, premium detailing items.</p>",
+            "link_label": "Pick Apex",
+            "link": "/products/apex"
+          }
+        },
+        "podium": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/tier_podium_box.png",
+            "title": "PODIUM",
+            "text": "<p><strong>$119/mo</strong></p><p>3 months: $357 · 6 months: $714 · 12 months: $1,428</p><p>The flex tier — one $60+ hero item every month plus everything in Apex.</p>",
+            "link_label": "Pick Podium",
+            "link": "/products/podium"
+          }
+        }
+      },
+      "block_order": ["pit_stop", "apex", "podium"],
+      "settings": {
+        "title": "Pick a tier and length",
+        "heading_size": "h0",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true,
+        "color_scheme": "scheme-4",
+        "columns_mobile": "1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "how_gifting_works": {
+      "type": "multicolumn",
+      "blocks": {
+        "step1": {
+          "type": "column",
+          "settings": {
+            "title": "1. Pick the tier and length",
+            "text": "<p>3, 6, or 12 months on any tier. Pay once at checkout — no recurring charges. Your card is charged today, the gift ships forward over time.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "step2": {
+          "type": "column",
+          "settings": {
+            "title": "2. We send a card",
+            "text": "<p>Tell us where to send the gift card. We mail a printed card explaining what's coming, signed however you'd like. Or we can email a digital one for last-minute gifts.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "step3": {
+          "type": "column",
+          "settings": {
+            "title": "3. They activate",
+            "text": "<p>Recipient enters their shipping address on a private link. First box ships on the next 15th. The gift ends automatically — no auto-renew, no surprise charges.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["step1", "step2", "step3"],
+      "settings": {
+        "title": "How gifting works",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true,
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "popular_picks": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Most popular gift: 6 months of Apex.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>It hits the sweet spot — six months is long enough to feel like a real gift, short enough not to break the bank. And Apex is the tier with the best mix of usable gear and surprise items.</p><p>For the dad / husband / brother / friend who'd rather be at the track. The gift opens with a printed card. Six boxes follow, one per month, on the 15th.</p>"
+          }
+        },
+        "cta": {
+          "type": "button",
+          "settings": {
+            "button_label": "Gift 6 months of Apex",
+            "button_link": "/products/apex",
+            "button_style_secondary": false,
+            "button_label_2": "Compare all tiers",
+            "button_link_2": "/collections/tiers",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text", "cta"],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "corporate_cta": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Corporate or bulk gifting?",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Gifting 10 or more subscriptions to your team, dealership, or client list? We do volume discounts and custom card inserts. Email us with the details.</p>"
+          }
+        },
+        "cta": {
+          "type": "button",
+          "settings": {
+            "button_label": "Get a quote",
+            "button_link": "mailto:hello@gearheadbox.com?subject=Corporate%20gifting%20inquiry",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "cta"],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": ["hero", "main", "anchor_options", "tiers_for_gifting", "how_gifting_works", "popular_picks", "corporate_cta"]
+}

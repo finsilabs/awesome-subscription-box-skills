@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent creates a complete brand vault with the correct file structure, properly formatted palette.json with all six color roles, and principles.md following the prescribed sentence format. Also checks that voice.md includes the required vocabulary and sample copy sections.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "All 7 vault entries present",
+      "description": "The branded folder contains all seven required entries: voice.md, visual.md, palette.json, principles.md, audience.md, an examples/ subfolder (with source-quotes.md), and source.json",
+      "max_score": 10
+    },
+    {
+      "name": "Kebab-case folder name",
+      "description": "The brand folder name is lowercase and hyphen-separated (kebab-case) derived from the brand name — NOT the raw brand name with spaces or mixed case",
+      "max_score": 10
+    },
+    {
+      "name": "palette.json — six color roles",
+      "description": "palette.json contains exactly these six top-level keys: primary, secondary, page_bg, card_bg, text, muted",
+      "max_score": 15
+    },
+    {
+      "name": "palette.json — hex + use per entry",
+      "description": "Each of the six color entries in palette.json has both a 'hex' sub-field (a color value) and a 'use' sub-field describing the role of that color",
+      "max_score": 10
+    },
+    {
+      "name": "principles.md — count in range",
+      "description": "principles.md contains between 3 and 7 brand principles (not fewer than 3, not more than 7)",
+      "max_score": 10
+    },
+    {
+      "name": "principles.md — We/We don't/Why format",
+      "description": "At least 3 principles in principles.md follow the sentence structure 'We do X. We don't do Y. Why: Z.' (or a close variant using 'We' and 'Why:')",
+      "max_score": 15
+    },
+    {
+      "name": "voice.md — vocabulary to use",
+      "description": "voice.md contains a list or section of specific words or phrases the brand SHOULD use (a 'use' or 'do' vocabulary list)",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md — vocabulary to avoid",
+      "description": "voice.md contains a list or section of specific words or phrases the brand should NOT use or avoid",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md — 3-5 sample paragraphs",
+      "description": "voice.md contains at least 3 and no more than 5 sample paragraphs of copy written in the brand's voice",
+      "max_score": 10
+    }
+  ]
+}

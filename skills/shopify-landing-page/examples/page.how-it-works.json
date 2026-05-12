@@ -1,0 +1,170 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "How Gear Head Box works",
+            "heading_size": "hxl"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Pick a tier. We curate. You get a box of gear, tools, and toys on the 15th of every month.",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Pick your tier",
+            "button_link_1": "/collections/tiers",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "buttons"],
+      "settings": {
+        "image": "shopify://shop_images/how_it_works_hero.png",
+        "image_overlay_opacity": 60,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "steps": {
+      "type": "multicolumn",
+      "blocks": {
+        "step1": {
+          "type": "column",
+          "settings": {
+            "title": "1. Pick your tier",
+            "text": "<p>Choose Pit Stop ($54), Apex ($84), or Podium ($119). Sign up takes 90 seconds. No long-term commitment, no fine print, no fees for cancellation.</p><p>You can change tiers later — your account dashboard handles upgrades and downgrades with one click.</p>",
+            "link_label": "Compare tiers",
+            "link": "/collections/tiers"
+          }
+        },
+        "step2": {
+          "type": "column",
+          "settings": {
+            "title": "2. We curate",
+            "text": "<p>The day after you subscribe, your account opens for an optional preferences profile: car platforms you own, sizes, what tools you already have. We use it to personalize and avoid duplicates.</p><p>Every month, our team picks the items by hand. Real people who wrench, drive, and track. Items are inspected before they go in the box.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "step3": {
+          "type": "column",
+          "settings": {
+            "title": "3. Box at your door",
+            "text": "<p>Boxes ship the 15th of every month. Free US shipping on every tier. You'll get a tracking email when yours leaves the warehouse.</p><p>If a box ever feels light, our value guarantee covers it: refund, replace, or credit — your call.</p>",
+            "link_label": "Our shipping policy",
+            "link": "/policies/shipping-policy"
+          }
+        }
+      },
+      "block_order": ["step1", "step2", "step3"],
+      "settings": {
+        "title": "The three steps",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true,
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "calendar": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The monthly cadence",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>1st–10th</strong> — Subscribe by the 10th to get this month's drop. Anything later goes in the next batch.</p><p><strong>11th–14th</strong> — Curation team finalizes the list, items get pulled, packed, and inspected.</p><p><strong>15th</strong> — Boxes ship. You get a tracking email.</p><p><strong>16th–23rd</strong> — Your box arrives (most US addresses).</p><p><strong>Anytime</strong> — Cancel, skip, swap tier, or update your address from your account dashboard. No fees, no notice required.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "image": "shopify://shop_images/how_it_works_hero.png",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "scheme-2",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "guarantee": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our value guarantee",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every box's items, at retail, are worth more than what you paid for that tier. That's the deal we make with you. If a box ever feels light, email us within 14 days and we'll refund the box, replace items, or credit your account.</p><p>No fine print. No hoops. We make our money on volume, not on you.</p>"
+          }
+        },
+        "cta": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read the refund policy",
+            "button_link": "/policies/refund-policy",
+            "button_style_secondary": true,
+            "button_label_2": "Pick your tier",
+            "button_link_2": "/collections/tiers",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "cta"],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": ["hero", "main", "steps", "calendar", "guarantee"]
+}

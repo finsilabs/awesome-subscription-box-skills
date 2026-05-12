@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "hero_404": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You missed the apex.",
+            "heading_size": "hxl"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "404 — that page doesn't exist. Probably went off into the gravel. Get back on track below.",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Back to the start",
+            "button_link_1": "/",
+            "button_style_secondary_1": false,
+            "button_label_2": "Pick your tier",
+            "button_link_2": "/collections/tiers",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text", "buttons"],
+      "settings": {
+        "image": "shopify://shop_images/404_offtrack.png",
+        "image_overlay_opacity": 50,
+        "image_height": "large",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-404",
+      "settings": {}
+    }
+  },
+  "order": ["hero_404", "main"]
+}
