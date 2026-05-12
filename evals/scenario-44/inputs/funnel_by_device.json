@@ -1,0 +1,30 @@
+{
+  "query": "FROM sessions SHOW sessions, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout, conversion_rate GROUP BY session_device_type SINCE -30d UNTIL today",
+  "date_range": "2026-04-12 to 2026-05-12",
+  "results": [
+    {
+      "session_device_type": "desktop",
+      "sessions": 5140,
+      "sessions_with_cart_additions": 463,
+      "sessions_that_reached_checkout": 254,
+      "sessions_that_completed_checkout": 159,
+      "conversion_rate": 3.09
+    },
+    {
+      "session_device_type": "mobile",
+      "sessions": 7270,
+      "sessions_with_cart_additions": 436,
+      "sessions_that_reached_checkout": 196,
+      "sessions_that_completed_checkout": 68,
+      "conversion_rate": 0.94
+    },
+    {
+      "session_device_type": "tablet",
+      "sessions": 440,
+      "sessions_with_cart_additions": 25,
+      "sessions_that_reached_checkout": 12,
+      "sessions_that_completed_checkout": 4,
+      "conversion_rate": 0.91
+    }
+  ]
+}

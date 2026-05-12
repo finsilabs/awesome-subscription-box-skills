@@ -1,0 +1,12 @@
+{
+  "query": "FROM sales SHOW orders, total_sales, average_order_value GROUP BY order_referrer_source ORDER BY total_sales DESC LIMIT 15 SINCE -30d UNTIL today",
+  "date_range": "2026-04-12 to 2026-05-12",
+  "results": [
+    {"order_referrer_source": "direct",   "orders": 168, "total_sales": 9073.20,  "average_order_value": 54.01},
+    {"order_referrer_source": "email",    "orders": 93,  "total_sales": 5115.00,  "average_order_value": 54.98},
+    {"order_referrer_source": "search",   "orders": 76,  "total_sales": 4028.40,  "average_order_value": 53.01},
+    {"order_referrer_source": "social",   "orders": 64,  "total_sales": 2841.60,  "average_order_value": 44.40},
+    {"order_referrer_source": "referral", "orders": 22,  "total_sales": 1258.40,  "average_order_value": 57.20},
+    {"order_referrer_source": "unknown",  "orders":  8,  "total_sales":  345.60,  "average_order_value": 43.20}
+  ]
+}

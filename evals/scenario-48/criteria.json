@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent exports VIP emails as a CSV with one email per line in the correct file path, documents the segment definition with absolute ISO dates, and includes guidance that the file must be uploaded manually (never transmitted to a third-party endpoint).",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "CSV file path correct",
+      "description": "A CSV file exists at segments/vip-2026-05-12.csv (matching segments/<segment-name>-<YYYY-MM-DD>.csv naming pattern)",
+      "max_score": 12
+    },
+    {
+      "name": "One email per line",
+      "description": "The CSV file contains one email address per row with no extra columns, no headers, and no additional formatting",
+      "max_score": 15
+    },
+    {
+      "name": "All visible VIP emails included",
+      "description": "CSV contains the email addresses from the provided vip_customers.json — at minimum the 15 visible customers' emails (alice.m@gmail.com, brian.k@hotmail.com, carol.s@icloud.com, etc.) appear in the file",
+      "max_score": 12
+    },
+    {
+      "name": "Segment doc file path correct",
+      "description": "Segment documentation is written to segments/segments-2026-05-12.md (matching segments/segments-<YYYY-MM-DD>.md naming pattern)",
+      "max_score": 10
+    },
+    {
+      "name": "Manual upload only guidance",
+      "description": "Documentation explicitly states the CSV must be uploaded manually by the user to Meta or TikTok — does NOT transmit it via API, webhook, or any third-party endpoint",
+      "max_score": 12
+    },
+    {
+      "name": "VIP segment criteria documented",
+      "description": "Documentation includes the VIP segment query criteria (orders_count threshold and total_spent threshold used to define VIPs)",
+      "max_score": 10
+    },
+    {
+      "name": "Absolute ISO dates in criteria",
+      "description": "Any date thresholds shown in the segment definition use absolute ISO-format dates (e.g., 2026-03-13) rather than relative expressions like '60 days ago'",
+      "max_score": 8
+    },
+    {
+      "name": "Segment count documented",
+      "description": "Documentation notes the total customer count in the VIP segment (143 customers or the full count from the data)",
+      "max_score": 8
+    },
+    {
+      "name": "Recommended use case stated",
+      "description": "Documentation explains what the VIP segment should be used for in paid advertising (lookalike seed, suppression, early access, or equivalent)",
+      "max_score": 8
+    },
+    {
+      "name": "Refresh cadence mentioned",
+      "description": "Documentation mentions re-exporting or re-pulling the customer list periodically (weekly, monthly, or before each campaign launch) to keep the audience fresh",
+      "max_score": 5
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent builds the cohort table and LTV table in the required formats, includes the time-to-second-order distribution in the specified buckets, references the median time to second order in the context of email flow sequencing (at ~70% of median), and saves to the correct file path.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct output file path",
+      "description": "Report is written to journey-reports/cohort-retention-2026-05-12.md (matching journey-reports/cohort-retention-<YYYY-MM-DD>.md pattern)",
+      "max_score": 8
+    },
+    {
+      "name": "Cohort table structure",
+      "description": "Report includes a cohort table organized by acquisition month with columns for cohort size and repeat % at multiple time intervals (30d, 90d, 180d, or similar)",
+      "max_score": 12
+    },
+    {
+      "name": "LTV by cohort table",
+      "description": "Report includes an LTV (lifetime value or revenue per customer) table by acquisition month at multiple time horizons (30d, 90d, 180d, 365d or equivalent)",
+      "max_score": 10
+    },
+    {
+      "name": "Time-to-second-order distribution",
+      "description": "Report includes a time-to-second-order distribution table with buckets (0-7d, 8-30d, 31-60d, 61-90d, 91-180d, >180d or equivalent)",
+      "max_score": 12
+    },
+    {
+      "name": "Median used for email sequencing",
+      "description": "Report references the median time to second order and connects it to email flow timing — specifically that the win-back or second-order nudge email should fire at approximately 70% of the median (or equivalent framing)",
+      "max_score": 12
+    },
+    {
+      "name": "Returning customer rate headline",
+      "description": "Report includes the headline returning customer rate metric with a verdict against the healthy range for subscription/D2C brands",
+      "max_score": 8
+    },
+    {
+      "name": "Lapsed customer pool estimate",
+      "description": "Report identifies and sizes the pool of customers who haven't reordered past a threshold (lapsed pool section or equivalent)",
+      "max_score": 8
+    },
+    {
+      "name": "Repeat by acquisition channel section",
+      "description": "Report includes a section on repeat behavior by acquisition channel (even if placeholder or note that cross-channel data was not available)",
+      "max_score": 6
+    },
+    {
+      "name": "TL;DR section",
+      "description": "Report opens with a TL;DR covering repeat rate, median time to second order, top cohort LTV, and biggest opportunity",
+      "max_score": 8
+    },
+    {
+      "name": "Prioritized recommendations",
+      "description": "Report includes recommendations structured by priority (P0/P1/P2 or equivalent) with email flow timing mentioned",
+      "max_score": 8
+    },
+    {
+      "name": "Benchmark comparison",
+      "description": "Report compares returning customer rate to a benchmark or 'healthy band' for D2C or subscription businesses",
+      "max_score": 8
+    }
+  ]
+}

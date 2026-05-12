@@ -1,0 +1,24 @@
+{
+  "note": "VIP customer data from list-customers query: orders_count:>=4 AND total_spent:>=400. Pulled 2026-05-12.",
+  "brand": "GloBox",
+  "store_aov": 49.00,
+  "query": "orders_count:>=4 AND total_spent:>=400",
+  "count": 143,
+  "customers": [
+    {"id": "c_001", "email": "alice.m@gmail.com",    "first_name": "Alice",   "last_name": "M",       "orders": 9, "total_spent": 980.00},
+    {"id": "c_002", "email": "brian.k@hotmail.com",  "first_name": "Brian",   "last_name": "K",       "orders": 7, "total_spent": 832.00},
+    {"id": "c_003", "email": "carol.s@icloud.com",   "first_name": "Carol",   "last_name": "S",       "orders": 6, "total_spent": 744.00},
+    {"id": "c_004", "email": "dan.o@gmail.com",      "first_name": "Dan",     "last_name": "O",       "orders": 6, "total_spent": 720.00},
+    {"id": "c_005", "email": "emily.r@yahoo.com",    "first_name": "Emily",   "last_name": "R",       "orders": 5, "total_spent": 627.00},
+    {"id": "c_006", "email": "frank.t@gmail.com",    "first_name": "Frank",   "last_name": "T",       "orders": 5, "total_spent": 595.00},
+    {"id": "c_007", "email": "grace.l@outlook.com",  "first_name": "Grace",   "last_name": "L",       "orders": 5, "total_spent": 580.00},
+    {"id": "c_008", "email": "henry.p@gmail.com",    "first_name": "Henry",   "last_name": "P",       "orders": 4, "total_spent": 498.00},
+    {"id": "c_009", "email": "iris.w@gmail.com",     "first_name": "Iris",    "last_name": "W",       "orders": 4, "total_spent": 476.00},
+    {"id": "c_010", "email": "james.b@icloud.com",   "first_name": "James",   "last_name": "B",       "orders": 4, "total_spent": 463.00},
+    {"id": "c_011", "email": "kate.n@gmail.com",     "first_name": "Kate",    "last_name": "N",       "orders": 4, "total_spent": 451.00},
+    {"id": "c_012", "email": "leo.v@yahoo.com",      "first_name": "Leo",     "last_name": "V",       "orders": 4, "total_spent": 440.00},
+    {"id": "c_013", "email": "mia.d@gmail.com",      "first_name": "Mia",     "last_name": "D",       "orders": 4, "total_spent": 428.00},
+    {"id": "c_014", "email": "noah.c@hotmail.com",   "first_name": "Noah",    "last_name": "C",       "orders": 4, "total_spent": 416.00},
+    {"id": "c_015", "email": "olivia.f@gmail.com",   "first_name": "Olivia",  "last_name": "F",       "orders": 4, "total_spent": 412.00}
+  ]
+}

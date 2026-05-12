@@ -23,21 +23,7 @@ Build a brand-voice-aligned email campaign in Klaviyo: pick the angle, write the
 
 ### 1. Decide on the angle (if not given)
 
-If the user hasn't specified, suggest 3-5 campaign angles based on the brand context. Examples for a subscription-box brand:
-
-| Angle | Trigger / time |
-|---|---|
-| Launch / open-order | Pre-launch + day-of launch |
-| Curation reveal | The day a new month's box is announced |
-| Seasonal (BFCM, Father's Day, Holiday) | Calendar-based |
-| Audience-segment story (e.g., "for the guy who track-days") | Quarterly |
-| Founder note (low-frequency, high-impact) | Once or twice a year |
-| Member-only drop | Inventory-driven |
-| "What's coming next month" | Monthly cadence |
-| Customer story / unboxing roundup | Monthly |
-| Black Friday / Cyber Monday / Boxing Day | Annual |
-
-Each angle gets a one-line "why this works for the brand" rationale.
+If the user hasn't specified, suggest 3-5 campaign angles based on the brand context (e.g., launch/open-order, seasonal, curation reveal, founder note, member-only drop, customer story). For each angle provide a one-line "why this works for the brand" rationale.
 
 ### 2. Read brand voice
 
@@ -59,10 +45,7 @@ Email body structure that works for most campaigns:
 6. Sign-off + secondary link (e.g., "questions? hit reply")
 ```
 
-Voice rules — same as `shopify-blog-post` skill:
-- Concrete first lines, not "in today's fast-paced world"
-- Active voice
-- Match the brand's typical reading level
+Apply tone and vocabulary directly from the brand voice vault loaded in Step 2. No generic defaults — let the vault files drive all copy decisions.
 
 ### 4. Build the HTML template
 
@@ -90,31 +73,23 @@ Key inclusions:
 - Postal address in footer (CAN-SPAM)
 - Hidden preview-text div at top of body
 
+**Before pushing, validate the rendered HTML:**
+- Confirm `{% unsubscribe` appears in the template string — abort with a clear error if missing.
+- Confirm a postal address block is present in the footer.
+- Log a warning if the rendered HTML is under 500 chars (likely a render failure).
+
 ### 5. Push the template + campaign via API
 
-Endpoint: `POST https://a.klaviyo.com/api/templates/` (template), `POST /api/campaigns/` (campaign), `POST /api/campaign-message-assign-template/` (link them).
+Run `uv run scripts/klaviyo_push_campaigns.py --name '<campaign_name>' --list-id '<list_id>' --subject '<subject>' --preview '<preview_text>' --from-email '<verified_sender>' --from-label '<sender_name>' --send-at '<ISO-8601>'`
 
-Pattern in `~/dev/gearheadbox/scripts/klaviyo_push_campaigns.py`:
+The script handles three sequential API calls: `POST /api/templates/` → `POST /api/campaigns/` → `POST /api/campaign-message-assign-template/`. See `~/dev/gearheadbox/scripts/klaviyo_push_campaigns.py` for the full implementation.
 
-```python
-# Headers
-headers = {
-    "Authorization": f"Klaviyo-API-Key {api_key}",
-    "revision": "2025-10-15",
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-# 1. Create template (POST /api/templates/) — get template_id
-# 2. Create campaign (POST /api/campaigns/) — pass message with subject/preview/from
-# 3. Assign template (POST /api/campaign-message-assign-template/) with relationship
-```
-
-Critical schema details:
+Critical schema details required by the API:
 - `send_strategy.method` = `"static"` and `datetime` (ISO 8601)
 - `audiences.included` = `[<list_id>]`, `audiences.excluded` = optional
 - `tracking_options.add_tracking_params` = `true`
 - Campaign-message `attributes.definition.content` holds subject/preview/from_email/from_label
+- API revision header: `"2025-10-15"`
 
 ### 6. Output for the user
 
@@ -125,24 +100,11 @@ Show:
 - Template ID it's pointing at
 - Reminder: the campaign is in DRAFT, user must click Send in Klaviyo UI
 
-## Send time guidance
-
-- Tuesday / Wednesday / Thursday tend to outperform Mon / Fri
-- 9am–11am local time is the sweet spot for most B2C
-- BFCM and time-pressure sends: 9am Eastern is the standard
-- Anniversary / story sends: Sunday morning works (low promo competition)
-- Avoid: Sundays before noon, holidays themselves (send before)
-
 ## Cross-skill links
 
 - `brand-voice-extract` → vault is the voice source of truth
 - `klaviyo-calendar-plan` → larger calendar context
 - `klaviyo-flow-build` → if this triggered behavior should become a recurring flow, not a one-off
-
-## Tradeoffs
-
-- **One-off campaign vs. recurring flow** — campaigns send once to a static audience. Flows trigger continuously based on events. Use a campaign for time-bound moments (launches, holidays); use a flow for "every customer who does X gets Y."
-- **Template per campaign vs. master template** — for high-volume sends, use a master template with editable regions. For 1-2 campaigns/month, separate templates are fine and easier to debug.
 
 ## Reference example
 

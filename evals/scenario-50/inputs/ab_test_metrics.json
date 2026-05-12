@@ -1,0 +1,77 @@
+{
+  "note": "Meta Ads A/B test data for FitBox campaign 'Hook Test Q2 2026'. Campaign has been running 5 days. Do not make changes during learning phase.",
+  "brand": "FitBox",
+  "account_id": "act_987654321",
+  "campaign_name": "Hook Test Q2 2026",
+  "date_range": "2026-05-07 to 2026-05-12",
+  "campaign_daily_budget": 200.00,
+  "total_spend_to_date": 980.00,
+  "ad_variants": [
+    {
+      "id": "ad_A",
+      "name": "Hook A — 'Your gym bag just got smarter'",
+      "status": "ACTIVE",
+      "days_running": 5,
+      "metrics": {
+        "spend": 320.00,
+        "impressions": 22000,
+        "reach": 18500,
+        "clicks": 286,
+        "ctr": 1.30,
+        "cpc": 1.12,
+        "cpm": 14.55,
+        "conversions": 9,
+        "cost_per_conversion": 35.56,
+        "roas": 3.10,
+        "frequency": 1.19
+      }
+    },
+    {
+      "id": "ad_B",
+      "name": "Hook B — 'The box 50,000 athletes trust'",
+      "status": "ACTIVE",
+      "days_running": 5,
+      "metrics": {
+        "spend": 330.00,
+        "impressions": 23100,
+        "reach": 19200,
+        "clicks": 231,
+        "ctr": 1.00,
+        "cpc": 1.43,
+        "cpm": 14.29,
+        "conversions": 7,
+        "cost_per_conversion": 47.14,
+        "roas": 2.32,
+        "frequency": 1.20
+      }
+    },
+    {
+      "id": "ad_C",
+      "name": "Hook C — 'We pick the gear. You run the miles.'",
+      "status": "ACTIVE",
+      "days_running": 5,
+      "metrics": {
+        "spend": 330.00,
+        "impressions": 23800,
+        "reach": 19600,
+        "clicks": 250,
+        "ctr": 1.05,
+        "cpc": 1.32,
+        "cpm": 13.87,
+        "conversions": 8,
+        "cost_per_conversion": 41.25,
+        "roas": 2.68,
+        "frequency": 1.21
+      }
+    }
+  ],
+  "target_cpa": 42.00,
+  "target_roas": 2.5,
+  "industry": "e-commerce",
+  "industry_benchmarks": {
+    "ctr_avg": "1.0-1.5%",
+    "cpm_avg": "$15-25",
+    "cpc_avg": "$1.50-2.50",
+    "roas_avg": "2.0-3.0"
+  }
+}

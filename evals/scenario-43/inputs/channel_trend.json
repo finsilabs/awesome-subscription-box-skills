@@ -1,0 +1,14 @@
+{
+  "query": "FROM sessions SHOW sessions GROUP BY referrer_source TIMESERIES week SINCE -60d UNTIL today",
+  "note": "Weekly aggregated data — last 8 weeks",
+  "results": [
+    {"week": "2026-03-16", "direct": 1050, "social": 820, "search": 490, "email": 180, "referral": 120},
+    {"week": "2026-03-23", "direct": 1080, "social": 790, "search": 510, "email": 195, "referral": 130},
+    {"week": "2026-03-30", "direct": 1120, "social": 760, "search": 525, "email": 360, "referral": 115},
+    {"week": "2026-04-06", "direct": 1095, "social": 780, "search": 540, "email": 340, "referral": 140},
+    {"week": "2026-04-13", "direct": 1180, "social": 850, "search": 555, "email": 380, "referral": 148},
+    {"week": "2026-04-20", "direct": 1210, "social": 780, "search": 545, "email": 370, "referral": 152},
+    {"week": "2026-04-27", "direct": 1220, "social": 720, "search": 560, "email": 400, "referral": 155},
+    {"week": "2026-05-04", "direct": 1240, "social": 690, "search": 578, "email": 455, "referral": 160}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "note": "These image files have already been generated and saved locally. They need to be uploaded to Shopify CDN and attached to the products.",
+  "brand": "HikePack",
+  "images": [
+    {"filename": "generated/trailblazer_hero.png", "product": "Trailblazer Box", "type": "hero", "aspect_ratio": "16:9", "size_bytes": 842000},
+    {"filename": "generated/trailblazer_card.png", "product": "Trailblazer Box", "type": "product_card", "aspect_ratio": "1:1", "size_bytes": 612000},
+    {"filename": "generated/summit_hero.png", "product": "Summit Box", "type": "hero", "aspect_ratio": "16:9", "size_bytes": 891000},
+    {"filename": "generated/summit_card.png", "product": "Summit Box", "type": "product_card", "aspect_ratio": "1:1", "size_bytes": 634000},
+    {"filename": "generated/expedition_hero.png", "product": "Expedition Box", "type": "hero", "aspect_ratio": "16:9", "size_bytes": 918000},
+    {"filename": "generated/expedition_card.png", "product": "Expedition Box", "type": "product_card", "aspect_ratio": "1:1", "size_bytes": 649000}
+  ],
+  "products": [
+    {"title": "Trailblazer Box", "price": "49.00", "sku_suffix": "TRAIL-MO", "description": "Beginner hiking essentials — 4 gear items per month"},
+    {"title": "Summit Box", "price": "69.00", "sku_suffix": "SUMM-MO", "description": "Intermediate hikers — 6 gear items plus navigation tools"},
+    {"title": "Expedition Box", "price": "99.00", "sku_suffix": "EXPED-MO", "description": "Advanced adventurers — 8 premium items plus exclusive drops"}
+  ],
+  "shopify_store": "hikepacked.myshopify.com",
+  "brand_abbreviation": "HPK"
+}

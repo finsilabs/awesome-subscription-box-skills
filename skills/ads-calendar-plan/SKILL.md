@@ -1,6 +1,6 @@
 ---
 name: ads-calendar-plan
-description: Use this skill when the user wants to plan a paid-ads calendar — phrases like "plan my ads calendar", "ads calendar for the year", "ads budget plan", "schedule paid campaigns", "ad spend plan". Maps budget, audience, and creative angle to time periods. Coordinates with klaviyo-calendar-plan so paid + owned channels reinforce each other.
+description: Use this skill when the user wants to plan a paid-ads calendar — phrases like "plan my ads calendar", "ads calendar for the year", "ads budget plan", "schedule paid campaigns", "ad spend plan". Allocates budget across funnel stages and platforms, defines audience segments per campaign, sets creative refresh cadence, assigns flight dates to key seasonal moments, and produces a structured markdown calendar of planned paid campaigns. Coordinates with klaviyo-calendar-plan so paid + owned channels reinforce each other.
 ---
 
 # Ads calendar planner
@@ -24,10 +24,7 @@ A markdown file at `~/.claude/brand-voice-vault/<brand>/calendar/ads-<period>.md
 
 If existing ads data is available, run `ads-performance-analysis` first to get current CPA, ROAS, and best variants.
 
-Pull industry benchmarks:
-```python
-ads_insights_industry_benchmark(...)
-```
+Pull industry benchmarks if the platform MCP exposes a benchmark tool (e.g., `ads_insights_industry_benchmark`). This call is platform-dependent and may not be available; if unavailable, rely on the defaults below.
 
 If brand-new with no ads history, set conservative starting budgets:
 - Cold acquisition: $30-50/day per ad set
@@ -53,6 +50,8 @@ Adjust based on lifecycle:
 | Launch (first 30 days) | 70% | 25% | 5% |
 | Scaling (next 60 days) | 60% | 30% | 10% |
 | Mature (post-90 days) | 50% | 35% | 15% |
+
+**Validation checkpoint:** After choosing allocations, verify the percentages across Cold acquisition + Retargeting + Brand + Catalog sum to 100%. If they do not, adjust before proceeding.
 
 ### 3. Map calendar moments
 
@@ -103,7 +102,9 @@ The most powerful campaigns combine paid + owned:
 - Launch: paid acquisition + email pre-launch sequence + landing-page-specific paid creative + email reveal day
 - New product: paid awareness → email reveal → paid retargeting
 
-Read `~/.claude/brand-voice-vault/<brand>/calendar/<period>.md` (Klaviyo calendar) and align ad pulses with email sends.
+**Validation checkpoint:** Before referencing the Klaviyo calendar, check whether the file `~/.claude/brand-voice-vault/<brand>/calendar/<period>.md` exists. If it does not exist, note in the output that the Klaviyo calendar has not been generated yet and flag it as an open question. Do not block calendar creation — proceed with placeholder sync points that can be filled in once `klaviyo-calendar-plan` is run.
+
+When the file exists, read it and align ad pulses with email sends.
 
 ### 7. Format the output
 
@@ -166,34 +167,23 @@ Read `~/.claude/brand-voice-vault/<brand>/calendar/<period>.md` (Klaviyo calenda
 - <e.g., "Should we test Pinterest for the gift-buyer audience?">
 ```
 
+**Validation checkpoint:** After writing the file, confirm it was saved successfully by reading it back. If the write failed, surface the error to the user before proceeding to step 8.
+
 ### 8. Suggest next actions
 
 After saving the calendar:
-- Brief any campaigns due in next 30 days via `ads-brief-create`
+- Brief any campaigns due in next 30 days via `ads-brief-create`. To trigger it, say: "Create an ads brief for the [campaign name] campaign from the [period] calendar."
 - Generate creative imagery for upcoming campaigns via Nano Banana
-- Sync the Klaviyo calendar so paid + email align
+- Sync the Klaviyo calendar so paid + email align. If not yet created, say: "Run klaviyo-calendar-plan for [brand] [period] so we can align email sends with the paid schedule."
 
 ## Multi-platform notes
 
-This skill defaults to Meta (Facebook/Instagram) since that's the connected MCP. Same calendar structure works for:
-- **TikTok Ads** — younger audiences, video-first, generally 15-30% lower CPA than Meta for sub-30 audiences
-- **Google Search** — branded + non-branded keyword campaigns, layered with shopping ads
-- **YouTube** — pre-roll + skippable, good for awareness, hard to measure conversion attribution
-- **Pinterest** — gift buyer audiences, female-heavy, longer purchase consideration window
-
-If user is multi-platform, structure the calendar per-platform with cross-platform coordinated dates.
-
-## Cross-skill links
-
-- `ads-brief-create` — for each campaign in the calendar
-- `ads-campaign-create` — execution of briefs
-- `ads-performance-analysis` — review performance vs. plan
-- `klaviyo-calendar-plan` — sync paid + owned cadences
+This skill defaults to Meta (Facebook/Instagram). The same calendar structure applies to TikTok Ads, Google Search/Shopping, YouTube, and Pinterest — each with different CPA profiles and format requirements. For multi-platform brands, structure the calendar per-platform with shared coordinated dates.
 
 ## Tradeoffs
 
-- **Plan a year vs. plan a quarter** — annual is strategic; quarterly is tactical. For brands with < 6 months of ads data, quarterly is more honest.
-- **Always-on vs. burst** — Always-on retargeting is non-negotiable. Cold can be either always-on or burst — burst is more dramatic but harder to optimize when learning data is fragmented.
+- **Plan a year vs. plan a quarter** — Annual is strategic; quarterly is more honest for brands with < 6 months of ads data.
+- **Always-on vs. burst** — Always-on retargeting is non-negotiable; cold can be either, but burst campaigns produce fragmented learning data.
 
 ## Reference example
 
@@ -201,3 +191,10 @@ For Gear Head Box Q3 2026:
 - Aug: launch month — $200/day total ($140 cold, $60 retargeting), 4-creative rotation
 - Sep: regular cadence — $150/day, refresh creative weekly
 - Sync points with Klaviyo: launch announcement (Aug 4), first-box ship (Aug 15), Father's-Day-late campaign tied to Apex tier
+
+## Cross-skill links
+
+- `ads-brief-create` — for each campaign in the calendar
+- `ads-campaign-create` — execution of briefs
+- `ads-performance-analysis` — review performance vs. plan
+- `klaviyo-calendar-plan` — sync paid + owned cadences

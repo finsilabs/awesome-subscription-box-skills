@@ -1,0 +1,95 @@
+{
+  "note": "Meta Ads performance data for RunBox, pulled 2026-05-12. Last 7 days.",
+  "brand": "RunBox",
+  "account_id": "act_123456789",
+  "date_range": "2026-05-05 to 2026-05-12",
+  "target_cpa": 45.00,
+  "target_roas": 2.5,
+  "daily_budget_total": 300.00,
+  "ad_sets": [
+    {
+      "id": "as_001",
+      "name": "Prospecting — Cold Lookalike 1%",
+      "status": "ACTIVE",
+      "daily_budget": 120.00,
+      "metrics": {
+        "spend": 819.00,
+        "impressions": 48200,
+        "reach": 38600,
+        "clicks": 338,
+        "ctr": 0.70,
+        "cpc": 2.42,
+        "cpm": 17.00,
+        "conversions": 11,
+        "cost_per_conversion": 74.45,
+        "roas": 1.22,
+        "frequency": 2.1
+      }
+    },
+    {
+      "id": "as_002",
+      "name": "Prospecting — Interest Fitness Fans",
+      "status": "ACTIVE",
+      "daily_budget": 80.00,
+      "metrics": {
+        "spend": 548.00,
+        "impressions": 31400,
+        "reach": 26800,
+        "clicks": 235,
+        "ctr": 0.75,
+        "cpc": 2.33,
+        "cpm": 17.45,
+        "conversions": 7,
+        "cost_per_conversion": 78.29,
+        "roas": 1.18,
+        "frequency": 2.0
+      }
+    },
+    {
+      "id": "as_003",
+      "name": "Retargeting — Website Visitors 30d",
+      "status": "ACTIVE",
+      "daily_budget": 60.00,
+      "metrics": {
+        "spend": 412.00,
+        "impressions": 18600,
+        "reach": 5200,
+        "clicks": 298,
+        "ctr": 1.60,
+        "cpc": 1.38,
+        "cpm": 22.15,
+        "conversions": 9,
+        "cost_per_conversion": 45.78,
+        "roas": 2.43,
+        "frequency": 3.6
+      }
+    },
+    {
+      "id": "as_004",
+      "name": "Retargeting — Cart Abandoners",
+      "status": "ACTIVE",
+      "daily_budget": 40.00,
+      "metrics": {
+        "spend": 274.00,
+        "impressions": 9800,
+        "reach": 2600,
+        "clicks": 187,
+        "ctr": 1.91,
+        "cpc": 1.46,
+        "cpm": 27.96,
+        "conversions": 14,
+        "cost_per_conversion": 19.57,
+        "roas": 5.12,
+        "frequency": 3.8
+      }
+    }
+  ],
+  "industry_benchmarks": {
+    "industry": "e-commerce",
+    "ctr_avg": "1.0-1.5%",
+    "cpm_avg": "$15-25",
+    "cpc_avg": "$1.50-2.50",
+    "roas_avg": "2.0-3.0",
+    "frequency_warning": "> 4"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent correctly applies the ≥50 conversions threshold before declaring an A/B test winner, advises against changing campaigns still in the learning phase (first 48-72 hours), and uses the frequency < 2.5 and spending < 30% of budget criteria for scaling decisions.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct output file path",
+      "description": "Report is written to ads-reports/2026-05-12.md (matching ads-reports/<YYYY-MM-DD>.md pattern)",
+      "max_score": 8
+    },
+    {
+      "name": "Statistical significance threshold applied",
+      "description": "Report explicitly states that the total conversions per variant (7-9 conversions each) are insufficient to declare a winner, referencing a minimum threshold of ≥50 conversions per ad set (or equivalent) before concluding the test",
+      "max_score": 15
+    },
+    {
+      "name": "Hook A identified as current leader",
+      "description": "Report identifies Hook A as the current leading variant based on its metrics (highest CTR 1.30%, lowest CPC $1.12, highest ROAS 3.10x, lowest CPA $35.56)",
+      "max_score": 10
+    },
+    {
+      "name": "Frequency check for scale readiness",
+      "description": "Report mentions frequency for the leading variant (1.19-1.21) as evidence of available headroom before scale, or references a frequency threshold (< 2.5) as a scale criterion",
+      "max_score": 8
+    },
+    {
+      "name": "Do not pause mid-test recommendation",
+      "description": "Report recommends continuing the test rather than pausing variants prematurely, given insufficient conversion data",
+      "max_score": 12
+    },
+    {
+      "name": "Scale conditions stated",
+      "description": "Report states specific conditions under which scaling would be appropriate — including a conversion count threshold (≥50), a frequency ceiling, or a budget utilization check",
+      "max_score": 10
+    },
+    {
+      "name": "Learning phase caveat",
+      "description": "Report references the need to avoid making changes to campaigns during the learning/ramp period, or notes that the test needs more time to exit the learning phase",
+      "max_score": 10
+    },
+    {
+      "name": "Prioritized recommendations (P0/P1/P2)",
+      "description": "Report includes recommendations organized by priority (P0 — no major changes yet; P1 — monitor; P2 — brief new hook variants, or equivalent)",
+      "max_score": 10
+    },
+    {
+      "name": "Headline metrics table",
+      "description": "Report includes a table or section with the key metrics for all three ad variants (CTR, CPC, CPA, ROAS, conversions)",
+      "max_score": 10
+    },
+    {
+      "name": "Scaling decision section",
+      "description": "Report includes a dedicated scaling decision section with a clear yes/no verdict and supporting numbers",
+      "max_score": 7
+    }
+  ]
+}

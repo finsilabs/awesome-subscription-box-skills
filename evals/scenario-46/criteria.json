@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent computes the repeat_lift metric for each entry product, correctly classifies dead-end products (high entry count, low repeat_lift) and hidden gems (lower entry count, high repeat_lift), builds the cross-sell affinity table, and structures the output with all required sections.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct output file path",
+      "description": "Report is written to journey-reports/product-path-2026-05-12.md (matching journey-reports/product-path-<YYYY-MM-DD>.md pattern)",
+      "max_score": 8
+    },
+    {
+      "name": "Repeat lift metric computed",
+      "description": "Report computes and displays a 'repeat lift', 'repeat %', or equivalent metric (repeat_customers / entry_customers) for each entry product",
+      "max_score": 12
+    },
+    {
+      "name": "Dead-ends section",
+      "description": "Report includes a 'Dead ends' section identifying products with high entry counts but low repeat lift (Kids Craft Explorer Box should appear here given 1/8 customers repeat)",
+      "max_score": 12
+    },
+    {
+      "name": "Hidden gems section",
+      "description": "Report includes a 'Hidden gems' section identifying products with lower entry counts but above-average repeat lift (Digital Art Tablet Starter or Brush Upgrade Set should appear here)",
+      "max_score": 10
+    },
+    {
+      "name": "Cross-sell affinity table",
+      "description": "Report includes a cross-sell affinity table showing what products customers most commonly buy on their second order after each entry product",
+      "max_score": 12
+    },
+    {
+      "name": "Entry products table",
+      "description": "Report includes an entry products table showing first-order count per product and percentage of new customers",
+      "max_score": 8
+    },
+    {
+      "name": "Repeat drivers table",
+      "description": "Report includes a repeat drivers table ranking entry products by repeat % or repeat lift with comparison to average",
+      "max_score": 8
+    },
+    {
+      "name": "Top products baseline",
+      "description": "Report includes a baseline table of top products by revenue (sourced from top_products_revenue.json data)",
+      "max_score": 6
+    },
+    {
+      "name": "TL;DR section",
+      "description": "Report opens with a TL;DR identifying top entry product, biggest repeat driver, and biggest dead end",
+      "max_score": 8
+    },
+    {
+      "name": "Prioritized recommendations",
+      "description": "Report includes prioritized recommendations (P0/P1/P2 or equivalent) with merchandising and marketing actions",
+      "max_score": 8
+    },
+    {
+      "name": "Caveats section",
+      "description": "Report includes a Caveats section noting sampling limitations or other caveats applicable to the analysis",
+      "max_score": 8
+    }
+  ]
+}

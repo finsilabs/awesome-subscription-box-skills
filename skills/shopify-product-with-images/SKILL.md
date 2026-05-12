@@ -24,14 +24,7 @@ End-to-end product creation: generate brand-consistent imagery via Nano Banana �
 
 ### 1. Gather product inputs
 
-Ask user for what's not provided:
-- **Title** (slug-able, e.g., "Pit Stop")
-- **Price** in USD
-- **Description** — 1-3 paragraphs, brand-voice if vault exists
-- **Tags** — array of slug strings
-- **SKU** — `<BRAND>-<HANDLE>-<VARIANT>` convention works
-- **Tier vs. one-off** — affects whether subscription template applies
-- **Image count** — typically 1 hero + 2-4 lifestyle/detail shots
+Collect title, price, description, tags, SKU, tier vs. one-off distinction, and desired image count from the user. Ask only for what hasn't been provided.
 
 ### 2. Generate images via Nano Banana
 
@@ -62,33 +55,11 @@ for part in response.candidates[0].content.parts:
         Path("generated/product.png").write_bytes(part.inline_data.data)
 ```
 
-**Aspect ratios** for product images:
-- `1:1` square — primary product card, gallery default
-- `4:5` portrait — works on PDP gallery
-- `16:9` wide — hero/lifestyle banner
-
-**Prompt patterns that work for product photography:**
-
-```
-Product photograph of [item description] on [surface]. [Lighting:
-"Soft directional studio light from upper left, dramatic shadows on right"].
-Mood: [editorial e-commerce / lifestyle / minimalist]. No people. No
-readable text or logos beyond the product's own. [Aspect] format.
-```
-
-For a tier subscription box (concrete example from gearheadbox):
-```
-Product photograph of a small subscription box on a polished concrete surface.
-The box is matte kraft cardboard with a single vibrant racing-red wraparound band,
-stamp-style sans serif text on the band reads 'PIT STOP'. Lid open at angle showing
-contents arranged inside: a microfiber towel folded, a small enamel pin and sticker
-pack on top, a small spray bottle of tire shine. Soft directional studio light, dark
-gradient background. High-end e-commerce product photography. Square format.
-```
+For prompt patterns, aspect ratio guidance, and worked examples (subscription box, apparel, etc.), see `PROMPTS.md` in this skill folder.
 
 ### 3. Upload to Shopify CDN (3-step staged upload)
 
-Shopify's product/file API requires public HTTPS URLs. Use `stagedUploadsCreate` → POST binary → `fileCreate`:
+Use `stagedUploadsCreate` → POST binary → `fileCreate`:
 
 ```python
 # Pattern (full example at ~/dev/gearheadbox/scripts/upload_staged.py)
@@ -161,25 +132,11 @@ scripts/generate_<product>_images.py — re-runnable generator
 templates/product.<suffix>.json      — custom PDP layout (if not default)
 ```
 
-## Tradeoffs
-
-- **AI-generated vs. real photography** — AI is fast (seconds per image) and consistent (same brand prompt = same look). Real photography wins on unique product detail and trust signals. For pre-launch / placeholder, AI is great. For long-term, replace with real shots.
-- **Aspect ratio enforcement** — Nano Banana sometimes drifts from the requested aspect by ~5-10%. Don't rely on pixel-perfect ratios — crop with PIL post-generation if needed.
-- **Color fidelity** — Nano Banana doesn't honor exact hex codes well. If the product needs a specific brand red (e.g., `#E10600`), generate on a neutral background and chroma-key in post (see `~/dev/gearheadbox/scripts/remove_background.py`).
-
 ## Common follow-ups
 
 - Reduce or change a generated image — re-run with different prompt
 - Make logo/product image transparent — invoke `remove_background.py` pattern
 - Composite multiple images (e.g., 3 tier boxes side-by-side) — see `~/dev/gearheadbox/scripts/composite_tier_lineup.py`
-
-## Reference example
-
-The full pipeline ran for `~/dev/gearheadbox`:
-- 9 brand images generated (hero, 3 tier boxes, 3 recent drops, 2 logos)
-- Uploaded via stagedUploadsCreate
-- 3 tier products created with featured images attached
-- Custom `product.subscription.json` PDP template applied
 
 ## Embedded in this skill folder
 
@@ -191,3 +148,4 @@ Scripts (copy to your project's `scripts/` directory and run with `uv run`):
 
 Reference templates / examples (copy or adapt):
 - `examples/product.subscription.json`
+- `PROMPTS.md` — prompt patterns and worked examples for product photography

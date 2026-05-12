@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent produces a segment report with all six standard segments (A-F), uses the correct revenue opportunity calculation formulas per segment type, includes a 'How to apply' section with Klaviyo, paid social, and Shopify subsections, and saves to the correct file path.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct output file path",
+      "description": "Report is written to segments/segments-2026-05-12.md (matching segments/segments-<YYYY-MM-DD>.md pattern)",
+      "max_score": 8
+    },
+    {
+      "name": "All six segments present",
+      "description": "Report includes all six standard segments: VIP, Recent first-time, Lapsed one-timer, Dormant repeater, High-AOV/low-frequency, and Marketing-engaged non-buyer (or subscribed non-buyer)",
+      "max_score": 12
+    },
+    {
+      "name": "Segment scoreboard table",
+      "description": "Report includes a segment scoreboard table with columns for Segment, Definition, Count, % of base, and Est. opportunity (or Revenue opportunity)",
+      "max_score": 10
+    },
+    {
+      "name": "Reactivation opportunity formula",
+      "description": "Revenue opportunity for lapsed one-timer or dormant repeater uses count × AOV × reactivation rate (5-10%) or equivalent formula",
+      "max_score": 10
+    },
+    {
+      "name": "Activation opportunity formula",
+      "description": "Revenue opportunity for subscribed non-buyer or recent first-time uses count × AOV × conversion lift (5-15%) or equivalent formula",
+      "max_score": 10
+    },
+    {
+      "name": "How to apply — Klaviyo section",
+      "description": "Report includes a 'How to apply' or equivalent section with a Klaviyo subsection containing paste-ready or clearly described segment definitions for Klaviyo",
+      "max_score": 10
+    },
+    {
+      "name": "How to apply — paid social section",
+      "description": "Report includes a paid social subsection (Meta/TikTok or ads) specifying which segment to use as a lookalike seed (VIP) and which to use for suppression",
+      "max_score": 8
+    },
+    {
+      "name": "Sample customers listed",
+      "description": "Report includes sample customers (5-10 examples) for at least two segments so the team can sanity-check composition",
+      "max_score": 8
+    },
+    {
+      "name": "Absolute ISO dates in queries",
+      "description": "Any Shopify customer query criteria shown in the report uses absolute ISO dates (e.g., 2026-03-13) rather than relative expressions like '60 days ago'",
+      "max_score": 8
+    },
+    {
+      "name": "TL;DR and recommended actions",
+      "description": "Report opens with a TL;DR and includes a ranked list of top recommended actions based on segment opportunity",
+      "max_score": 8
+    },
+    {
+      "name": "Recommended action per segment",
+      "description": "Segment scoreboard or a separate section lists a recommended action for each segment (e.g., win-back flow, lookalike seed, first-purchase incentive)",
+      "max_score": 8
+    }
+  ]
+}

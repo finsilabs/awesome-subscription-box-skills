@@ -9,10 +9,8 @@ Show where traffic and revenue come from at the channel and individual-source le
 
 ## When to use
 
-- Quarterly channel review
-- Before deciding a media-budget allocation
+- Before or after deciding a media-budget allocation (quarterly review, campaign post-mortem)
 - "Why aren't my [Meta / TikTok / SEO] dollars working?"
-- After a campaign — measure incremental revenue from a referrer source
 - Suspicion that organic / direct is silently the biggest driver
 
 ## Prerequisites
@@ -35,6 +33,8 @@ SINCE -30d UNTIL today
 
 `referrer_source` typical values: `direct`, `social`, `search`, `email`, `unknown`, `referral`, sometimes a specific platform.
 
+**Validation:** If the query returns 0 rows, check store connectivity and widen the date range to `-90d`. If `unknown` or `direct` accounts for >60% of sessions, flag a UTM hygiene issue immediately — note it in the report and do not proceed to scoring until the user acknowledges the data quality caveat.
+
 ### 2. Revenue and AOV by channel
 
 ```
@@ -44,6 +44,8 @@ GROUP BY order_referrer_source
 ORDER BY total_sales DESC LIMIT 15
 SINCE -30d UNTIL today
 ```
+
+**Validation:** If `order_referrer_source` returns fewer channels than Step 1's `referrer_source`, note the schema mismatch — some sessions may not have converted and attribution columns may differ.
 
 ### 3. Specific-source breakdown (named campaigns / utm sources)
 
@@ -66,6 +68,8 @@ ORDER BY sessions DESC LIMIT 15
 SINCE -30d UNTIL today
 ```
 
+**Validation:** If `order_referrer_name` is blank or `(not set)` for most rows, UTM tagging on ads is missing — flag this as a P0 recommendation.
+
 ### 4. Trend per channel (find rising vs declining)
 
 ```
@@ -75,7 +79,9 @@ GROUP BY referrer_source
 TIMESERIES day SINCE -60d UNTIL today
 ```
 
-Eyeball: is any channel collapsing or surging week-over-week?
+Identify channels that are collapsing or surging week-over-week.
+
+**Validation:** If the timeseries returns sparse or irregular data for recent days, check whether the store's analytics pipeline has a lag (Shopify can have up to 48h delay on session data).
 
 ### 5. Build the channel scoreboard
 
@@ -90,7 +96,7 @@ For each channel compute:
 | Paid (utm_source=meta) | … | … | … | … | … | … |
 | Referral | … | … | … | … | … | … |
 
-The **Revenue per 1k sessions** column is the channel-quality metric — it normalizes for volume so you can compare a small high-quality channel against a big low-quality one.
+**Revenue per 1k sessions** normalizes for volume so you can compare a small high-quality channel against a large low-quality one.
 
 ### 6. ROAS overlay (if paid spend is available)
 
@@ -108,11 +114,11 @@ Note: Shopify's last-touch attribution often UNDER-counts paid social and OVER-c
 
 | Pattern | Likely cause | Action |
 |---|---|---|
-| Direct > 50% of revenue | Untracked traffic (paid clicks losing UTMs, dark social, branded search) | Audit UTM tagging on ads/email; treat direct as a partial proxy for paid+brand |
-| One source has high sessions but low conv | Wrong audience or weak landing page | Run `page-critical-review` on the landing pages those clicks hit |
-| One source has low sessions but high AOV | Underinvested winner — scale | Increase spend or investment in that channel |
+| Direct > 50% of revenue | Untracked traffic (ads losing UTMs, dark social, branded search) | Audit UTM tagging; treat direct as partial proxy for paid+brand |
+| High sessions, low conv | Wrong audience or weak landing page | Run `page-critical-review` on those landing pages |
+| Low sessions, high AOV | Underinvested winner | Increase spend or investment in that channel |
 | Email conv rate < 5% | Klaviyo flows weak / list cold | Audit flows with `klaviyo-flow-build` |
-| Search organic flat / declining | SEO regression or de-indexing | Manual SEO check; sitemap, indexed pages |
+| Search organic flat/declining | SEO regression or de-indexing | Check sitemap and indexed pages |
 
 ### 8. Output
 
@@ -158,6 +164,7 @@ Note: Shopify's last-touch attribution often UNDER-counts paid social and OVER-c
 ## Caveats
 - Shopify last-touch attribution under-counts paid social / over-counts direct
 - Sessions may include bots; cross-check with GA or CF analytics for sanity
+- Data may lag up to 48h; rerun queries if recent days look sparse
 ```
 
 ### 9. Save
@@ -175,6 +182,6 @@ Write to `<repo>/journey-reports/acquisition-<YYYY-MM-DD>.md`.
 
 ## Tradeoffs
 
-- **Last-click vs first-click attribution** — Shopify is essentially last-non-direct touch. Paid social often gets undervalued because users click an ad → bounce → search the brand → convert from "search". For paid evaluation, lean on the ad platform's own attribution as a complement.
-- **30d vs 90d window** — Use 30d for tactical decisions, 90d for strategic mix. Below 1k sessions/month, use 90d minimum.
-- **utm hygiene matters more than the analysis** — If your ads aren't UTM-tagged consistently, the "social" bucket will be a black box. Recommend the user audit their ad UTMs as part of the action plan if data is messy.
+- **Attribution model** — Shopify = last-non-direct touch; complement with ad-platform attribution for paid channels, which are routinely under-credited.
+- **Date window** — Use 30d for tactical decisions, 90d for strategic mix; below 1k sessions/month, use 90d minimum.
+- **UTM hygiene** — Messy or missing UTM tags corrupt channel buckets; recommend a UTM audit as a P0 action when data is unclear.

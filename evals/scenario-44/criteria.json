@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent correctly computes stage-to-stage rates, compares them to D2C industry benchmarks, identifies the biggest revenue leak using the correct formula, flags the device gap, and structures the output with the required sections.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct output file path",
+      "description": "Report is written to journey-reports/funnel-2026-05-12.md (matching the journey-reports/funnel-<YYYY-MM-DD>.md pattern)",
+      "max_score": 8
+    },
+    {
+      "name": "Funnel snapshot table",
+      "description": "Report includes a table with all four funnel stages (Sessions, Cart additions, Reached checkout, Completed checkout) with volumes and stage-to-stage rates",
+      "max_score": 10
+    },
+    {
+      "name": "Industry benchmark comparison",
+      "description": "Report compares stage-to-stage rates to industry benchmarks — specifically cart addition rate (8-12%), checkout reach rate (40-55%), checkout completion rate (65-80%), or overall conversion (1.5-3%)",
+      "max_score": 12
+    },
+    {
+      "name": "Biggest leak quantified",
+      "description": "Report identifies the largest drop-off stage and calculates or estimates the revenue being lost (uses volume drop × AOV or revenue_per_completed_checkout logic)",
+      "max_score": 12
+    },
+    {
+      "name": "Mobile UX flag",
+      "description": "Report flags that mobile conversion rate is more than 60% below desktop conversion rate (mobile ~0.94% vs desktop ~3.09% in the data) as a mobile UX issue",
+      "max_score": 10
+    },
+    {
+      "name": "Device breakdown table",
+      "description": "Report includes a table or section showing conversion rate by device type (desktop, mobile, tablet)",
+      "max_score": 8
+    },
+    {
+      "name": "Period-over-period section",
+      "description": "Report includes a period-over-period or week-over-week comparison section based on the comparison data provided",
+      "max_score": 8
+    },
+    {
+      "name": "Significant WoW change flagged",
+      "description": "Report flags the week of 2026-05-04 where conversion rate dropped ~-0.21pp WoW (which represents more than a meaningful change) as a notable signal",
+      "max_score": 8
+    },
+    {
+      "name": "Prioritized recommendations",
+      "description": "Report includes recommendations organized by priority (P0/P1/P2 or equivalent) with mobile fix at the top given severity",
+      "max_score": 8
+    },
+    {
+      "name": "TL;DR section",
+      "description": "Report opens with a TL;DR section that states overall conversion rate, biggest leak stage, and root cause hypothesis",
+      "max_score": 8
+    },
+    {
+      "name": "Open questions section",
+      "description": "Report includes an Open questions section listing things to investigate further",
+      "max_score": 8
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent uses the correct pageCreate GraphQL mutation with all required variables (templateSuffix matching the page handle, isPublished true, body content), creates the template file with the correct filename convention, and includes a main-page section in the template.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "pageCreate mutation used",
+      "description": "shopify/page-setup.md contains the pageCreate mutation (not pageUpdate, productCreate, or another mutation name)",
+      "max_score": 10
+    },
+    {
+      "name": "handle set correctly",
+      "description": "The pageCreate variables include 'handle': 'black-friday' (or equivalent handle matching the page URL slug)",
+      "max_score": 8
+    },
+    {
+      "name": "templateSuffix equals handle",
+      "description": "The pageCreate variables include 'templateSuffix': 'black-friday' — matching the handle value, not 'page.black-friday' or any other format",
+      "max_score": 12
+    },
+    {
+      "name": "isPublished true",
+      "description": "The pageCreate variables include 'isPublished': true",
+      "max_score": 8
+    },
+    {
+      "name": "body field present",
+      "description": "The pageCreate variables include a non-empty 'body' field with intro paragraph content",
+      "max_score": 7
+    },
+    {
+      "name": "Template filename correct",
+      "description": "The template file is named exactly templates/page.black-friday.json (matching the pattern templates/page.<handle>.json)",
+      "max_score": 10
+    },
+    {
+      "name": "main-page section in template",
+      "description": "templates/page.black-friday.json contains a section of type 'main-page' that renders the page body content",
+      "max_score": 12
+    },
+    {
+      "name": "main-page in order array",
+      "description": "The 'main-page' section key appears in the 'order' array of templates/page.black-friday.json",
+      "max_score": 8
+    },
+    {
+      "name": "Hero section present",
+      "description": "templates/page.black-friday.json contains a section of type 'image-banner' serving as the hero",
+      "max_score": 8
+    },
+    {
+      "name": "Hero before main-page",
+      "description": "In the 'order' array, the hero image-banner section appears before the main-page section",
+      "max_score": 8
+    },
+    {
+      "name": "theme push command present",
+      "description": "shopify/page-setup.md includes the shopify theme push --theme=139847562302 command (or equivalent push command with the correct theme ID)",
+      "max_score": 9
+    }
+  ]
+}

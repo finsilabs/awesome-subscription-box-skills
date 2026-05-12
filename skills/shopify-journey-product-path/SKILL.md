@@ -9,11 +9,9 @@ A product-level lens on the customer journey: which SKUs serve as **entry points
 
 ## When to use
 
-- Annual / quarterly merchandising review
-- Before a launch — figure out which existing product to pair with the new one
+- Annual / quarterly merchandising review, or before a launch to identify pairing opportunities
 - "Which products should we promote in paid?" — entry products usually have higher new-customer ROAS
 - After cohort retention shows decay — find which SKUs to push for the second purchase
-- Subscription / consumables: which entry SKU produces the best LTV?
 
 ## Prerequisites
 
@@ -34,6 +32,8 @@ SINCE -90d UNTIL today
 ```
 
 This is the merchandising baseline — what's selling, full stop.
+
+**Validation:** If the query returns 0 rows, confirm the store has sales data in the last 90 days and that the MCP connection is authenticated. If fewer than 5 distinct products appear, note this in the report — analysis will be directional only.
 
 ### 2. New-customer entry products
 
@@ -67,14 +67,42 @@ Aggregate: `entry_count[product] = number of customers whose first order contain
 
 For large stores (> 50k customers), sample to 1000 random customers and document the sampling.
 
+**Validation:** Before proceeding, verify that at least 100 customers were returned and that line items are populated. If `lineItems` is empty for most customers, check store permissions for the `read_orders` scope. If the total customer count is below 200, note in the report that repeat-driver signal will be weak.
+
 ### 3. Repeat-driver products (which entry SKU correlates with a 2nd order)
 
-Same query, but join in `numberOfOrders > 1`:
+Fetch first **and** second orders together for each customer, then compute repeat lift per entry product:
 
-For each product in the entry list:
-- `entry_customers_count` (from step 2)
-- `repeat_customers_count` = customers whose first order contained X **and** who later placed a second order
-- `repeat_lift` = `repeat_customers_count / entry_customers_count`
+```graphql
+query FirstAndSecondOrders($cursor: String) {
+  customers(first: 50, query: "orders_count:>=1", after: $cursor) {
+    pageInfo { hasNextPage endCursor }
+    edges {
+      node {
+        id
+        numberOfOrders
+        orders(first: 2, sortKey: CREATED_AT) {
+          edges {
+            node {
+              createdAt
+              lineItems(first: 10) {
+                edges { node { title quantity originalUnitPriceSet { shopMoney { amount } } } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Paginate through all customers (or the 1k sample). For each customer, `orders.edges[0]` is the first order and `orders.edges[1]` (if present) is the second. Then compute:
+
+- `entry_customers_count[product]` — customers whose first order contained that product
+- `repeat_customers_count[product]` — subset of those where `numberOfOrders >= 2`
+- `repeat_lift[product]` = `repeat_customers_count / entry_customers_count`
+- `avg_repeat_lift` = total customers with ≥ 2 orders / total customers
 
 Output column `repeat_lift` ranks SKUs by how well they "convert" a first-time buyer into a repeat customer.
 
@@ -85,17 +113,26 @@ Output column `repeat_lift` ranks SKUs by how well they "convert" a first-time b
 
 A product with high entry count but low repeat % is a **dead end** (it brings people in but they don't come back). A product with merely OK entry count and high repeat % is a **hidden gem** — promote it.
 
+**Validation:** If fewer than 200 customers have `numberOfOrders >= 2`, flag the repeat-driver results as low-confidence in the report. If pagination returns errors (e.g., rate limits), implement exponential backoff and resume from the last valid `endCursor`.
+
 ### 4. Cross-sell affinity (what gets bought next)
 
-For customers with ≥ 2 orders, compute the most common second-order product per first-order product:
+Reuse the paginated `FirstAndSecondOrders` results from step 3. For each customer with ≥ 2 orders, emit every (first-SKU → second-SKU) pair:
 
+```graphql
+# No additional query needed — use the step 3 results already paginated.
+# For each customer node where orders.edges.length >= 2:
+#   first_skus  = orders.edges[0].node.lineItems.edges[*].node.title
+#   second_skus = orders.edges[1].node.lineItems.edges[*].node.title
+#   for a in first_skus:
+#     for b in second_skus:
+#       affinity[a][b] += 1
+#
+# lift(a→b) = affinity[a][b] / entry_customers_count[a]
+#           / (total_second_order_appearances[b] / total_repeat_customers)
 ```
-For each customer:
-  first_skus = lineItems(orders[0])
-  second_skus = lineItems(orders[1])
-  for each (a, b) in cross(first_skus, second_skus):
-    affinity[a → b] += 1
-```
+
+Sort each `a`-row by `lift` descending; surface the top cross-sell pair per entry product. Require ≥ 30 pairs per cell before reporting lift — below that threshold flag as "insufficient data".
 
 Top cross-sell pairs feed:
 - Post-purchase upsell (`klaviyo-flow-build`)
@@ -127,55 +164,11 @@ SINCE -90d UNTIL today
 
 If 70% of "Apex Box" first orders come from one channel, double down there. If a product has flat distribution across channels, it has broad appeal — different ad strategy.
 
+**Validation:** If `order_referrer_source` is null for > 50% of rows, note that channel attribution is incomplete and treat channel × product findings as directional only.
+
 ### 7. Output
 
-```markdown
-# Product path · <Brand> · <date range>
-
-## TL;DR
-<2-3 sentences: top entry product is X, biggest repeat driver is Y, biggest dead end is Z>
-
-## Top products by revenue (baseline)
-| Product | Orders | Gross sales | % of revenue |
-|---|---|---|---|
-
-## Entry products (first orders only)
-| Product | First orders | % of new customers |
-|---|---|---|
-
-## Repeat drivers (first-order SKU → likelihood of 2nd order)
-| Product | First orders | Repeated | Repeat % | vs avg |
-|---|---|---|---|---|
-
-## Hidden gems
-<products with above-average repeat %, under-promoted in current merchandising>
-
-## Dead ends
-<products with high entry count but below-average repeat %; suspected cause; suggested fix>
-
-## Cross-sell affinity
-| First-order product | Most common 2nd-order product | Lift |
-|---|---|---|
-
-## Channel × entry product
-<which channels acquire each top entry product disproportionately>
-
-## Recommendations (prioritized)
-
-### P0 — Merchandising
-1. <Action>
-
-### P1 — Marketing
-1. <Action>
-
-### P2 — Product roadmap
-1. <Action>
-
-## Caveats
-- Sampled to <N> customers if store > 50k — directional signal, not exact
-- Cross-sell affinity needs ≥ 30 pairs per cell to be meaningful
-- Subscription renewals filtered out (if applicable) to avoid false repeat inflation
-```
+Write the report using the template at `journey-reports/product-path-template.md`. Save the completed report to `<repo>/journey-reports/product-path-<YYYY-MM-DD>.md`. The template covers: TL;DR, top products by revenue, entry products, repeat drivers, hidden gems, dead ends, cross-sell affinity, channel × entry product, prioritized recommendations (P0/P1/P2), and caveats (sample size, minimum cell counts, subscription filtering).
 
 ### 8. Save
 
@@ -194,9 +187,8 @@ Write to `<repo>/journey-reports/product-path-<YYYY-MM-DD>.md`.
 ## Tradeoffs
 
 - **Sampling vs accuracy** — For stores with > 50k customers, full GraphQL traversal is slow. Sampling 1k random customers gives directional accuracy on top products but noise on long-tail SKUs. Always document the sample size in the report.
-- **Bundle / multi-SKU first orders** — If most first orders contain 3+ SKUs, attribution to a single "entry product" gets fuzzy. Use the most-expensive line item in the order as the proxy entry product, OR aggregate at category level instead of SKU level.
-- **Subscription / consumables stores** — Filter out auto-renewal orders (e.g., by `tag:subscription` or `source_name`) before computing repeat %. Otherwise every SKU that's on subscription will look like a "repeat driver" artificially.
-- **Seasonality** — A product that's a holiday-only entry product will look weak on a 90-day window outside its season. Sanity check long-tail signals against the calendar.
+- **Bundle / multi-SKU first orders** — If most first orders contain 3+ SKUs, use the most-expensive line item as the proxy entry product, or aggregate at category level instead of SKU level.
+- **Subscription / consumables stores** — Filter out auto-renewal orders (e.g., by `tag:subscription` or `source_name`) before computing repeat %; otherwise subscription SKUs will appear as artificial repeat drivers.
 
 ## Quick interpretation rules
 

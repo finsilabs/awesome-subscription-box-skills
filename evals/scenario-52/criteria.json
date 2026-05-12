@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent follows the 3-step staged upload pattern (stagedUploadsCreate → POST binary → fileCreate), polls until fileStatus == READY, uses the correct SKU convention, and sets templateSuffix to match the template filename.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Upload script file created",
+      "description": "scripts/upload_teabox_images.py (or equivalent upload script name) exists as a non-empty Python file",
+      "max_score": 8
+    },
+    {
+      "name": "stagedUploadsCreate step present",
+      "description": "Upload script or documentation references 'stagedUploadsCreate' as the first step — creating the staged upload targets before sending any files",
+      "max_score": 12
+    },
+    {
+      "name": "Binary POST to GCS URL",
+      "description": "Upload script or documentation references POSTing the binary file to the returned GCS/target URL as multipart/form-data (step 2 of the staged upload)",
+      "max_score": 12
+    },
+    {
+      "name": "fileCreate step present",
+      "description": "Upload script or documentation references 'fileCreate' mutation with originalSource and contentType: IMAGE as the third step to register the file in Shopify",
+      "max_score": 12
+    },
+    {
+      "name": "Poll until fileStatus READY",
+      "description": "Script or documentation mentions querying/polling the file by ID until fileStatus equals READY before using the CDN URL",
+      "max_score": 10
+    },
+    {
+      "name": "SKU convention followed",
+      "description": "product_creation_commands.md shows SKUs following the <BRAND>-<HANDLE>-<VARIANT> convention (e.g., HPK-TRAIL-MO, HPK-SUMM-MO, HPK-EXPED-MO or similar using the brand abbreviation HPK)",
+      "max_score": 10
+    },
+    {
+      "name": "Template file created",
+      "description": "templates/product.subscription.json exists and contains valid JSON with at least one Shopify section reference",
+      "max_score": 8
+    },
+    {
+      "name": "templateSuffix matches filename",
+      "description": "Documentation shows setting templateSuffix to 'subscription' to match the templates/product.subscription.json filename (not 'product.subscription' or any other value)",
+      "max_score": 12
+    },
+    {
+      "name": "productUpdate mutation shown",
+      "description": "Documentation shows a productUpdate GraphQL mutation or equivalent for applying the templateSuffix to an existing product",
+      "max_score": 8
+    },
+    {
+      "name": "uv script header in upload script",
+      "description": "Upload script includes the uv/PEP 723 script header (# /// script, requires-python, dependencies) at the top",
+      "max_score": 8
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "query": "FROM sessions SHOW sessions, sessions_that_completed_checkout, conversion_rate GROUP BY referrer_source ORDER BY sessions DESC LIMIT 15 SINCE -30d UNTIL today",
+  "date_range": "2026-04-12 to 2026-05-12",
+  "results": [
+    {"referrer_source": "direct",   "sessions": 4820, "sessions_that_completed_checkout": 168, "conversion_rate": 3.48},
+    {"referrer_source": "social",   "sessions": 3210, "sessions_that_completed_checkout": 64,  "conversion_rate": 1.99},
+    {"referrer_source": "search",   "sessions": 2180, "sessions_that_completed_checkout": 76,  "conversion_rate": 3.49},
+    {"referrer_source": "email",    "sessions": 1540, "sessions_that_completed_checkout": 93,  "conversion_rate": 6.04},
+    {"referrer_source": "referral", "sessions":  610, "sessions_that_completed_checkout": 22,  "conversion_rate": 3.61},
+    {"referrer_source": "unknown",  "sessions":  490, "sessions_that_completed_checkout":  8,  "conversion_rate": 1.63}
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent produces a channel acquisition report that includes the required channel scoreboard with Revenue per 1k sessions as the quality metric, correctly identifies patterns in the data, includes the attribution caveat, and saves to the correct file path.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct output file path",
+      "description": "Report is written to journey-reports/acquisition-2026-05-12.md (or a path matching the journey-reports/acquisition-<YYYY-MM-DD>.md pattern with today's date)",
+      "max_score": 8
+    },
+    {
+      "name": "Channel scoreboard table",
+      "description": "Report contains a channel scoreboard table with columns for Sessions, Conv rate (or %), AOV, Orders, and Revenue",
+      "max_score": 10
+    },
+    {
+      "name": "Revenue per 1k sessions metric",
+      "description": "Channel scoreboard includes a 'Revenue per 1k sessions' (or $/1k sessions or equivalent) column as a quality-normalizing metric",
+      "max_score": 12
+    },
+    {
+      "name": "Attribution caveat present",
+      "description": "Report includes a caveat that Shopify last-touch attribution under-counts paid social and/or over-counts direct",
+      "max_score": 10
+    },
+    {
+      "name": "Named sources breakdown",
+      "description": "Report includes a breakdown of named sources (utm_source / referrer_name level) such as instagram, klaviyo-welcome, google — not just top-level channel",
+      "max_score": 8
+    },
+    {
+      "name": "Trend section present",
+      "description": "Report includes a trend section showing which channels are rising or declining based on the weekly data",
+      "max_score": 8
+    },
+    {
+      "name": "Social social pattern identified",
+      "description": "Report identifies that social has high sessions but lower conversion rate or revenue quality compared to email or search (pattern consistent with the data provided)",
+      "max_score": 8
+    },
+    {
+      "name": "Email outperformance identified",
+      "description": "Report identifies email as a high-conversion or high-quality channel (email has 6%+ conversion rate in the data)",
+      "max_score": 8
+    },
+    {
+      "name": "What's working / What's broken sections",
+      "description": "Report has distinct 'What's working' and 'What's broken' (or equivalent) sections with specific channel findings",
+      "max_score": 8
+    },
+    {
+      "name": "Prioritized recommendations (P0/P1/P2)",
+      "description": "Report includes prioritized recommendations structured as P0, P1, P2 (or equivalent priority tiers)",
+      "max_score": 10
+    },
+    {
+      "name": "TL;DR section",
+      "description": "Report opens with a TL;DR section summarizing top channel by revenue, top channel by quality, and biggest opportunity in 2-3 sentences",
+      "max_score": 10
+    }
+  ]
+}

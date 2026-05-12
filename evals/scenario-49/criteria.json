@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent correctly applies the bottleneck decision tree (CTR below benchmark → creative problem), uses the specific scale/pause criteria (≥50 conversions, frequency < 2.5, spending < 30% budget), structures the report with all required sections, and saves to the correct path.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct output file path",
+      "description": "Report is written to ads-reports/2026-05-12.md (matching ads-reports/<YYYY-MM-DD>.md pattern)",
+      "max_score": 8
+    },
+    {
+      "name": "TL;DR section",
+      "description": "Report opens with a TL;DR section summarizing total spend, total conversions, CPA, ROAS, best variant, and biggest issue in 2-3 sentences",
+      "max_score": 8
+    },
+    {
+      "name": "Headline metrics table",
+      "description": "Report includes a headline metrics table with at least 5 of: Spend, Impressions, CTR, CPC, Conversions, CPA, ROAS — with comparison to prior period or industry benchmarks",
+      "max_score": 8
+    },
+    {
+      "name": "CTR bottleneck diagnosis",
+      "description": "Report applies the CTR diagnosis: for the two prospecting ad sets (CTR 0.70% and 0.75%, both below the 1.0% benchmark) the report identifies the problem as creative/hook quality",
+      "max_score": 12
+    },
+    {
+      "name": "What's working section",
+      "description": "Report includes a 'What's working' section identifying Cart Abandoners ad set as performing well (ROAS 5.12x, CPA $19.57 well below $45 target)",
+      "max_score": 8
+    },
+    {
+      "name": "What's breaking section",
+      "description": "Report includes a 'What's breaking' section identifying the prospecting ad sets as underperforming with specific metrics and root cause",
+      "max_score": 8
+    },
+    {
+      "name": "Scale recommendation with threshold justification",
+      "description": "Report recommends scaling Cart Abandoners and cites specific threshold criteria justifying the scale decision (e.g., conversions at/below target CPA, frequency < 2.5 or similar)",
+      "max_score": 10
+    },
+    {
+      "name": "Pause recommendation with threshold justification",
+      "description": "Report recommends pausing or adjusting underperforming ad sets with specific threshold-based reasoning (e.g., cost-per-conversion vs CPA target, insufficient conversions)",
+      "max_score": 10
+    },
+    {
+      "name": "Scaling decision section",
+      "description": "Report includes a dedicated 'Scaling decision' section with a clear yes/no for each ad set and supporting numbers",
+      "max_score": 8
+    },
+    {
+      "name": "Prioritized recommendations (P0/P1/P2)",
+      "description": "Report includes recommendations organized by priority tier (P0/P1/P2 or equivalent)",
+      "max_score": 10
+    },
+    {
+      "name": "Open questions or next steps",
+      "description": "Report includes an 'Open questions' or equivalent section listing things to investigate or get from the team",
+      "max_score": 10
+    }
+  ]
+}

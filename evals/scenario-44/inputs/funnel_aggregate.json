@@ -1,0 +1,12 @@
+{
+  "query": "FROM sessions SHOW sessions, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout, conversion_rate SINCE -30d UNTIL today",
+  "date_range": "2026-04-12 to 2026-05-12",
+  "results": {
+    "sessions": 12850,
+    "sessions_with_cart_additions": 924,
+    "sessions_that_reached_checkout": 462,
+    "sessions_that_completed_checkout": 231,
+    "conversion_rate": 1.80,
+    "average_order_value": 52.40
+  }
+}

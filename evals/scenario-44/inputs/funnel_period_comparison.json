@@ -1,0 +1,46 @@
+{
+  "query": "FROM sessions SHOW sessions, sessions_that_completed_checkout, conversion_rate TIMESERIES week SINCE -30d UNTIL today COMPARE TO previous_period",
+  "note": "Current period vs previous 30 days",
+  "results": [
+    {
+      "week": "2026-04-13",
+      "current_sessions": 3180,
+      "current_completed": 56,
+      "current_conv_rate": 1.76,
+      "prev_sessions": 3020,
+      "prev_completed": 55,
+      "prev_conv_rate": 1.82,
+      "wow_conv_change_pp": -0.06
+    },
+    {
+      "week": "2026-04-20",
+      "current_sessions": 3240,
+      "current_completed": 60,
+      "current_conv_rate": 1.85,
+      "prev_sessions": 3140,
+      "prev_completed": 61,
+      "prev_conv_rate": 1.94,
+      "wow_conv_change_pp": -0.09
+    },
+    {
+      "week": "2026-04-27",
+      "current_sessions": 3100,
+      "current_completed": 54,
+      "current_conv_rate": 1.74,
+      "prev_sessions": 3080,
+      "prev_completed": 57,
+      "prev_conv_rate": 1.85,
+      "wow_conv_change_pp": -0.11
+    },
+    {
+      "week": "2026-05-04",
+      "current_sessions": 3330,
+      "current_completed": 61,
+      "current_conv_rate": 1.83,
+      "prev_sessions": 3090,
+      "prev_completed": 63,
+      "prev_conv_rate": 2.04,
+      "wow_conv_change_pp": -0.21
+    }
+  ]
+}

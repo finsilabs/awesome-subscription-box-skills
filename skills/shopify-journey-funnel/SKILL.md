@@ -7,13 +7,6 @@ description: Use this skill when the user wants a conversion funnel snapshot of 
 
 End-to-end snapshot of how visitors move through the store: **sessions → cart additions → checkout reached → checkout completed → order**. Finds the biggest drop-off and recommends concrete fixes.
 
-## When to use
-
-- Weekly / monthly funnel review
-- Conversion rate dropped suddenly ("what broke?")
-- Before scaling paid traffic — diagnose leaks first
-- Pre-launch check after any storefront change (theme, checkout, product changes)
-
 ## Prerequisites
 
 - Shopify MCP connected (`mcp__9bf46487-...__run-analytics-query`)
@@ -58,7 +51,7 @@ GROUP BY session_device_type
 SINCE -30d UNTIL today
 ```
 
-Mobile conversion typically lags desktop by 30-50%. If mobile is > 60% behind desktop, that's a mobile-UX bug.
+If mobile conversion is > 60% behind desktop, treat it as a mobile-UX bug.
 
 ### 4. Segment by geography (top 10 countries)
 
@@ -70,7 +63,7 @@ ORDER BY sessions DESC LIMIT 10
 SINCE -30d UNTIL today
 ```
 
-Look for big-traffic / zero-conversion countries — usually a payments or shipping issue (e.g., country not enabled in Shopify Payments).
+Big-traffic / zero-conversion countries usually indicate a payments or shipping config issue (e.g., country not enabled in Shopify Payments).
 
 ### 5. Compute stage-to-stage rates
 
@@ -81,8 +74,6 @@ Look for big-traffic / zero-conversion countries — usually a payments or shipp
 | Reached checkout | R | R/C | 40-55% |
 | Completed checkout | O | O/R | 65-80% |
 | Overall conv rate | O/S | — | 1.5-3% (D2C) |
-
-Use these benchmarks as defaults if the user hasn't given targets. Adjust by category — subscription D2C tends higher (3-5%), considered purchases lower (0.5-1.5%).
 
 ### 6. Identify the biggest leak
 
@@ -163,10 +154,8 @@ Write to `<repo>/journey-reports/funnel-<YYYY-MM-DD>.md` so the user can compare
 ## Tradeoffs
 
 - **30-day window is the default** — long enough for stable signal, short enough to catch recent regressions. For very low-traffic stores (< 1k sessions/mo), expand to 60-90d.
-- **Don't over-react to one-day spikes** — Always look at the trend, not the latest day. A weekend / holiday dip can look like a "leak" but isn't.
-- **Shopify session attribution** — `sessions` counts unique browser sessions, not unique visitors. A user across desktop+mobile is two sessions. Don't confuse with Klaviyo / GA reports.
 
 ## Notes on ShopifyQL
 
-- The `sessions` table stops being available on stores without Shopify's analytics enabled — verify with a small `FROM sessions SHOW sessions SINCE -1d` before deeper queries.
-- `conversion_rate` is `sessions_that_completed_checkout / sessions`, not `orders / sessions`. Repeat purchases in one session won't double-count.
+- Verify the `sessions` table is available before running deeper queries: `FROM sessions SHOW sessions SINCE -1d`.
+- `conversion_rate` is `sessions_that_completed_checkout / sessions`. Repeat purchases within one session are not double-counted.

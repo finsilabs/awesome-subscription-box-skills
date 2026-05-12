@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent writes the image generation script using the gemini-2.5-flash-image model with the correct uv script header, uses appropriate aspect ratios for product images, follows the product photography prompt pattern, and includes the correct staged upload steps in notes or code.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Script file created",
+      "description": "scripts/generate_teabox_images.py exists and is a non-empty Python file",
+      "max_score": 8
+    },
+    {
+      "name": "Correct model name",
+      "description": "Script uses 'gemini-2.5-flash-image' as the model identifier (not any other Gemini model name)",
+      "max_score": 15
+    },
+    {
+      "name": "uv script header format",
+      "description": "Script begins with the uv/PEP 723 script header: '# /// script', '# requires-python = \">=3.11\"', '# dependencies = [...]' — all three lines present in that format",
+      "max_score": 12
+    },
+    {
+      "name": "google-genai dependency",
+      "description": "Script header dependencies list includes google-genai (e.g., 'google-genai>=0.3.0' or similar)",
+      "max_score": 8
+    },
+    {
+      "name": "Aspect ratio — 1:1 used",
+      "description": "Script uses 1:1 aspect ratio for at least one image (the primary product card or gallery default)",
+      "max_score": 8
+    },
+    {
+      "name": "Product photography prompt pattern",
+      "description": "Image prompts follow the pattern: 'Product photograph of [item] on [surface]. [Lighting]. Mood: [editorial/lifestyle/minimalist]. No people. No readable text or logos...'",
+      "max_score": 12
+    },
+    {
+      "name": "API key from dotenv",
+      "description": "Script uses load_dotenv() and os.environ['GOOGLE_API_KEY'] (or similar env-var loading) rather than hardcoding the key",
+      "max_score": 8
+    },
+    {
+      "name": "Output saved to generated/ directory",
+      "description": "Script saves generated images to a generated/ directory or generated/<product>_*.png path",
+      "max_score": 8
+    },
+    {
+      "name": "Template file created",
+      "description": "templates/product.subscription.json exists and is a non-empty JSON file",
+      "max_score": 8
+    },
+    {
+      "name": "SKU convention documented",
+      "description": "product_setup_notes.md or equivalent documents the SKU naming convention following <BRAND>-<HANDLE>-<VARIANT> pattern (e.g., TBX-SAMPLER-MO or similar)",
+      "max_score": 8
+    },
+    {
+      "name": "templateSuffix instruction",
+      "description": "Notes or output explains that the product's templateSuffix must be set to 'subscription' to match the templates/product.subscription.json filename",
+      "max_score": 5
+    }
+  ]
+}

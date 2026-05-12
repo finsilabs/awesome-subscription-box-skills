@@ -79,138 +79,17 @@ Then in code/spreadsheet:
 - For each customer, compute days between order[0] and order[1]
 - Repeat-by-30d = `count(days_to_2nd <= 30) / cohort_size`
 
-### 3. Time-to-second-order distribution
+### 3. Validate data completeness before proceeding
 
-From the GraphQL pull above, distribute `days_to_2nd_order` into buckets:
+Before computing rates or LTV, run these checks and surface any failures in the final report:
 
-| Bucket | % of repeaters |
-|---|---|
-| 0-7 days | … |
-| 8-30 days | … |
-| 31-60 days | … |
-| 61-90 days | … |
-| 91-180 days | … |
-| > 180 days | … |
+**Pagination completeness** — Verify `pageInfo.hasNextPage` is false before moving on for every GraphQL page fetch. If a cohort fetch is interrupted, log the cohort as `INCOMPLETE` and exclude it from trend comparisons.
 
-The **median time to second order** is the most important number for sequencing your post-purchase email flow — your "we'd love you back" email should fire at ~70% of median.
+**Minimum cohort size** — Only compute repeat % and LTV for cohorts with ≥ 30 customers. For smaller cohorts, report raw counts only and flag with a `*low-n*` warning.
 
-### 4. LTV by cohort
+**Data-quality sanity checks**
+- Confirm `orders_count` on at least a sample of pulled customers matches their `orders` edge count.
+- Check that no cohort month's order total is implausibly low (e.g., < 10% of adjacent months) — could indicate a data gap.
+- Verify that the most recent incomplete cohort is excluded from decay-curve comparisons.
 
-For each acquisition cohort:
-- Average orders per customer (cumulative at 30/60/90/180/365 days)
-- Average revenue per customer (cumulative at the same checkpoints)
-
-```
-FROM sales
-SHOW gross_sales / customers
-GROUP BY cohort_acquisition_month
-```
-
-If ShopifyQL `cohort_acquisition_month` isn't exposed in your store version, derive from the GraphQL pull.
-
-Output table:
-
-| Acquisition month | Cohort size | LTV @ 30d | LTV @ 90d | LTV @ 180d | LTV @ 365d |
-|---|---|---|---|---|---|
-
-### 5. Repeat behavior by acquisition channel
-
-Cross with `shopify-journey-acquisition`: are customers from one channel repeating better than another? Common pattern:
-
-| Channel | Repeat % | Note |
-|---|---|---|
-| Direct / email | usually highest | warm, brand-aware |
-| Search organic | high | intent-driven |
-| Paid social | often lowest | discount-shopper acquisition |
-| Referral | high | trust-driven |
-
-Use this to refine paid-channel CAC targets — e.g., if Meta-acquired customers have 50% lower LTV, your max-CAC for Meta should be ~50% of your blended target.
-
-### 6. Identify lapsed customers (for activation)
-
-```
-list-customers query: orders_count:>=1 AND last_order_date:<'<today minus 1.5x median repeat cycle>'
-```
-
-Translate to a date string and pass via the `query` field. This is the "win-back" pool — pipe to `shopify-journey-segments` for action.
-
-### 7. Output
-
-```markdown
-# Cohort retention · <Brand> · <date range>
-
-## TL;DR
-<2-3 sentences: repeat rate is X%, median time to 2nd order Y days, top cohort LTV at 180d $Z, biggest opportunity is W>
-
-## Headline
-| Metric | Value | Healthy band | Verdict |
-|---|---|---|---|
-| Returning customer rate (last 30d) | X% | <band> | <verdict> |
-| Repeat purchase rate (cumulative) | X% | <band> | <verdict> |
-| Median time to 2nd order | X days | — | — |
-| Avg orders per customer | X | — | — |
-| Avg LTV (90d) | $X | — | — |
-
-## Cohort table
-
-| Acq. month | Cohort size | Repeat % @ 30d | @ 90d | @ 180d |
-|---|---|---|---|---|
-| … |
-
-## LTV by cohort
-
-| Acq. month | LTV @ 30d | @ 90d | @ 180d | @ 365d |
-|---|---|---|---|---|
-| … |
-
-## Time-to-2nd-order distribution
-<bucket table>
-
-## Repeat by acquisition channel
-| Channel | Acquired | Repeat % | LTV @ 90d |
-|---|---|---|---|
-| … |
-
-## Lapsed-customer pool
-<X customers haven't ordered in > <threshold>; ~$Y potential revenue if N% reactivate>
-
-## Recommendations (prioritized)
-
-### P0
-1. <Action> — <expected impact>
-
-### P1
-1. <Action> — <expected impact>
-
-### P2
-1. <Action> — <expected impact>
-```
-
-### 8. Save
-
-Write to `<repo>/journey-reports/cohort-retention-<YYYY-MM-DD>.md`.
-
-## Cross-skill links
-
-- `shopify-journey-segments` — turn the lapsed pool into named segments for activation
-- `shopify-journey-acquisition` — cross channel × LTV
-- `shopify-journey-product-path` — what products drive the second purchase
-- `klaviyo-flow-build` — sequence post-purchase / win-back flows aligned to median repeat cycle
-- `klaviyo-calendar-plan` — schedule activation campaigns to hit the lapsed pool
-- `ads-performance-analysis` — recalibrate CAC targets using channel-specific LTV
-
-## Tradeoffs
-
-- **Cohorts need maturity** — Don't analyze a cohort before its 90-day window is complete. A 30-day-old cohort can look great because most repeats happen later.
-- **GraphQL pulls are slow on large stores** — For stores with > 50k customers, use a sampled cohort (e.g., 500 random customers per acquisition month) and report sampling caveat.
-- **Subscription stores are different** — Recurring orders inflate repeat counts artificially. Filter to exclude subscription-renewal orders (e.g., by `tag:subscription` or `source_name`) for true "voluntary repeat" measurement.
-- **Promo cohorts decay fast** — Customers acquired during a heavy discount promo (BFCM, launch sale) almost always repeat at half the rate of full-price cohorts. Tag and exclude when comparing baseline retention.
-
-## Quick benchmarks
-
-| Metric | Weak | OK | Strong |
-|---|---|---|---|
-| 30-day repeat rate (D2C avg) | < 8% | 10-18% | > 22% |
-| 90-day repeat rate | < 15% | 20-30% | > 35% |
-| LTV / CAC | < 1.5 | 2-3 | > 3.5 |
-| Avg orders per customer (year 1) | < 1.3 | 1.5-2.0 | > 2.5 |
+**Insufficient history** — If the store has < 60 days of orders, stop and report: 

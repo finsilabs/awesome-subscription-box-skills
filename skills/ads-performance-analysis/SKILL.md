@@ -9,9 +9,8 @@ Pull live metrics from Meta Ads, compare to industry benchmarks, identify trends
 
 ## When to use
 
-- Campaign has been running ≥ 48 hours (the Meta learning phase)
-- Weekly performance reviews
-- "Something's broken" investigations (CPA spike, drop in volume)
+- Campaign ≥ 48 hours old (past the Meta learning phase)
+- Weekly performance reviews or "something's broken" investigations (CPA spike, volume drop)
 - Pre-scaling decisions ("can we 2x this ad set?")
 
 ## Prerequisites
@@ -57,15 +56,15 @@ ads_insights_industry_benchmark(
 )
 ```
 
-Common Meta benchmarks (rough reference, validate via the API):
+See `ADS-BENCHMARKS.md` for reference benchmark ranges by metric and industry tier. If that file does not yet exist in the project, create it from the benchmark table below and remove it from this file to reduce per-run token cost.
 
 | Metric | Below avg | Avg | Top 25% |
 |---|---|---|---|
-| CTR (link click) | < 0.8% | 1.0-1.5% | > 2% |
-| CPM | > $25 | $15-25 | < $12 |
-| CPC | > $2.50 | $1.50-2.50 | < $1.20 |
-| ROAS (e-commerce) | < 1.5 | 2.0-3.0 | > 4.0 |
-| Frequency (cap warning) | > 4 | 2-3 | 1.5-2 |
+| CTR (link click) | < 0.8% | 1.0–1.5% | > 2% |
+| CPM | > $25 | $15–25 | < $12 |
+| CPC | > $2.50 | $1.50–2.50 | < $1.20 |
+| ROAS (e-commerce) | < 1.5 | 2.0–3.0 | > 4.0 |
+| Frequency (cap warning) | > 4 | 2–3 | 1.5–2 |
 
 ### 4. Look for anomalies
 
@@ -77,57 +76,65 @@ ads_insights_auction_ranking_benchmarks(...)  # quality / engagement / conversio
 
 ### 5. Identify the bottleneck
 
-Use this decision tree:
+Use this decision tree. Each branch also notes the likely root cause and fix.
 
 ```
 Is CTR < benchmark?
-  YES → Creative problem. Test new hooks/images.
+  YES → Creative problem.
+        Likely cause: weak hook, generic creative, or audience too cold for offer.
+        Fix: new hook variants, different format, or warmer audience / simpler offer.
   NO  ↓
 
 Is CPC normal but CPA high?
-  YES → Landing-page or offer problem. Use page-critical-review on the LP.
+  YES → Landing-page or offer problem.
+        Likely cause: LP / offer mismatch, or poor mobile UX.
+        Fix: critical review of LP; mobile audit if mobile CPA >> desktop CPA.
   NO  ↓
 
 Is frequency > 3?
-  YES → Audience saturation. Refresh audience or increase budget for more reach.
+  YES → Audience saturation.
+        Likely cause: same users repeatedly seeing same ads.
+        Fix: refresh creative, expand audience, or increase budget for more reach.
   NO  ↓
 
 Is ROAS < target despite okay CPA?
-  YES → AOV / pricing issue. Look at upsell on the Shopify side.
+  YES → AOV / pricing issue.
+        Likely cause: ROAS plateau from audience exhaustion, or low order value.
+        Fix: new lookalikes / broader interests; look at upsell on the Shopify side.
   NO  ↓
 
-Hit your CPA goal? → Scale (20-30%/week budget bump)
+Is spend not pacing?
+  YES → Bid too low.
+        Fix: move from cap bid to lowest-cost-without-cap.
+  NO  ↓
+
+Hit your CPA goal? → Scale (20–30%/week budget bump)
 ```
 
 ### 6. Format the output
+
+See `ADS-REPORT-TEMPLATE.md` for the full report structure. If that file does not yet exist, create it from the template below and remove it from this file to reduce per-run token cost.
 
 ```markdown
 # Ads performance · <Brand> · <date range>
 
 ## TL;DR
-<2-3 sentences: spent $X, drove Y conversions at $Z CPA, ROAS A.B. Best variant: X. Biggest issue: Y.>
+<2–3 sentences: spent $X, drove Y conversions at $Z CPA, ROAS A.B. Best variant: X. Biggest issue: Y.>
 
 ## Headline metrics
 
 | Metric | Value | vs. last period | vs. industry |
 |---|---|---|---|
 | Spend | $X | +Y% | — |
-| Impressions | X | +Y% | — |
 | CTR | X% | +Y pp | <verdict> |
-| CPC | $X | +Y% | <verdict> |
-| Conversions | X | +Y% | — |
 | CPA | $X | +Y% | <verdict> |
 | ROAS | X | +Y% | <verdict> |
 
 ## What's working
-
-- **<Ad name / variant>**: <metric>, <why it's working>
-- ...
+- <Ad/variant> — <metric>, <diagnosis>
 
 ## What's breaking
-
-- **<Ad name / variant>**: <metric>, <why>, <fix>
-- ...
+- <Ad/variant> — <metric>, <diagnosis>, <fix>
 
 ## Recommendations (prioritized)
 
@@ -144,7 +151,7 @@ Hit your CPA goal? → Scale (20-30%/week budget bump)
 <Yes / No — and the supporting numbers>
 
 ## Open questions
-<Things to investigate or get from user>
+<Anything requiring follow-up from the user>
 ```
 
 ### 7. Save the analysis
@@ -161,18 +168,6 @@ Based on findings, link to:
 - `ads-campaign-create` — for new variants / new audiences
 - `ads-brief-create` — if rebriefing creative is needed
 - `page-critical-review` — if the LP is the bottleneck
-
-## Common findings and their fixes
-
-| Finding | Likely cause | Fix |
-|---|---|---|
-| Low CTR | Weak hook, generic creative | New hook variants, different format |
-| Low CTR + high CPM | Audience too cold for offer | Warmer audience or simpler offer |
-| High CTR but low conversion | LP / offer mismatch | Critical review of LP |
-| ROAS plateau | Audience exhausted | New lookalikes, broader interests |
-| Frequency > 4 | Same users seeing same ads | Refresh creative, expand audience |
-| Spend not pacing | Bid too low | Move from cap bid to lowest-cost-without-cap |
-| Mobile CPA much higher than desktop | LP mobile UX | Mobile audit on LP |
 
 ## Decision rules for scaling
 
@@ -196,12 +191,8 @@ Based on findings, link to:
 
 ## Tradeoffs
 
-- **Hourly vs. daily vs. weekly checks** — Don't tweak daily during the learning phase (first 48-72 hours per ad set). Weekly is the sweet spot for active campaigns. Don't go more than 7 days without reviewing.
-- **Statistical significance vs. speed** — Wait for ≥ 50 conversions per ad set before declaring a winner in A/B tests. < 20 conversions = noise.
-
-## Embedded scripts
-
-- `./scripts/ads_pull_insights.py` — wrapper for `ads_insights_*` calls that outputs CSV for spreadsheet review
+- **Review cadence** — Don't tweak during the learning phase (first 48–72 hours per ad set). Weekly is the sweet spot; never go more than 7 days without reviewing.
+- **Statistical significance** — Wait for ≥ 50 conversions per ad set before declaring a winner. < 20 conversions = noise.
 
 ## Reference example
 

@@ -1,0 +1,16 @@
+{
+  "query": "FROM sales SHOW gross_sales, net_sales, orders GROUP BY product_title ORDER BY gross_sales DESC LIMIT 20 SINCE -90d UNTIL today",
+  "date_range": "2026-02-11 to 2026-05-12",
+  "results": [
+    {"product_title": "Watercolor Starter Kit",     "gross_sales": 14688.00, "net_sales": 13219.20, "orders": 306},
+    {"product_title": "Digital Art Tablet Starter", "gross_sales": 12638.00, "net_sales": 11374.20, "orders": 142},
+    {"product_title": "Oil Painting Bundle",        "gross_sales": 8928.00,  "net_sales": 8035.20,  "orders": 124},
+    {"product_title": "Kids Craft Explorer Box",    "gross_sales": 7532.00,  "net_sales": 6778.80,  "orders": 269},
+    {"product_title": "Acrylic Add-On Pack",        "gross_sales": 5184.00,  "net_sales": 4665.60,  "orders": 162},
+    {"product_title": "Canvas Roll",                "gross_sales": 3472.00,  "net_sales": 3124.80,  "orders": 124},
+    {"product_title": "Sketch & Draw Essentials",   "gross_sales": 3162.00,  "net_sales": 2845.80,  "orders":  93},
+    {"product_title": "Brush Upgrade Set",          "gross_sales": 1408.00,  "net_sales": 1267.20,  "orders":  64},
+    {"product_title": "Digital Brush Packs",        "gross_sales": 1152.00,  "net_sales": 1036.80,  "orders":  48},
+    {"product_title": "Linseed Oil Medium",         "gross_sales":  666.00,  "net_sales":  599.40,  "orders":  37}
+  ]
+}

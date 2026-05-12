@@ -1,17 +1,11 @@
 ---
 name: shopify-theme-clone
-description: Use this skill when the user wants to pull/download an existing Shopify theme from a live or unpublished store into their local working directory — phrases like "clone the theme from my store", "pull existing theme", "download my Shopify theme". Uses Shopify CLI's theme pull and sets up local versioning.
+description: Pulls and downloads existing Shopify themes from live or unpublished stores into the local working directory, then initializes git versioning. Use when a user wants to clone, pull, or download a theme from their Shopify store — phrases like "clone the theme from my store", "pull existing theme", "download my Shopify theme". Authenticates with the store, lists available themes, downloads all theme files to the local directory, and sets up local git tracking via Shopify CLI's theme pull.
 ---
 
 # Shopify theme — clone existing theme
 
 Pull a theme that's already in a Shopify store down to a local directory and version it with git so the user can edit locally and re-push.
-
-## When to use
-
-- User has an existing theme on their Shopify store and wants to work on it locally
-- They have a live theme they want to fork without breaking (pull a duplicate)
-- They want to version-control a theme that was edited in the Shopify code editor
 
 ## Prerequisites
 
@@ -41,6 +35,8 @@ shopify theme pull --store=<store>.myshopify.com --theme=<id>
 
 Pulls all theme files (templates/, sections/, assets/, snippets/, layout/, locales/, config/) into the current directory.
 
+> **Tip:** Prefer pulling MAIN to get the live state unless the user specifically wants a draft. If the working directory already has a theme, this will cause merge conflicts — start fresh.
+
 ### 3. Initialize git tracking
 
 ```bash
@@ -64,21 +60,14 @@ Tell the user:
 - They can now edit any file locally
 - To preview live: `shopify theme dev --store=<store> --theme=<id>`
 - To push back: `shopify theme push --store=<store> --theme=<id>`
-- If pushing to MAIN (live), they need `--allow-live`
+- If pushing to MAIN (live), they need `--allow-live` — this updates the storefront immediately, so for risky changes push to a new unpublished theme first
 
 ## Common follow-up tasks
 
-After cloning, the user might want to:
-- Run a critical review of the theme: invoke `page-critical-review` skill
-- Apply brand voice updates: invoke `brand-voice-extract` then update settings/templates
-- Add new pages: invoke `shopify-landing-page` skill
+Once the theme is cloned and versioned, consider invoking these skills for next steps:
 
-## Tradeoffs
-
-- **Pulling MAIN vs. UNPUBLISHED** — pulling MAIN gets the live state; pulling UNPUBLISHED gets the draft. Always pull MAIN unless the user has a specific draft they want to fork.
-- **Pull-then-modify-and-repush** — be explicit with the user that pushing to MAIN with `--allow-live` updates the storefront immediately. For risky changes, push to a new unpublished theme first.
-
-## When NOT to use
-
-- If the working directory already has a theme (would error or merge conflicts)
-- If the user wants to start fresh — use `shopify-theme-create` instead
+| Goal | Skill to invoke |
+|---|---|
+| Critical review of theme pages | `page-critical-review` (`page-critical-review.md`) |
+| Extract and apply brand voice | `brand-voice-extract` (`brand-voice-extract.md`), then update settings/templates |
+| Add new landing pages | `shopify-landing-page` (`shopify-landing-page.md`) |

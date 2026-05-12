@@ -1,0 +1,66 @@
+{
+  "context": "Tests whether the agent follows all shopify-theme-clone skill steps: discovering themes with theme list, pulling with theme pull, initializing git with -b main, adding correct .gitignore entries, using the correct commit message format, verifying with ls, and providing the correct dev/push commands with --allow-live warning.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "shopify theme list command present",
+      "description": "theme-setup-guide.md includes the command 'shopify theme list --store=trailgear.myshopify.com' (or equivalent with --store flag) to discover available themes",
+      "max_score": 8
+    },
+    {
+      "name": "MAIN/live theme identification explained",
+      "description": "Guide explains that the MAIN role indicates the live theme and that UNPUBLISHED indicates a draft/preview theme — so the developer knows which to clone",
+      "max_score": 7
+    },
+    {
+      "name": "shopify theme pull command with --store and --theme",
+      "description": "theme-setup-guide.md includes 'shopify theme pull --store=trailgear.myshopify.com --theme=<id>' (or equivalent with both --store and --theme flags)",
+      "max_score": 10
+    },
+    {
+      "name": "git init -b main used",
+      "description": "theme-setup-guide.md uses 'git init -b main' (with -b main flag) — NOT plain 'git init' without the -b flag",
+      "max_score": 10
+    },
+    {
+      "name": ".gitignore includes .env",
+      "description": ".gitignore setup in the guide includes '.env' as an entry",
+      "max_score": 7
+    },
+    {
+      "name": ".gitignore includes .shopify",
+      "description": ".gitignore setup in the guide includes '.shopify' as an entry",
+      "max_score": 7
+    },
+    {
+      "name": ".gitignore includes node_modules/",
+      "description": ".gitignore setup in the guide includes 'node_modules/' as an entry",
+      "max_score": 7
+    },
+    {
+      "name": ".gitignore includes generated/",
+      "description": ".gitignore setup in the guide includes 'generated/' as an entry",
+      "max_score": 7
+    },
+    {
+      "name": "Commit message format correct",
+      "description": "The guide's initial commit message follows the format 'Initial commit: cloned theme <theme-name> from <store>' — not just 'initial commit' or a generic message",
+      "max_score": 8
+    },
+    {
+      "name": "Verification step with ls present",
+      "description": "Guide includes a verification step using 'ls config templates sections' (or equivalent ls command targeting those directories) to confirm the pull succeeded",
+      "max_score": 7
+    },
+    {
+      "name": "shopify theme dev command present",
+      "description": "Guide includes 'shopify theme dev --store=trailgear.myshopify.com --theme=<id>' for local preview",
+      "max_score": 8
+    },
+    {
+      "name": "--allow-live warning for MAIN theme",
+      "description": "Guide explicitly warns that pushing to the MAIN (live) theme requires --allow-live flag and will immediately update the storefront — and recommends pushing to an unpublished theme first for risky changes",
+      "max_score": 14
+    }
+  ]
+}

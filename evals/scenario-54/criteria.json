@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent follows the Gift archetype from the skill — hero image-banner → tier comparison → 'How gifting works' 3-step → corporate CTA — and includes the main-page section in the correct position. Also checks premium dark + warm accents color tone guidance.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Hero image-banner present",
+      "description": "templates/page.gift.json contains a section of type 'image-banner' as the first content section",
+      "max_score": 8
+    },
+    {
+      "name": "Tier comparison section present",
+      "description": "templates/page.gift.json contains a section of type 'multicolumn' or equivalent used to compare gift tiers/options (appears after the hero)",
+      "max_score": 10
+    },
+    {
+      "name": "3-step gifting process present",
+      "description": "templates/page.gift.json contains a section with a 3-step 'how gifting works' process — exactly 3 steps (multicolumn with 3 columns, or equivalent)",
+      "max_score": 10
+    },
+    {
+      "name": "Corporate CTA section present",
+      "description": "templates/page.gift.json contains a section (rich-text or equivalent) serving as a corporate or bulk gifting CTA — appears after the tier comparison and gifting steps",
+      "max_score": 10
+    },
+    {
+      "name": "Section ordering: tier comparison before 3-step",
+      "description": "In the 'order' array, the tier comparison section appears before the 3-step gifting process section",
+      "max_score": 8
+    },
+    {
+      "name": "Section ordering: 3-step before corporate CTA",
+      "description": "In the 'order' array, the how-gifting-works section appears before the corporate CTA section",
+      "max_score": 8
+    },
+    {
+      "name": "main-page section present",
+      "description": "templates/page.gift.json contains a section of type 'main-page'",
+      "max_score": 10
+    },
+    {
+      "name": "main-page between hero and campaign sections",
+      "description": "In the 'order' array, the main-page section appears after the hero and before the tier comparison or campaign content sections",
+      "max_score": 8
+    },
+    {
+      "name": "Dark color scheme on hero or CTA",
+      "description": "At least one section (hero or corporate CTA) uses a dark color scheme (scheme-3, scheme-4, or any scheme with a dark tone — not scheme-1 or 'light')",
+      "max_score": 8
+    },
+    {
+      "name": "shopify:// image URLs used",
+      "description": "All image references in templates/page.gift.json use the 'shopify://shop_images/' prefix format (not relative paths, bare filenames, or https:// external URLs)",
+      "max_score": 10
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/page.gift.json is valid JSON that can be parsed without errors",
+      "max_score": 10
+    }
+  ]
+}

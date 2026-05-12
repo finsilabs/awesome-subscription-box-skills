@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent applies the conversion-focused layout pattern from the skill: single CTA repeated 3x throughout the page, countdown or urgency copy in the hero, social proof above the fold, and an FAQ section at the bottom to handle objections.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "CTA appears at least 3 times",
+      "description": "The template or strategy doc shows the CTA (subscribe/buy button or equivalent) placed at least 3 distinct points in the page layout — not just once at the end",
+      "max_score": 15
+    },
+    {
+      "name": "Hero contains urgency or countdown copy",
+      "description": "The hero image-banner section in templates/page.cyber-monday.json contains copy referencing a deadline, limited time, countdown, or urgency (e.g., 'Nov 28–Dec 1', 'ends Monday', 'limited', '72 hours', or equivalent)",
+      "max_score": 12
+    },
+    {
+      "name": "Social proof before first non-hero CTA",
+      "description": "A social proof section (testimonials, reviews, subscriber count, or trust signal) appears in the page BEFORE the second CTA placement — establishing credibility above the fold before asking for action again",
+      "max_score": 12
+    },
+    {
+      "name": "FAQ section present",
+      "description": "templates/page.cyber-monday.json contains a section of type 'collapsible-content' serving as an FAQ — to handle objections",
+      "max_score": 10
+    },
+    {
+      "name": "FAQ appears near end",
+      "description": "The FAQ (collapsible-content) section appears near the end of the 'order' array — after product highlights and social proof, not at the top",
+      "max_score": 10
+    },
+    {
+      "name": "Hero section present",
+      "description": "templates/page.cyber-monday.json contains a section of type 'image-banner' as the hero",
+      "max_score": 8
+    },
+    {
+      "name": "main-page section present",
+      "description": "templates/page.cyber-monday.json contains a section of type 'main-page'",
+      "max_score": 8
+    },
+    {
+      "name": "page-strategy.md explains CTA placement",
+      "description": "page-strategy.md identifies all 3+ CTA placements by section name or position in the page scroll flow",
+      "max_score": 10
+    },
+    {
+      "name": "page-strategy.md mentions objection handling",
+      "description": "page-strategy.md explicitly addresses how the FAQ or objection-handling section reduces drop-off before exit",
+      "max_score": 8
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/page.cyber-monday.json is valid JSON that can be parsed without errors",
+      "max_score": 7
+    }
+  ]
+}

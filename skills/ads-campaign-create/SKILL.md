@@ -35,8 +35,6 @@ Use the benchmarks to set realistic budget and bid expectations.
 
 ### 2. Translate brief to platform structure
 
-Meta's hierarchy: **Campaign → Ad Set → Ad**.
-
 | Brief element | Maps to |
 |---|---|
 | Objective | Campaign `objective` (OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC, OUTCOME_AWARENESS, OUTCOME_ENGAGEMENT, OUTCOME_APP_PROMOTION) |
@@ -57,8 +55,6 @@ Use Nano Banana per the asset specs in the brief. Aspect ratios for Meta:
 | Stories / Reels | 9:16 | 1080×1920 |
 | Feed (vertical) | 4:5 | 1080×1350 |
 | Right-column (legacy) | 1.91:1 | 1200×628 |
-
-See `./scripts/generate_images.py` for the generation pattern.
 
 After generation, upload to Meta's CDN. Meta accepts public HTTPS URLs OR you can use their `adimage` upload — easier path is to host on a CDN you control (Shopify Files, S3, etc.).
 
@@ -102,8 +98,6 @@ ads_create_ad_set(
 )
 ```
 
-Best-practice budget rule of thumb for cold audiences: start at $30-50/day per ad set; scale 20-30% every 3-5 days if hitting CPA target.
-
 ### 6. Create ads (one per creative variant)
 
 For each hook/image combination in the brief:
@@ -130,18 +124,11 @@ ads_create_ad(
 )
 ```
 
+Target 4-6 ads per ad set — fewer than 3 leaves Meta under-optimized; more than 8 spreads budget too thin during the learning phase.
+
 ### 7. Use catalog ads if applicable
 
-For DTC brands with many SKUs, Dynamic Product Ads via catalog are higher-ROI than static creatives:
-
-```python
-ads_catalog_get_catalogs(...)
-ads_catalog_get_products(...)
-ads_catalog_get_product_sets(...)
-# Then use product_set_id in the ad's targeting
-```
-
-For subscription boxes with 3-5 tier SKUs, static creatives usually outperform catalog ads — the variation is in the messaging, not the inventory.
+For brands with large SKU catalogs, Dynamic Product Ads may outperform static creatives. Use `ads_catalog_get_catalogs()`, `ads_catalog_get_products()`, and `ads_catalog_get_product_sets()` to retrieve catalog data, then reference a `product_set_id` in the ad's targeting.
 
 ### 8. Set up reporting baselines
 
@@ -178,29 +165,7 @@ Output:
 - `ads-performance-analysis` — for after launch
 - `klaviyo-calendar-plan` — coordinate ads + email cadence
 
-## Tradeoffs
+## Key tradeoffs
 
-- **PAUSED start vs. ACTIVE start** — always paused. Auto-activation is a recipe for budget burn on bad creative.
-- **Many ads per ad set vs. few** — Meta's algo wants variety in the first 48h. 4-6 ads per ad set is the sweet spot. < 3 = under-optimized; > 8 = budget gets spread too thin in the learning phase.
-- **CBO vs. ABO** — Campaign Budget Optimization (CBO) lets Meta distribute budget across ad sets. Ad Set Budget Optimization (ABO) gives you control. ABO for cold testing; CBO for scaling proven winners.
-- **Catalog ads vs. static creatives** — catalog is the win for 50+ SKU brands. Subscription/single-tier brands win with static.
-
-## Embedded scripts
-
-- `./scripts/generate_images.py` — Nano Banana generator for ad creative
-- `./scripts/upload_staged.py` — Shopify CDN uploader (Meta also accepts public HTTPS URLs from any CDN)
-
-## Reference example
-
-For Gear Head Box launch:
-- 1 campaign (OUTCOME_SALES) with $200/day total budget
-- 3 ad sets — Cold Lookalike, Cold Interest-stack, Retargeting
-- 5 ads per cold ad set, 3 ads in retargeting
-- All paused on creation, activated after creative review
-
-## Embedded in this skill folder
-
-Scripts (copy to your project's `scripts/` directory and run with `uv run`):
-- `scripts/generate_images.py`
-- `scripts/remove_background.py`
-- `scripts/upload_staged.py`
+- **PAUSED start vs. ACTIVE start** — always paused; auto-activation risks budget burn on unreviewed creative.
+- **CBO vs. ABO** — ABO for cold testing; CBO for scaling proven winners.

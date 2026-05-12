@@ -1,17 +1,11 @@
 ---
 name: ads-brief-create
-description: Use this skill when the user wants to create a creative brief for a paid ads campaign — phrases like "create an ads brief", "write a brief for Meta ads", "draft a creative brief", "brief the campaign". Outputs a structured brief covering objective, audience, message, hooks, copy variants, asset specs, and success metrics. Brand-voice-aligned if a vault entry exists.
+description: Generates a structured creative brief for a paid ads campaign. Use when someone needs to create an ads brief, write a brief for Meta ads, draft a creative brief, or brief a campaign. Outputs a structured document covering objective, audience, message, hooks, copy variants, asset specs, and success metrics. Brand-voice-aligned if a vault entry exists.
 ---
 
 # Ads creative brief
 
-Generate a paid-media creative brief that's structured enough to hand to a designer/copywriter (or to feed directly into `ads-campaign-create`). The brief is the bridge between strategic intent and execution-ready ads.
-
-## When to use
-
-- Starting a new ad campaign (Meta, TikTok, Google, etc.)
-- Stakeholders need alignment before assets get produced
-- Pre-flighting a campaign for handoff to the platform's create flow
+Generate a paid-media creative brief structured enough to hand to a designer/copywriter or feed directly into `ads-campaign-create`.
 
 ## Output
 
@@ -22,8 +16,8 @@ A markdown file at `~/.claude/brand-voice-vault/<brand>/briefs/<campaign-slug>.m
 ### 1. Gather inputs
 
 Ask if not given:
-- **Campaign objective** — what action should the ad drive? (purchase / lead / signup / app install / brand awareness / video view / engagement)
-- **Funnel stage** — cold / warm / retargeting (informs creative tension)
+- **Campaign objective** — purchase / lead / signup / app install / brand awareness / video view / engagement
+- **Funnel stage** — cold / warm / retargeting
 - **Audience** — demographic + psychographic + interests + lookalike sources if available
 - **Offer** — what's being promoted (subscription, gift card, sale, new product)
 - **Budget tier** — affects ad count and variant count to brief
@@ -78,39 +72,35 @@ Use this structure verbatim:
 ## Copy variants
 
 ### Primary text (3 versions)
-1. <30-90 word version>
-2. <Short punchy version, 25-50 words>
-3. <Long-form version with line breaks, 100-200 words>
+1. <30-90 words>
+2. <25-50 words, short and punchy>
+3. <100-200 words, long-form with line breaks>
 
-### Headlines (5 versions)
-1. <under 40 chars>
-2. <under 40 chars>
-3. <under 40 chars>
-4. <under 40 chars>
-5. <under 40 chars>
+### Headlines (5 versions, under 40 chars each)
+1–5. <headline>
 
-### Descriptions (3 versions, for placements that show them)
-- <under 30 chars each>
+### Descriptions (3 versions, under 30 chars each)
+- <description>
 
 ## Asset specs
 
 ### Images required
-- **1:1** (1080×1080) — feed primary
-- **9:16** (1080×1920) — Stories / Reels
-- **4:5** (1080×1350) — feed alt (mobile-optimized)
+- **1:1** — feed primary
+- **9:16** — Stories / Reels
+- **4:5** — feed alt (mobile-optimized)
 
 ### Image direction
 - **Subject**: <what's in the frame>
 - **Mood**: <one or two adjectives>
 - **Color**: <reference brand palette.json>
-- **Type treatment**: <if any — overlay copy, lower-thirds>
+- **Type treatment**: <overlay copy, lower-thirds, or none>
 - **What to avoid**: <stock-photo look / over-edited / etc.>
 
 ### Video (if applicable)
 - **Length**: <15s / 30s / 60s>
 - **Aspect**: <9:16 / 1:1 / 16:9>
 - **First 3 seconds**: <what hooks the viewer>
-- **CTA placement**: <when in the video>
+- **CTA placement**: <timestamp in the video>
 
 ## Landing destination
 - **URL**: <full URL the click goes to>
@@ -131,10 +121,17 @@ Use this structure verbatim:
 <Additional context — competitor reference ads, platform-specific requirements, regional considerations>
 ```
 
-### 4. Suggest hook frameworks
+### 4. Validate the brief
+
+Before surfacing the brief, run through these checks:
+- **Input coverage**: confirm every input from Step 1 is reflected (objective, audience, offer, run dates, constraints).
+- **Brand voice alignment**: if `voice.md` was loaded, verify Tone guardrails match its dos/don'ts and no copy variants violate them.
+- **Completeness check**: flag any section still containing placeholder text and prompt the user for the missing detail rather than leaving `<angle>` or `<TBD>` in the output.
+- **Variant count**: confirm at least 3 hook variants, 3 primary-text versions, and 5 headlines are present.
+
+### 5. Hook frameworks and variant strategy
 
 If the user is stuck on hooks, offer these proven angles:
-
 - **Problem → Promise**: "Tired of X? We do Y."
 - **Status framing**: "For the [identity] who [action]"
 - **Founder voice / authentic**: "Two years ago, I was..."
@@ -142,9 +139,7 @@ If the user is stuck on hooks, offer these proven angles:
 - **Specific number**: "8 things in your <product>"
 - **Social proof lead**: "5,000 [audience] subscribe to..."
 
-### 5. Variant strategy
-
-Brief at least 3-5 variants per element (hook, copy, image) for testing. Meta especially rewards creative variation in the first 48 hours of a campaign.
+Brief at least 3-5 variants per element (hook, copy, image) for testing. Meta especially rewards creative variation in the first 48 hours.
 
 ## Cross-skill links
 
@@ -155,8 +150,8 @@ Brief at least 3-5 variants per element (hook, copy, image) for testing. Meta es
 
 ## Tradeoffs
 
-- **Brief depth vs. speed** — for cold-traffic acquisition, invest in a thorough brief (15+ variants). For retargeting, less is fine (1-2 hooks, 3-5 copy variants).
-- **Brand-voice strict vs. test what works** — start strict, then break voice rules in 1-2 variants to test. Voice rules exist for a reason; data > opinion when there's enough volume.
+- **Brief depth vs. speed** — for cold-traffic acquisition, invest in a thorough brief (15+ variants). For retargeting, 1-2 hooks and 3-5 copy variants is sufficient.
+- **Brand-voice strict vs. test what works** — start strict, then break voice rules in 1-2 variants to test. Data > opinion at sufficient volume.
 
 ## Reference example
 

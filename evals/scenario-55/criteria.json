@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent uses the correct image-with-text layout field values (image_first or text_first — not 'left', 'right', or other variants) and the correct rich-text button block field naming (button_label / button_link without _1 suffix). Also verifies alternating layout direction for the education-focused archetype.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "image-with-text sections present",
+      "description": "templates/page.how-it-works.json contains at least two sections of type 'image-with-text'",
+      "max_score": 8
+    },
+    {
+      "name": "layout values valid: image_first or text_first only",
+      "description": "All 'layout' settings on image-with-text sections use only 'image_first' or 'text_first' — no occurrences of 'left', 'right', 'image-first', 'text-first', 'image_left', 'text_left', or any other variant",
+      "max_score": 15
+    },
+    {
+      "name": "Alternating layout directions",
+      "description": "The image-with-text sections alternate between 'image_first' and 'text_first' layout (not all the same direction)",
+      "max_score": 10
+    },
+    {
+      "name": "rich-text CTA section present",
+      "description": "templates/page.how-it-works.json contains a section of type 'rich-text' used as a CTA section",
+      "max_score": 8
+    },
+    {
+      "name": "Rich-text button uses button_label (not button_label_1)",
+      "description": "The button block inside the rich-text section uses 'button_label' as the field name — NOT 'button_label_1' (the _1 suffix variant)",
+      "max_score": 15
+    },
+    {
+      "name": "Rich-text button uses button_link (not button_link_1)",
+      "description": "The button block inside the rich-text section uses 'button_link' as the field name — NOT 'button_link_1' (the _1 suffix variant)",
+      "max_score": 15
+    },
+    {
+      "name": "main-page section present",
+      "description": "templates/page.how-it-works.json contains a section of type 'main-page'",
+      "max_score": 8
+    },
+    {
+      "name": "Hero section present",
+      "description": "templates/page.how-it-works.json contains a section of type 'image-banner' as the hero",
+      "max_score": 7
+    },
+    {
+      "name": "CTA appears at end",
+      "description": "The rich-text CTA section appears last (or near last) in the 'order' array — after the image-with-text panels",
+      "max_score": 7
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/page.how-it-works.json is valid JSON that can be parsed without errors",
+      "max_score": 7
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{ "description": "Staged upload 3-step pattern, fileStatus READY polling, SKU convention, templateSuffix", "include": ["./inputs"] }

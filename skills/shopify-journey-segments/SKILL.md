@@ -7,14 +7,6 @@ description: Use this skill when the user wants to define actionable customer se
 
 Translate raw customer data into a small set of named, actionable segments. Each segment has a clear definition, a count, an estimated revenue opportunity, and a recommended next action (a Klaviyo flow, a campaign, or a paid lookalike seed).
 
-## When to use
-
-- Building a new Klaviyo flow / campaign and need the audience defined
-- Building Meta / TikTok lookalike seeds (export VIPs)
-- Quarterly customer-base health check
-- After cohort-retention analysis surfaces a lapsed pool
-- Before a launch — segment by purchase pattern to target the right offer
-
 ## Prerequisites
 
 - Shopify MCP connected (`mcp__9bf46487-...__list-customers`, `graphql_query`)
@@ -23,36 +15,30 @@ Translate raw customer data into a small set of named, actionable segments. Each
 
 ## The default segment library
 
-Six segments cover ~95% of activation needs. Each has standard criteria; tune the thresholds to brand category.
+Six segments cover ~95% of activation needs. Tune dollar and day thresholds to the brand's AOV and median repeat cycle.
 
 ### A. VIP (top spenders, highly engaged)
 - **Criteria**: `orders_count:>=4 AND total_spent:>=<2x AOV × 4>`
-- **Use**: lookalike seed for paid; concierge / early access; loyalty upsell
-- **Action**: `klaviyo-campaign-create` for early-access / private launches
+- **Action**: `klaviyo-campaign-create` for early-access / private launches; lookalike seed for paid
 
 ### B. Recent first-time (the activation window)
 - **Criteria**: `orders_count:1 AND created_at:>'<today minus 60d>'`
-- **Use**: post-purchase nurture flow; "second order incentive" campaign
 - **Action**: `klaviyo-flow-build` for second-order nudge sequence
 
 ### C. Lapsed one-timer (the win-back pool)
 - **Criteria**: `orders_count:1 AND created_at:<'<today minus 1.5x median repeat cycle>'`
-- **Use**: win-back flow with stronger offer
 - **Action**: `klaviyo-flow-build` for win-back; possibly excluded from paid prospecting
 
 ### D. Dormant repeater (used to be active, now silent)
 - **Criteria**: `orders_count:>=2 AND last_order_date:<'<today minus 2x median repeat cycle>'`
-- **Use**: high-value win-back — these were good customers
-- **Action**: stronger offer than C; consider a personal outreach for the top tier
+- **Action**: stronger offer than C; consider personal outreach for the top tier
 
 ### E. High-AOV / low-frequency (price-driven, infrequent)
 - **Criteria**: `total_spent:>=<3x AOV> AND orders_count:<=2`
-- **Use**: bundle / replenishment campaigns; subscription pitch if applicable
-- **Action**: targeted "you might also like" upsell campaign
+- **Action**: bundle / replenishment campaign; subscription pitch if applicable
 
 ### F. Marketing-engaged but no purchase (warm leads)
 - **Criteria**: `email_marketing_state:subscribed AND orders_count:0`
-- **Use**: stronger first-purchase incentive; product-discovery flow
 - **Action**: welcome flow audit; first-purchase incentive escalation
 
 ### Optional: Geo / channel sub-segments
@@ -90,6 +76,8 @@ These are rough. Caveat in the output that these are directional, not forecasts.
 
 This lets the user eyeball the segment to confirm it's not absurd (e.g., the "VIP" segment shouldn't be all employees / wholesalers).
 
+**Validation checkpoint**: If the sample looks wrong (e.g., wholesalers or staff dominate VIP, or lapsed counts seem implausibly high), adjust the relevant thresholds and re-run from Step 1 before proceeding. Common fixes: raise the `total_spent` floor to exclude wholesale accounts, or tighten the date window if the lapsed pool is larger than the active base.
+
 ### 4. (Optional) Push to Klaviyo
 
 If the user wants the segments live in Klaviyo:
@@ -107,51 +95,14 @@ For lookalike seeds:
 
 ### 6. Output
 
-```markdown
-# Customer segments · <Brand> · <date>
+Write a report to `<repo>/segments/segments-<YYYY-MM-DD>.md` using this structure:
 
-## TL;DR
-<2-3 sentences: total customers X, defined segments cover Y% of base, biggest opportunity is segment Z worth ~$W>
-
-## Segment scoreboard
-
-| Segment | Definition | Count | % of base | Est. opportunity | Recommended action |
-|---|---|---|---|---|---|
-| A. VIP | orders ≥ 4, spent ≥ $400 | … | … | $… | early access campaign |
-| B. Recent first-time | 1 order, < 60d ago | … | … | $… | 2nd-order nudge flow |
-| C. Lapsed one-timer | 1 order, > 60d ago | … | … | $… | win-back flow |
-| D. Dormant repeater | ≥ 2 orders, dormant > 90d | … | … | $… | strong win-back + outreach |
-| E. High-AOV low-freq | spent ≥ $300, ≤ 2 orders | … | … | $… | upsell / subscription pitch |
-| F. Subscribed non-buyer | subscribed, 0 orders | … | … | $… | first-purchase incentive |
-
-## Sample customers per segment
-<5-10 examples per segment so the user can sanity-check>
-
-## Recommendations
-1. <Top action — usually the biggest-opportunity segment>
-2. <Second action>
-3. <Third action>
-
-## How to apply
-
-### In Klaviyo
-<paste-ready segment definitions per segment>
-
-### In Meta / TikTok ads
-<which segments to use as lookalike seeds, which to exclude as suppression>
-
-### In Shopify
-<which segments to surface in admin via tags / metafields if useful>
-
-## Caveats
-- Counts are point-in-time — segments are dynamic and customers move between them
-- Revenue estimates are directional, not forecasts
-- For ads exclusion: re-pull the customer list before each campaign launch
-```
-
-### 7. Save
-
-Write segment definitions to `<repo>/segments/segments-<YYYY-MM-DD>.md` for re-use.
+- **TL;DR** — 2-3 sentences: total customers, % of base covered by segments, biggest single opportunity.
+- **Segment scoreboard** — table with columns: Segment | Definition | Count | % of base | Est. opportunity | Recommended action.
+- **Sample customers per segment** — 5-10 examples per segment for sanity-checking.
+- **Recommendations** — top 3 prioritised actions (usually ordered by estimated opportunity).
+- **How to apply** — three sub-sections: Klaviyo (paste-ready segment definitions), Meta / TikTok ads (lookalike seeds + suppression lists), Shopify (tag / metafield surfacing if useful).
+- **Caveats** — note that counts are point-in-time, revenue estimates are directional, and ads exclusion lists should be re-pulled before each campaign launch.
 
 ## Cross-skill links
 
@@ -166,8 +117,6 @@ Write segment definitions to `<repo>/segments/segments-<YYYY-MM-DD>.md` for re-u
 
 - **Static vs dynamic** — Shopify customer queries are dynamic (re-evaluated each call). Klaviyo segments can be either. For ads custom audiences, the export is a snapshot — re-export weekly to keep it fresh.
 - **Segment sprawl** — More than ~8 segments becomes operationally painful. Keep the library tight; refine before adding.
-- **Privacy** — Don't share the email list with third-party endpoints; let the user upload to ad platforms themselves. Storing the CSV locally is fine.
-- **Threshold tuning** — The dollar / day thresholds in the default library are starting points. Recalibrate against the brand's AOV and median repeat cycle before reporting.
 
 ## Notes on the `query` filter dates
 

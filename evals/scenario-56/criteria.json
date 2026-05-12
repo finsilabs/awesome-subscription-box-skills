@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent uses the menuUpdate GraphQL mutation correctly with type: PAGE and resourceId pointing to the page GID, and demonstrates understanding of handle longevity guidance.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "menuUpdate mutation used",
+      "description": "shopify/navigation-update.md contains the menuUpdate mutation (not menuCreate, linkListUpdate, or other menu mutation names)",
+      "max_score": 12
+    },
+    {
+      "name": "Menu ID in mutation",
+      "description": "The menuUpdate mutation references the menu GID gid://shopify/Menu/11204857938 (or the $id variable is set to this value in variables)",
+      "max_score": 10
+    },
+    {
+      "name": "type: PAGE on new item",
+      "description": "The new menu item in the menuUpdate variables has 'type': 'PAGE' (not 'URL', 'CATALOG', 'COLLECTION', 'FRONTPAGE', or another type)",
+      "max_score": 15
+    },
+    {
+      "name": "resourceId set to page GID",
+      "description": "The new menu item includes 'resourceId' (or equivalent) set to the page GID gid://shopify/OnlineStorePage/82947561023",
+      "max_score": 15
+    },
+    {
+      "name": "Existing menu items preserved",
+      "description": "The menuUpdate variables include the existing Home, Shop, and About items so they are not removed by the update",
+      "max_score": 10
+    },
+    {
+      "name": "Handle longevity explained",
+      "description": "Output explains that 'how-it-works' ages well because it's content-based (not year or event specific), whereas handles like 'holiday-2026' or 'spring-sale' become outdated",
+      "max_score": 13
+    },
+    {
+      "name": "how-it-works handle approved",
+      "description": "Output explicitly identifies 'how-it-works' as a good/stable long-term handle (not suggesting it be renamed)",
+      "max_score": 10
+    },
+    {
+      "name": "theme push command present",
+      "description": "Output includes the shopify theme push --theme=<id> command or explains that a theme push is required after template changes",
+      "max_score": 15
+    }
+  ]
+}
