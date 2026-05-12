@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent captures idiomatic word choices and key phrases as a distinct per-page extraction output, synthesized into the vocabulary section of voice.md. Also checks that multi-page analysis (including a product or blog page) is reflected and that source-quotes.md is correctly populated.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Idiomatic vocabulary section",
+      "description": "voice.md has a dedicated vocabulary section listing specific words, phrases, or expressions that are characteristic of this brand (not just generic outdoor words, but brand-specific or brand-favored choices observed from the site)",
+      "max_score": 20
+    },
+    {
+      "name": "Words to avoid section",
+      "description": "voice.md contains a list of words or phrases the brand does NOT use or that feel off-brand",
+      "max_score": 10
+    },
+    {
+      "name": "3+ product/blog page vocab",
+      "description": "The vocabulary or sample copy in voice.md contains language that clearly comes from product descriptions or editorial content — not just homepage headline language (evidenced by detail, product specifics, or longer-form phrasing)",
+      "max_score": 15
+    },
+    {
+      "name": "3–5 sample paragraphs",
+      "description": "voice.md contains between 3 and 5 sample paragraphs written in the brand's voice",
+      "max_score": 10
+    },
+    {
+      "name": "source-quotes.md — at least 5 quotes",
+      "description": "examples/source-quotes.md contains at least 5 verbatim quoted phrases from the Cairn website",
+      "max_score": 10
+    },
+    {
+      "name": "source-quotes.md — each quote ≤15 words",
+      "description": "Every individual quote in source-quotes.md is 15 words or fewer — no quote exceeds this limit",
+      "max_score": 15
+    },
+    {
+      "name": "source-quotes.md — URL per quote",
+      "description": "Each quote in source-quotes.md is credited with the specific source URL it was pulled from (a URL appears near each individual quote, not just a single header)",
+      "max_score": 10
+    },
+    {
+      "name": "source.json — at least 3 sources",
+      "description": "source.json 'sources' array contains at least 3 distinct URLs, confirming that homepage, About, and at least one product/blog page were all visited",
+      "max_score": 10
+    }
+  ]
+}

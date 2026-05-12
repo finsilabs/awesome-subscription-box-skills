@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent includes the Video asset specs section when the campaign explicitly involves video formats. The skill specifies that when video is applicable, the brief must include Length, Aspect ratio, First 3 seconds description (hook), and CTA placement timing. Also tests that still image specs are included alongside the video specs.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Video section present in Asset specs",
+      "description": "Asset specs section contains a Video subsection (labeled 'Video' or 'Video (if applicable)') — not just static image specs",
+      "max_score": 15
+    },
+    {
+      "name": "Video — Length specified",
+      "description": "Video subsection includes a Length field with a specific duration (e.g., 15s, 30s, 60s)",
+      "max_score": 12
+    },
+    {
+      "name": "Video — Aspect ratio specified",
+      "description": "Video subsection includes an Aspect field with a ratio value (e.g., 9:16, 1:1, 16:9)",
+      "max_score": 12
+    },
+    {
+      "name": "Video — First 3 seconds described",
+      "description": "Video subsection includes a 'First 3 seconds' field describing the visual or narrative hook for the video opener",
+      "max_score": 15
+    },
+    {
+      "name": "Video — CTA placement timing",
+      "description": "Video subsection includes a 'CTA placement' field describing when in the video the call to action appears",
+      "max_score": 12
+    },
+    {
+      "name": "Still image specs also present",
+      "description": "Asset specs also contains static image specs (1:1, 9:16, or 4:5 with pixel dimensions) alongside the video section",
+      "max_score": 10
+    },
+    {
+      "name": "Still image pixel dimensions",
+      "description": "At least one static image format includes correct pixel dimensions (1080×1080, 1080×1920, or 1080×1350)",
+      "max_score": 10
+    },
+    {
+      "name": "Video aspect 9:16 for TikTok/Reels",
+      "description": "Video Aspect field specifies 9:16 (vertical format appropriate for TikTok and Instagram Reels)",
+      "max_score": 9
+    },
+    {
+      "name": "Output file saved",
+      "description": "Brief is saved to briefs/wildsnack-video.md or equivalent vault path",
+      "max_score": 5
+    }
+  ]
+}

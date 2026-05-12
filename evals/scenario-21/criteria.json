@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent uses the correct Shopify CDN URL format for images: 'shopify://shop_images/<filename>' rather than raw filenames, relative paths, or external URLs. This format is required for the Dawn theme customizer to resolve images from the Shopify Files library.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Hero image uses shopify:// format",
+      "description": "The hero image-banner section's image setting uses the format 'shopify://shop_images/hero_gallery_wall.png' (not a plain filename, relative path, or https:// URL)",
+      "max_score": 12
+    },
+    {
+      "name": "Tier card images use shopify:// format",
+      "description": "All three tier column blocks have image settings using 'shopify://shop_images/' prefix (e.g., shopify://shop_images/tier_classic_box.png)",
+      "max_score": 18
+    },
+    {
+      "name": "Recent drops images use shopify:// format",
+      "description": "The collage section's image blocks use 'shopify://shop_images/' prefix for all drop images (drops_jan.png, drops_feb.png, drops_mar.png)",
+      "max_score": 15
+    },
+    {
+      "name": "Testimonial images use shopify:// format",
+      "description": "The testimonials multicolumn section's column blocks use 'shopify://shop_images/' prefix for the testimonial avatar images",
+      "max_score": 12
+    },
+    {
+      "name": "No raw filenames as image values",
+      "description": "Image values do NOT appear as plain filenames without the shopify:// prefix (e.g., 'hero_gallery_wall.png' alone is NOT acceptable)",
+      "max_score": 15
+    },
+    {
+      "name": "No https:// external URLs for provided images",
+      "description": "None of the provided image filenames (hero_gallery_wall.png, tier_classic_box.png, etc.) are referenced via https:// external URLs — they use shopify://shop_images/ instead",
+      "max_score": 12
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 8
+    },
+    {
+      "name": "Full section structure",
+      "description": "templates/index.json contains all expected sections: image-banner, custom-liquid anchors, multicolumn how-it-works, multicolumn tiers, collage, multicolumn testimonials, collapsible-content FAQ, newsletter",
+      "max_score": 8
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent applies the correct lifecycle cadence table, correctly separates always-on flows from campaign calendar items, includes subscription-box specific monthly touchpoints (cycle reminder), includes segment declarations per campaign, and applies blackout/conflict rules for send timing.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Pre-launch cadence",
+      "description": "Pre-launch period shows email cadence of 1 per week (not more)",
+      "max_score": 8
+    },
+    {
+      "name": "Launch month cadence",
+      "description": "Launch month shows email cadence of 2-3 per week",
+      "max_score": 8
+    },
+    {
+      "name": "Post-launch cadence",
+      "description": "Post-launch period (months 2-6) shows cadence of 1-2 per week",
+      "max_score": 8
+    },
+    {
+      "name": "BFCM cadence",
+      "description": "BFCM season (November) shows cadence of 4-7 per week (not lower)",
+      "max_score": 10
+    },
+    {
+      "name": "Flows vs campaigns distinction",
+      "description": "Output clearly distinguishes always-on flows (welcome, abandoned cart, post-purchase, etc.) from time-bound campaign calendar items",
+      "max_score": 10
+    },
+    {
+      "name": "Monthly cycle reminder",
+      "description": "Calendar includes a cycle-reminder send around the 10th of each month for subscription box",
+      "max_score": 10
+    },
+    {
+      "name": "Segment declared per campaign",
+      "description": "Each campaign row/entry in the calendar specifies which audience/segment receives it (not just 'all subscribers')",
+      "max_score": 12
+    },
+    {
+      "name": "Sunday/Monday blackout rule",
+      "description": "Calendar respects the rule to avoid Sundays before noon and Mondays before 9am as send times, OR the cadence rules section mentions these blackout times",
+      "max_score": 10
+    },
+    {
+      "name": "Daily cap rule",
+      "description": "Cadence rules section mentions capping at 1 send per recipient per 24 hours (with BFCM exception noted)",
+      "max_score": 8
+    },
+    {
+      "name": "BFCM warm-up in September",
+      "description": "Calendar includes a BFCM warm-up or save-the-date type send in September (not just starting BFCM prep in October or November)",
+      "max_score": 8
+    },
+    {
+      "name": "What's NOT in calendar section",
+      "description": "Output includes a notes section listing items deliberately excluded from the calendar and why",
+      "max_score": 8
+    }
+  ]
+}

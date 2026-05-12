@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly populates the Landing destination section with the full URL, a page goal alignment statement, and all three required UTM parameters in the correct format (utm_source=<platform>, utm_medium=paid, utm_campaign=<slug>).",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Landing destination section present",
+      "description": "Brief contains a Landing destination section (not just a URL mentioned in passing elsewhere)",
+      "max_score": 8
+    },
+    {
+      "name": "Full URL included",
+      "description": "Landing destination section contains a full URL field pointing to the Black Friday landing page (https://techkitmonthly.com/black-friday or the URL from the task)",
+      "max_score": 12
+    },
+    {
+      "name": "Page goal alignment field",
+      "description": "Landing destination section contains a Page goal alignment field that explains whether and how the landing page supports the campaign offer",
+      "max_score": 12
+    },
+    {
+      "name": "utm_source parameter",
+      "description": "UTM parameters include utm_source with a platform value (e.g., utm_source=meta or utm_source=facebook)",
+      "max_score": 15
+    },
+    {
+      "name": "utm_medium=paid",
+      "description": "UTM parameters include utm_medium and its value is 'paid' (not 'cpc', 'social', or another value)",
+      "max_score": 15
+    },
+    {
+      "name": "utm_campaign parameter",
+      "description": "UTM parameters include utm_campaign with a slug value (e.g., utm_campaign=bf-2026 or equivalent campaign slug)",
+      "max_score": 15
+    },
+    {
+      "name": "All three UTM params on same line/block",
+      "description": "All three UTM parameters (utm_source, utm_medium, utm_campaign) appear together in the Landing destination section, not scattered elsewhere in the document",
+      "max_score": 8
+    },
+    {
+      "name": "Output file saved",
+      "description": "Brief is saved to briefs/techkit-bf.md or equivalent vault path",
+      "max_score": 8
+    },
+    {
+      "name": "Complete brief structure",
+      "description": "Brief contains at least 8 of the required sections (Objective, Audience, Funnel stage, Core message, Hook variants, Copy variants, Asset specs, Landing destination, Tone guardrails, Approval gates)",
+      "max_score": 7
+    }
+  ]
+}

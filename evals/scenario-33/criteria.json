@@ -1,0 +1,81 @@
+{
+  "context": "Tests whether the agent produces a complete ads creative brief for a new subscription box launch campaign, following the exact section structure and file path conventions specified in the skill. No brand vault is provided, so the brief relies on the information in the task description.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Output file path",
+      "description": "Brief is written to briefs/petalbox-launch.md (or a path following the ~/.claude/brand-voice-vault/<brand>/briefs/<slug>.md pattern)",
+      "max_score": 8
+    },
+    {
+      "name": "Title format",
+      "description": "Document starts with '# Brief: ' followed by a campaign name",
+      "max_score": 3
+    },
+    {
+      "name": "One-liner present",
+      "description": "A One-liner section exists with a single sentence covering target audience, offer, and desired action",
+      "max_score": 5
+    },
+    {
+      "name": "Objective — Primary KPI",
+      "description": "Objective section contains a Primary KPI with a specific metric and numeric target (e.g., CPA < $45, subscriptions)",
+      "max_score": 8
+    },
+    {
+      "name": "Objective — Secondary KPI",
+      "description": "Objective section contains a Secondary KPI with a specific metric and threshold (e.g., CTR > X%, frequency capped at N)",
+      "max_score": 7
+    },
+    {
+      "name": "Objective — Success threshold",
+      "description": "Objective section includes a Success threshold that defines BOTH when to scale and when to kill the campaign",
+      "max_score": 8
+    },
+    {
+      "name": "Audience — four subsections",
+      "description": "Audience section has all four subsections: Primary, Secondary, Exclusions, and Estimated audience size",
+      "max_score": 8
+    },
+    {
+      "name": "Funnel stage + brand-awareness context",
+      "description": "Funnel stage section states Cold/Warm/Retargeting/Mixed AND includes a sentence about what the audience knows about the brand at this stage",
+      "max_score": 7
+    },
+    {
+      "name": "Core message — three elements",
+      "description": "Core message section contains all three elements: Promise, Reason to believe, and Call to action",
+      "max_score": 8
+    },
+    {
+      "name": "Hook variants — count and type labels",
+      "description": "Hook variants section has 3-5 hooks, each labeled with its type (Curiosity, Pain-point, Social proof, Promise/aspirational, or Contrarian)",
+      "max_score": 8
+    },
+    {
+      "name": "Copy — 3 primary text versions",
+      "description": "Copy variants section contains exactly 3 primary text versions",
+      "max_score": 7
+    },
+    {
+      "name": "Copy — 5 headlines",
+      "description": "Headlines subsection contains exactly 5 versions",
+      "max_score": 5
+    },
+    {
+      "name": "Copy — 3 descriptions",
+      "description": "Descriptions subsection contains exactly 3 versions",
+      "max_score": 5
+    },
+    {
+      "name": "Asset specs — 3 image formats with pixels",
+      "description": "Asset specs lists all three image formats with correct pixel dimensions: 1:1 (1080×1080), 9:16 (1080×1920), and 4:5 (1080×1350)",
+      "max_score": 7
+    },
+    {
+      "name": "Approval gates — 4 checkboxes",
+      "description": "Approval gates section contains exactly 4 unchecked checkbox items ([ ])",
+      "max_score": 6
+    }
+  ]
+}

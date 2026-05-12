@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent produces the specific CSS pattern required to make multicolumn tier cards fully clickable via a stretched-link overlay. The skill specifies exact CSS selectors and properties: .multicolumn-card { position: relative }, a ::before pseudo-element with inset: 0 and z-index: 1, and the link itself with position: relative and z-index: 2.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "assets/custom.css created",
+      "description": "A file named assets/custom.css exists in the output",
+      "max_score": 8
+    },
+    {
+      "name": ".multicolumn-card position:relative",
+      "description": "assets/custom.css contains a rule targeting .multicolumn-card that includes position: relative",
+      "max_score": 18
+    },
+    {
+      "name": "::before pseudo-element overlay",
+      "description": "assets/custom.css contains a ::before pseudo-element rule on the multicolumn card link (targeting .multicolumn-card and the link's ::before), with content: '' or content: \"\"",
+      "max_score": 15
+    },
+    {
+      "name": "::before has inset:0 or equivalent",
+      "description": "The ::before pseudo-element rule in assets/custom.css sets inset: 0 (or equivalent top/right/bottom/left: 0) to cover the full card area",
+      "max_score": 15
+    },
+    {
+      "name": "::before z-index lower than link",
+      "description": "The ::before pseudo-element has a lower z-index than the explicit link element (e.g., overlay z-index: 1, link z-index: 2), ensuring the link text still has its own focus ring",
+      "max_score": 12
+    },
+    {
+      "name": "Link position:relative",
+      "description": "assets/custom.css includes position: relative on the .multicolumn-card link selector so it appears above the ::before overlay",
+      "max_score": 12
+    },
+    {
+      "name": "Tier cards have link_label and link",
+      "description": "Each of the 3 tier column blocks in templates/index.json has both link_label and link fields populated with non-empty values",
+      "max_score": 12
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 8
+    }
+  ]
+}

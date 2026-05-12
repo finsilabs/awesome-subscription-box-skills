@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent writes the brand vault to the canonical home-directory path (~/.claude/brand-voice-vault/<brand>/) rather than the current working directory or any arbitrary location. Also checks that the brand slug is correctly derived and that all required vault files are present at that path.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Vault under ~/.claude",
+      "description": "The brand vault directory exists under ~/.claude/brand-voice-vault/ (i.e., files are created at ~/.claude/brand-voice-vault/<slug>/ — NOT in the current working directory or any other location)",
+      "max_score": 25
+    },
+    {
+      "name": "Correct slug directory",
+      "description": "The subfolder name is in kebab-case (all lowercase, words separated by hyphens, no spaces or uppercase) derived from the brand name",
+      "max_score": 15
+    },
+    {
+      "name": "Slug in confirmation note",
+      "description": "vault_confirmation.txt states the full path including ~/.claude/brand-voice-vault/<slug>/",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md present",
+      "description": "voice.md exists inside the vault directory at the correct path",
+      "max_score": 8
+    },
+    {
+      "name": "visual.md present",
+      "description": "visual.md exists inside the vault directory at the correct path",
+      "max_score": 7
+    },
+    {
+      "name": "palette.json present",
+      "description": "palette.json exists inside the vault directory at the correct path",
+      "max_score": 7
+    },
+    {
+      "name": "principles.md present",
+      "description": "principles.md exists inside the vault directory at the correct path",
+      "max_score": 7
+    },
+    {
+      "name": "audience.md present",
+      "description": "audience.md exists inside the vault directory at the correct path",
+      "max_score": 7
+    },
+    {
+      "name": "examples/ subfolder present",
+      "description": "An examples/ subfolder exists inside the vault directory and contains at least one file (e.g., source-quotes.md)",
+      "max_score": 7
+    },
+    {
+      "name": "source.json present",
+      "description": "source.json exists inside the vault directory at the correct path",
+      "max_score": 7
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent respects Dawn schema range step constraints: padding_top and padding_bottom must be multiples of 4; card_shadow_blur must be a multiple of 5 (if used); page_width must be a multiple of 100 (if used); buttons_radius step is 2 (if used). Off-step values cause theme validation failures.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "padding_top multiples of 4 (all sections)",
+      "description": "Every padding_top value present in templates/index.json is a multiple of 4 (e.g., 0, 4, 8, 16, 24, 32, 40, 48, 56, 64 — NOT 10, 15, 30, 50, 60, 100)",
+      "max_score": 18
+    },
+    {
+      "name": "padding_bottom multiples of 4 (all sections)",
+      "description": "Every padding_bottom value present in templates/index.json is a multiple of 4 (e.g., 0, 4, 8, 16, 24, 32, 40, 48, 56, 64 — NOT 10, 15, 30, 50, 60, 100)",
+      "max_score": 18
+    },
+    {
+      "name": "No step-1 padding values",
+      "description": "Common invalid padding values (10, 15, 20, 30, 50, 60, 100) do NOT appear as padding_top or padding_bottom in templates/index.json",
+      "max_score": 10
+    },
+    {
+      "name": "card_shadow_blur step 5 (if used)",
+      "description": "If card_shadow_blur appears in templates/index.json, its value is a multiple of 5 (e.g., 0, 5, 10, 15, 20 — NOT 8, 12, 18)",
+      "max_score": 7
+    },
+    {
+      "name": "page_width step 100 (if used)",
+      "description": "If page_width appears in templates/index.json, its value is a multiple of 100 (e.g., 1100, 1200, 1300 — NOT 1150, 1280, 1440)",
+      "max_score": 7
+    },
+    {
+      "name": "buttons_radius step 2 (if used)",
+      "description": "If buttons_radius appears in templates/index.json, its value is a multiple of 2 (e.g., 0, 2, 4, 6, 8 — NOT 3, 5, 7)",
+      "max_score": 5
+    },
+    {
+      "name": "Explicit padding on hero section",
+      "description": "The hero (image-banner) section in templates/index.json has explicit padding_top and padding_bottom values set",
+      "max_score": 5
+    },
+    {
+      "name": "Explicit padding on tiers section",
+      "description": "The tier picker (multicolumn) section in templates/index.json has explicit padding_top and padding_bottom values set",
+      "max_score": 5
+    },
+    {
+      "name": "Explicit padding on FAQ section",
+      "description": "The FAQ (collapsible-content) section in templates/index.json has explicit padding_top and padding_bottom values set",
+      "max_score": 5
+    },
+    {
+      "name": "Full homepage structure",
+      "description": "templates/index.json contains all expected sections: image-banner hero, custom-liquid anchors, how-it-works multicolumn, tiers multicolumn, collage recent drops, testimonials multicolumn, collapsible-content FAQ, newsletter email capture",
+      "max_score": 10
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 10
+    }
+  ]
+}

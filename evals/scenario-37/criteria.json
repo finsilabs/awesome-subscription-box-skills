@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent produces the complete asset specs section with the correct image format names, pixel dimensions, and all required image direction fields. The skill specifies three exact image sizes with precise pixel dimensions and five required image direction fields.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "1:1 format with 1080×1080 pixels",
+      "description": "Asset specs lists a 1:1 (square) image format and specifies the pixel dimensions as 1080×1080",
+      "max_score": 12
+    },
+    {
+      "name": "9:16 format with 1080×1920 pixels",
+      "description": "Asset specs lists a 9:16 (portrait/vertical) image format and specifies 1080×1920 pixels",
+      "max_score": 12
+    },
+    {
+      "name": "4:5 format with 1080×1350 pixels",
+      "description": "Asset specs lists a 4:5 image format and specifies 1080×1350 pixels",
+      "max_score": 12
+    },
+    {
+      "name": "Image direction — Subject",
+      "description": "Image direction subsection includes a Subject field describing what should be in the frame",
+      "max_score": 8
+    },
+    {
+      "name": "Image direction — Mood",
+      "description": "Image direction subsection includes a Mood field with one or two descriptive adjectives",
+      "max_score": 8
+    },
+    {
+      "name": "Image direction — Color",
+      "description": "Image direction subsection includes a Color field referencing brand palette or specific color guidance",
+      "max_score": 8
+    },
+    {
+      "name": "Image direction — Type treatment",
+      "description": "Image direction subsection includes a Type treatment field (even if value is 'none' or specifies text overlay)",
+      "max_score": 8
+    },
+    {
+      "name": "Image direction — What to avoid",
+      "description": "Image direction subsection includes a 'What to avoid' field listing at least one item to exclude from assets",
+      "max_score": 8
+    },
+    {
+      "name": "Format labels match naming convention",
+      "description": "All three image formats use aspect-ratio labels (1:1, 9:16, 4:5) rather than just descriptive names (square, vertical, portrait) — aspect ratio labels are required",
+      "max_score": 8
+    },
+    {
+      "name": "Output file saved",
+      "description": "Brief is saved to briefs/homescent-q2.md or equivalent vault path",
+      "max_score": 8
+    },
+    {
+      "name": "All three image purposes noted",
+      "description": "The three image formats note their placement purpose: 1:1 = feed primary, 9:16 = Stories/Reels, 4:5 = feed alt/mobile-optimized",
+      "max_score": 8
+    }
+  ]
+}

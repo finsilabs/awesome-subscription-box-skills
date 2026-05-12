@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent applies the retargeting-specific variant count guidance: for retargeting campaigns the skill specifies 1-2 hooks and 3-5 copy variants total (not the full cold-traffic depth). Also tests that the audience Exclusions field is used to prevent re-targeting current subscribers.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Hook count — 1 or 2 for retargeting",
+      "description": "Hook variants section contains 1 or 2 hooks (not 3, 4, or 5 — retargeting calls for fewer hooks)",
+      "max_score": 20
+    },
+    {
+      "name": "Funnel stage — Retargeting",
+      "description": "Funnel stage section states 'Retargeting' (not Cold, Warm, or Mixed)",
+      "max_score": 15
+    },
+    {
+      "name": "Funnel stage — audience context",
+      "description": "Funnel stage section explains what the audience knows (e.g., they are prior subscribers, already know the product)",
+      "max_score": 10
+    },
+    {
+      "name": "Audience Exclusions field",
+      "description": "Audience section's Exclusions field includes current active subscribers (to prevent re-targeting paying customers)",
+      "max_score": 15
+    },
+    {
+      "name": "Audience Primary — custom audience",
+      "description": "Audience Primary field references a custom audience or CRM-based retargeting list (not a cold interest-based audience)",
+      "max_score": 12
+    },
+    {
+      "name": "Copy variants — reduced count",
+      "description": "Copy variants section contains 3-5 total copy variants (primary text + any additional), not a full cold-traffic depth of 10+",
+      "max_score": 15
+    },
+    {
+      "name": "Output file saved",
+      "description": "Brief is saved to briefs/brushbox-winback.md or equivalent vault path",
+      "max_score": 8
+    },
+    {
+      "name": "Approval gates — 4 checkboxes",
+      "description": "Approval gates section contains exactly 4 unchecked checkboxes",
+      "max_score": 5
+    }
+  ]
+}

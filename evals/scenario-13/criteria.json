@@ -1,0 +1,81 @@
+{
+  "context": "Tests whether the agent produces a templates/index.json that follows the prescribed 9-section structure for a Dawn-based subscription-box homepage: hero, how-it-works, tier-picker, recent drops, testimonials, FAQ, email capture — each using the correct Dawn section type and appearing in the specified order.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Hero section present",
+      "description": "templates/index.json contains a section of type 'image-banner' that serves as the hero",
+      "max_score": 6
+    },
+    {
+      "name": "How-it-works section present",
+      "description": "templates/index.json contains a section of type 'multicolumn' used for the how-it-works step explanation",
+      "max_score": 6
+    },
+    {
+      "name": "Tier picker section present",
+      "description": "templates/index.json contains a section of type 'multicolumn' for the tier picker (3 tier blocks)",
+      "max_score": 6
+    },
+    {
+      "name": "Recent drops section present",
+      "description": "templates/index.json contains a section of type 'collage' for recent drops / past box images",
+      "max_score": 6
+    },
+    {
+      "name": "Testimonials section present",
+      "description": "templates/index.json contains a section of type 'multicolumn' used for testimonials",
+      "max_score": 6
+    },
+    {
+      "name": "FAQ section present",
+      "description": "templates/index.json contains a section of type 'collapsible-content' for the FAQ",
+      "max_score": 6
+    },
+    {
+      "name": "Email capture section present",
+      "description": "templates/index.json contains a section of type 'newsletter' for email capture",
+      "max_score": 6
+    },
+    {
+      "name": "Anchor sections present",
+      "description": "templates/index.json contains at least two sections of type 'custom-liquid' used as anchor injections (for #how-it-works and #tiers)",
+      "max_score": 8
+    },
+    {
+      "name": "Section count",
+      "description": "The 'order' array in templates/index.json contains at least 9 entries (hero + 2 anchors + how-it-works + tiers + drops + testimonials + FAQ + email capture)",
+      "max_score": 8
+    },
+    {
+      "name": "Hero before how-it-works",
+      "description": "In the 'order' array, the image-banner hero section appears before the how-it-works multicolumn section",
+      "max_score": 6
+    },
+    {
+      "name": "How-it-works before tiers",
+      "description": "In the 'order' array, the how-it-works section appears before the tier picker section",
+      "max_score": 6
+    },
+    {
+      "name": "Tiers before testimonials",
+      "description": "In the 'order' array, the tier picker section appears before the testimonials section",
+      "max_score": 6
+    },
+    {
+      "name": "FAQ before email capture",
+      "description": "In the 'order' array, the collapsible-content FAQ section appears before the newsletter email capture section",
+      "max_score": 8
+    },
+    {
+      "name": "Three tier blocks",
+      "description": "The tier picker multicolumn section contains exactly 3 column blocks (one per tier: Drip, Pour Over, Espresso Enthusiast)",
+      "max_score": 8
+    },
+    {
+      "name": "Valid JSON output",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 8
+    }
+  ]
+}

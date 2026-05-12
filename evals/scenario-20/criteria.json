@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly configures hero CTA buttons to use in-page hash anchors: primary CTA to #tiers (so conversion-ready visitors jump directly to subscription options), and secondary CTA to #how-it-works (for education-first visitors). Also verifies that matching anchor targets exist on the page.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Primary CTA links to #tiers",
+      "description": "The hero section's primary button (button_link_1 or first button) has a value of '#tiers' or a URL ending in '#tiers'",
+      "max_score": 18
+    },
+    {
+      "name": "Secondary CTA links to #how-it-works",
+      "description": "The hero section's secondary button (button_link_2 or second button) has a value of '#how-it-works' or a URL ending in '#how-it-works'",
+      "max_score": 18
+    },
+    {
+      "name": "Two CTAs in hero",
+      "description": "The hero image-banner section contains exactly two button links (both button_link_1 and button_link_2 populated, or both entries in a buttons block)",
+      "max_score": 10
+    },
+    {
+      "name": "Anchor target for #tiers exists",
+      "description": "A custom-liquid section containing an <a> tag with id=\"tiers\" appears in templates/index.json before the tier picker section",
+      "max_score": 12
+    },
+    {
+      "name": "Anchor target for #how-it-works exists",
+      "description": "A custom-liquid section containing an <a> tag with id=\"how-it-works\" appears in templates/index.json before the how-it-works section",
+      "max_score": 12
+    },
+    {
+      "name": "Anchors use hash notation in hero",
+      "description": "Hero button links use hash fragment notation (starting with '#') rather than full page paths for the in-page anchors",
+      "max_score": 8
+    },
+    {
+      "name": "Primary button is not secondary style",
+      "description": "The primary hero CTA (linking to #tiers) is NOT marked as a secondary-style button (button_style_secondary_1 is false or absent)",
+      "max_score": 8
+    },
+    {
+      "name": "Full section structure",
+      "description": "templates/index.json contains all standard subscription homepage sections: image-banner, custom-liquid anchors, multicolumn how-it-works, multicolumn tiers, collage, multicolumn testimonials, collapsible-content FAQ, newsletter email capture",
+      "max_score": 8
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 6
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "primary": { "hex": "#1A1A2E", "use": "Main brand color for headlines and key UI elements" },
+  "secondary": { "hex": "#E94560", "use": "Accent color for CTAs and highlights" },
+  "page_bg": { "hex": "#F5F5F5", "use": "Page background" },
+  "card_bg": { "hex": "#FFFFFF", "use": "Card and section backgrounds" },
+  "text": { "hex": "#1A1A2E", "use": "Primary body text" },
+  "muted": { "hex": "#6B7280", "use": "Secondary text, captions, and metadata" }
+}

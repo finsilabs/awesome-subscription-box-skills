@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly implements anchor injection sections using the custom-liquid section type with the precise HTML required to prevent a sticky header from obscuring section headings on scroll. Checks that both #how-it-works and #tiers anchor targets exist with correct attributes.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Anchor sections use custom-liquid",
+      "description": "The anchor injection sections in templates/index.json have type 'custom-liquid' (not image-banner, rich-text, or any other section type)",
+      "max_score": 12
+    },
+    {
+      "name": "how-it-works anchor id",
+      "description": "One custom-liquid section's custom_liquid setting contains an <a> tag with id=\"how-it-works\"",
+      "max_score": 10
+    },
+    {
+      "name": "tiers anchor id",
+      "description": "One custom-liquid section's custom_liquid setting contains an <a> tag with id=\"tiers\" (or equivalent crate/section anchor)",
+      "max_score": 10
+    },
+    {
+      "name": "scroll-margin-top on how-it-works",
+      "description": "The how-it-works anchor's <a> tag includes style=\"display:block;scroll-margin-top:120px\" (or contains scroll-margin-top with a px value)",
+      "max_score": 12
+    },
+    {
+      "name": "scroll-margin-top on tiers",
+      "description": "The tiers anchor's <a> tag includes style=\"display:block;scroll-margin-top:120px\" (or contains scroll-margin-top with a px value)",
+      "max_score": 12
+    },
+    {
+      "name": "display:block on anchors",
+      "description": "Both anchor <a> tags include display:block in their style attribute so they take up layout space and the margin is applied correctly",
+      "max_score": 10
+    },
+    {
+      "name": "Anchor before target section",
+      "description": "In the 'order' array, each anchor section appears immediately before its corresponding content section (anchor_how_it_works before how_it_works, anchor_tiers before tiers)",
+      "max_score": 12
+    },
+    {
+      "name": "Hero links use hash anchors",
+      "description": "The hero section's button links reference the anchor IDs using hash notation (e.g., #tiers, #how-it-works) rather than page URLs or other paths",
+      "max_score": 12
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 10
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent produces the required five-element brand summary (brand name, archetype, audience, dominant color, dominant tone) that the skill specifies as the post-extraction deliverable. Also verifies that the full vault is written.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Brand name in brief",
+      "description": "brand-brief.md explicitly states the brand name (MeUndies or a recognizable variant)",
+      "max_score": 5
+    },
+    {
+      "name": "Brand archetype named",
+      "description": "brand-brief.md names a specific brand archetype using an established framework term (e.g., Lover, Jester, Hero, Sage, Explorer, Creator, Caregiver, Regular Guy, Rebel, Ruler, Magician, Innocent)",
+      "max_score": 20
+    },
+    {
+      "name": "Archetype rationale",
+      "description": "brand-brief.md includes at least a brief explanation (one sentence minimum) of why the chosen archetype fits this brand",
+      "max_score": 10
+    },
+    {
+      "name": "Audience description",
+      "description": "brand-brief.md includes a one-line or short description of the primary audience",
+      "max_score": 10
+    },
+    {
+      "name": "Dominant color — named",
+      "description": "brand-brief.md identifies the dominant brand color by name or description (e.g., 'coral', 'navy blue', 'pastel rainbow')",
+      "max_score": 10
+    },
+    {
+      "name": "Dominant color — hex value",
+      "description": "brand-brief.md includes a hex code for the dominant color alongside the name",
+      "max_score": 10
+    },
+    {
+      "name": "Dominant tone stated",
+      "description": "brand-brief.md states the dominant tone of voice in specific descriptive words (e.g., 'playful and irreverent', 'warm and inclusive', 'bold and confident')",
+      "max_score": 15
+    },
+    {
+      "name": "All vault files present",
+      "description": "The vault folder contains all seven required entries: voice.md, visual.md, palette.json, principles.md, audience.md, examples/ subfolder (with at least one file), and source.json",
+      "max_score": 10
+    },
+    {
+      "name": "palette.json — six color roles",
+      "description": "palette.json contains all six required keys: primary, secondary, page_bg, card_bg, text, muted",
+      "max_score": 10
+    }
+  ]
+}

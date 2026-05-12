@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent captures detailed typographic characteristics from the fetched pages — specifically the typeface category (serif/sans/display), weight usage, and tracking/letter-spacing — in visual.md, beyond just a pairing recommendation. Also checks that photo direction and iconography sections are present.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Typeface category identified",
+      "description": "visual.md states whether the brand's primary typeface is serif, sans-serif, or display (or a combination), not just a font name or 'modern'",
+      "max_score": 15
+    },
+    {
+      "name": "Type weight described",
+      "description": "visual.md describes the font weight(s) used by the brand (e.g., bold, regular, light, heavy, semi-bold) — not just the font family",
+      "max_score": 15
+    },
+    {
+      "name": "Tracking or letter-spacing noted",
+      "description": "visual.md notes how the brand uses letter-spacing or tracking — e.g., 'tight tracking on headlines', 'wide-tracked all-caps labels', 'normal tracking throughout'",
+      "max_score": 15
+    },
+    {
+      "name": "Typography pairing recommendation",
+      "description": "visual.md includes a pairing recommendation — how the heading and body typefaces relate to each other (e.g., 'bold display paired with a clean sans body')",
+      "max_score": 10
+    },
+    {
+      "name": "Photo direction",
+      "description": "visual.md contains a photo direction section describing the style of photography appropriate for the brand (lighting, mood, subject, setting)",
+      "max_score": 15
+    },
+    {
+      "name": "Iconography rules",
+      "description": "visual.md contains a section on iconography or illustration style used by the brand",
+      "max_score": 10
+    },
+    {
+      "name": "palette.json — six color roles",
+      "description": "palette.json contains exactly the six required top-level keys: primary, secondary, page_bg, card_bg, text, muted",
+      "max_score": 10
+    },
+    {
+      "name": "palette.json — hex values present",
+      "description": "Each of the six color entries in palette.json has a 'hex' field containing a color value (not a placeholder like #XXXXXX)",
+      "max_score": 10
+    }
+  ]
+}

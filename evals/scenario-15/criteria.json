@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent uses the 'newsletter' section type for email capture (rather than 'email-signup-banner', which is restricted to the password template and will fail on the index template). Also verifies the full homepage structure is present.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Email capture uses newsletter type",
+      "description": "The email capture section in templates/index.json has type 'newsletter', not 'email-signup-banner' or any other type",
+      "max_score": 20
+    },
+    {
+      "name": "No email-signup-banner type used",
+      "description": "The string 'email-signup-banner' does NOT appear as a section type anywhere in templates/index.json",
+      "max_score": 15
+    },
+    {
+      "name": "Email capture section in order",
+      "description": "The newsletter section key appears in the 'order' array of templates/index.json",
+      "max_score": 10
+    },
+    {
+      "name": "Hero section (image-banner)",
+      "description": "A section of type 'image-banner' is present and listed in the order array",
+      "max_score": 8
+    },
+    {
+      "name": "How-it-works section (multicolumn)",
+      "description": "A section of type 'multicolumn' for the how-it-works walkthrough is present in the template",
+      "max_score": 8
+    },
+    {
+      "name": "Tier picker section present",
+      "description": "A multicolumn section acting as the tier picker with 3 column blocks (Small Pup, Medium Mutt, Big Dog) is present",
+      "max_score": 8
+    },
+    {
+      "name": "Recent drops collage section",
+      "description": "A section of type 'collage' for past box gallery / recent drops is present",
+      "max_score": 7
+    },
+    {
+      "name": "Testimonials section present",
+      "description": "A multicolumn section for testimonials is present with at least 2 testimonial column blocks",
+      "max_score": 7
+    },
+    {
+      "name": "FAQ section (collapsible-content)",
+      "description": "A section of type 'collapsible-content' for the FAQ is present with at least 3 question blocks",
+      "max_score": 9
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 8
+    }
+  ]
+}

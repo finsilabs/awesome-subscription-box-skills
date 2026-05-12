@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent captures pricing and tier framing language from the fetched pages — a specific per-page extraction target in the skill. Also checks that the voice documentation and source metadata are present and correctly formatted.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Pricing/tier language documented",
+      "description": "The vault includes a section (in voice.md or a separate file) that explicitly documents how HelloFresh labels or names their plans or tiers (e.g., plan names, serving sizes framed as tiers, subscription options)",
+      "max_score": 20
+    },
+    {
+      "name": "Flexibility/cancellation framing",
+      "description": "The documentation captures language about commitment level, cancellation policy, or flexibility (how HelloFresh frames the no-lock-in or pause/cancel messaging)",
+      "max_score": 15
+    },
+    {
+      "name": "Benefit vs. feature framing noted",
+      "description": "The documentation notes whether HelloFresh leads with benefits (outcomes for the customer) or features (plan specs) when describing their pricing",
+      "max_score": 15
+    },
+    {
+      "name": "CTA phrases from pricing context",
+      "description": "At least one CTA phrase from the pricing or plan-selection page is captured (e.g., button text used in the subscription flow)",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md present with vocabulary",
+      "description": "voice.md exists and includes a vocabulary section with brand-specific words or phrases to use",
+      "max_score": 10
+    },
+    {
+      "name": "voice.md sample paragraphs",
+      "description": "voice.md contains at least 3 sample paragraphs written in the brand's voice",
+      "max_score": 10
+    },
+    {
+      "name": "source.json — sources include pricing/plan page",
+      "description": "source.json 'sources' array includes at least one URL that is not the homepage (indicating the pricing or plan page was also fetched)",
+      "max_score": 10
+    },
+    {
+      "name": "source.json — fetched_at ISO format",
+      "description": "source.json contains a 'fetched_at' field in ISO 8601 date format",
+      "max_score": 5
+    },
+    {
+      "name": "Folder slug is kebab-case",
+      "description": "The brand vault folder name is in kebab-case derived from 'HelloFresh' (e.g. 'hellofresh')",
+      "max_score": 5
+    }
+  ]
+}

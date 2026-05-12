@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent produces a page critical review using the exact required output structure, includes correctly weighted scores across all six dimensions, provides actual code or copy for P0/P1 fixes, and checks subscription-box specific patterns.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "P0 section present",
+      "description": "Output contains a P0 section (ship-blockers or fix before next push) — even if empty, it must be present and labeled P0",
+      "max_score": 8
+    },
+    {
+      "name": "P1 section present",
+      "description": "Output contains a P1 section (weakening conversion or fix this week) labeled P1",
+      "max_score": 8
+    },
+    {
+      "name": "P2 section present",
+      "description": "Output contains a P2 section (polish) labeled P2",
+      "max_score": 8
+    },
+    {
+      "name": "Verdict section",
+      "description": "Output contains a Verdict section summarizing the page's overall state in 1-2 sentences",
+      "max_score": 6
+    },
+    {
+      "name": "Strengths section",
+      "description": "Output contains a Strengths section listing specific things that are working on the page",
+      "max_score": 6
+    },
+    {
+      "name": "Scores table with 6 dimensions",
+      "description": "Output contains a scores table covering all six dimensions: Hierarchy, Copy, Conversion, Trust, Mobile, Technical — each scored out of 5",
+      "max_score": 12
+    },
+    {
+      "name": "Weighted total in scores",
+      "description": "Scores table includes a weighted total row (out of 100)",
+      "max_score": 8
+    },
+    {
+      "name": "Concrete fixes for P0/P1",
+      "description": "For at least one P0 or P1 issue, the review provides actual alternative copy (2-3 headline alternatives written out) OR actual code — not just 'improve the headline'",
+      "max_score": 15
+    },
+    {
+      "name": "Subscription box patterns checked",
+      "description": "Review explicitly checks for at least 2 of: tier picker without prices, missing cancel-anytime near CTA, generic hero copy, recent drops gallery without context, social proof above fold",
+      "max_score": 15
+    },
+    {
+      "name": "Issue format [Issue] — [why] — [fix]",
+      "description": "Issues in P0/P1/P2 sections follow the format: issue description — why it matters — fix (three-part dashes format)",
+      "max_score": 14
+    }
+  ]
+}

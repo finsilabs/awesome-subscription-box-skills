@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent produces a well-formed Objective section with all three required components: Primary KPI (with specific metric and numeric target), Secondary KPI (with specific metric and threshold), and Success threshold (with explicit conditions for both scaling up and killing the campaign).",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Primary KPI — named metric",
+      "description": "Primary KPI field names a specific KPI type (e.g., subscriptions, CPA, ROAS, CPL) — not a vague goal like 'drive growth'",
+      "max_score": 12
+    },
+    {
+      "name": "Primary KPI — numeric target",
+      "description": "Primary KPI field includes a specific numeric target (e.g., CPA < $X, ROAS > 2.0, subscriptions = N/month)",
+      "max_score": 12
+    },
+    {
+      "name": "Secondary KPI — different metric",
+      "description": "Secondary KPI field names a different metric from the Primary KPI (e.g., CTR %, CPM, frequency cap)",
+      "max_score": 10
+    },
+    {
+      "name": "Secondary KPI — numeric threshold",
+      "description": "Secondary KPI field includes a specific numeric threshold (e.g., CTR > 1.5%, frequency capped at 3)",
+      "max_score": 10
+    },
+    {
+      "name": "Success threshold — when to scale",
+      "description": "Success threshold field explicitly states a condition under which the campaign should be scaled up (e.g., 'scale when CPA < $X for 7 consecutive days')",
+      "max_score": 15
+    },
+    {
+      "name": "Success threshold — when to kill",
+      "description": "Success threshold field explicitly states a condition under which the campaign or ad set should be paused or stopped (e.g., 'kill if CPA > $X after $Y spent')",
+      "max_score": 15
+    },
+    {
+      "name": "Objective section structure",
+      "description": "Objective section has all three labeled fields as separate bullet points: Primary KPI, Secondary KPI, and Success threshold — not combined into one paragraph",
+      "max_score": 10
+    },
+    {
+      "name": "Output file saved",
+      "description": "Brief is saved to briefs/runbox-launch.md or equivalent vault path",
+      "max_score": 8
+    },
+    {
+      "name": "Complete brief structure",
+      "description": "Brief contains at least 8 of the 13 required top-level sections",
+      "max_score": 8
+    }
+  ]
+}

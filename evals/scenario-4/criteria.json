@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent extracts the specific per-page content that the skill requires: tagline, hero headline, and CTAs from the fetched pages, as well as capturing idiomatic brand vocabulary. Also checks that multiple pages were analyzed and sources documented.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Tagline captured",
+      "description": "voice.md includes a section or label explicitly identifying the brand's tagline or primary brand promise as seen on the site (not paraphrased — a direct or near-direct quote)",
+      "max_score": 15
+    },
+    {
+      "name": "Hero headline captured",
+      "description": "voice.md identifies at least one hero headline — the large lead copy a visitor sees on a key page — and labels it as such",
+      "max_score": 15
+    },
+    {
+      "name": "CTA phrases — at least 2",
+      "description": "voice.md includes at least 2 distinct call-to-action phrases pulled from the site (button text, subscribe prompts, imperative copy — e.g. 'Subscribe Now', 'Get Your Crate')",
+      "max_score": 15
+    },
+    {
+      "name": "CTA section distinct",
+      "description": "The CTAs are grouped in a dedicated section or clearly labelled subsection of voice.md, not buried inline in prose",
+      "max_score": 10
+    },
+    {
+      "name": "Vocabulary — words to use",
+      "description": "voice.md contains a list or section of specific words or phrases the brand uses (idiomatic vocabulary, recurring terms)",
+      "max_score": 10
+    },
+    {
+      "name": "Vocabulary — words to avoid",
+      "description": "voice.md contains a section of words or phrases that are off-brand or should be avoided",
+      "max_score": 10
+    },
+    {
+      "name": "3–5 sample paragraphs",
+      "description": "voice.md contains between 3 and 5 sample paragraphs written in the brand's voice",
+      "max_score": 10
+    },
+    {
+      "name": "Multiple pages analyzed",
+      "description": "source.json 'sources' array contains at least 2 distinct URLs showing that more than just the homepage was visited",
+      "max_score": 10
+    },
+    {
+      "name": "source.json fetched_at ISO",
+      "description": "source.json has a 'fetched_at' field containing an ISO 8601 date string",
+      "max_score": 5
+    }
+  ]
+}

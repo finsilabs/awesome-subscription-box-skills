@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly implements a Klaviyo multi-step flow using the stable API revision, properly nested template_id in the send-email action, correct action chaining, and required verification step.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "API revision 2025-04-15",
+      "description": "The script uses revision '2025-04-15' in the Klaviyo API request headers (not '2024-10-15' or any other version)",
+      "max_score": 15
+    },
+    {
+      "name": "template_id in data.message",
+      "description": "The send-email action places template_id inside data.message.template_id — NOT at data.template_id directly",
+      "max_score": 15
+    },
+    {
+      "name": "entry_action_id matches first action",
+      "description": "The flow payload's definition.entry_action_id value equals the temporary_id of the first action in the actions list",
+      "max_score": 12
+    },
+    {
+      "name": "Action chaining via links.next",
+      "description": "Each action's links.next points to the temporary_id of the following action, and the last action has links.next = null",
+      "max_score": 12
+    },
+    {
+      "name": "from_email on all email actions",
+      "description": "Every send-email action includes a from_email field inside data.message",
+      "max_score": 8
+    },
+    {
+      "name": "subject_line on all email actions",
+      "description": "Every send-email action includes a subject_line field inside data.message (not left empty or omitted)",
+      "max_score": 8
+    },
+    {
+      "name": "List trigger type",
+      "description": "The flow trigger uses type 'list' (not 'metric' or 'segment') since the trigger is joining the subscriber list",
+      "max_score": 8
+    },
+    {
+      "name": "Verification GET call",
+      "description": "Script includes a GET request to /api/flows/<flow_id>/flow-actions/ after creation to verify the action graph",
+      "max_score": 12
+    },
+    {
+      "name": "Rate-limit sleep",
+      "description": "Script includes time.sleep(1.5) or similar rate-limit handling between API calls when creating multiple flows or resources",
+      "max_score": 10
+    }
+  ]
+}

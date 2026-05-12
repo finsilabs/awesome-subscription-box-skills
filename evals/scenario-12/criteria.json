@@ -1,0 +1,56 @@
+{
+  "context": "Tests format compliance across the full brand vault for a new brand (Graze). Focuses on the specific format requirements: palette.json six-role structure with hex+use, principles.md We/We-don't/Why format with 3-7 entries, source.json ISO date and sources array, and source-quotes.md word-count limit with URL attribution. This scenario provides coverage of format instructions for a brand not used in earlier scenarios.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "palette.json — six roles present",
+      "description": "palette.json contains all six required top-level keys: primary, secondary, page_bg, card_bg, text, muted",
+      "max_score": 10
+    },
+    {
+      "name": "palette.json — hex + use per entry",
+      "description": "Each of the six palette entries has both a 'hex' sub-field (a real color value, not #XXXXXX placeholder) and a 'use' sub-field describing the color's role",
+      "max_score": 10
+    },
+    {
+      "name": "principles.md — 3–7 entries",
+      "description": "principles.md contains between 3 and 7 brand principles (not fewer, not more)",
+      "max_score": 10
+    },
+    {
+      "name": "principles.md — We/We-don't/Why format",
+      "description": "At least 3 of the principles in principles.md follow the 'We do X. We don't do Y. Why: Z.' sentence structure (or a close variant using 'We' and 'Why:')",
+      "max_score": 15
+    },
+    {
+      "name": "source.json — fetched_at ISO format",
+      "description": "source.json 'fetched_at' field contains a date in ISO 8601 format (YYYY-MM-DD or a full ISO datetime string) — NOT a natural-language date",
+      "max_score": 10
+    },
+    {
+      "name": "source.json — sources is an array",
+      "description": "source.json 'sources' field is a JSON array containing at least one URL string",
+      "max_score": 8
+    },
+    {
+      "name": "source.json — all five fields",
+      "description": "source.json contains all five required fields: brand, slug, fetched_at, sources, notes",
+      "max_score": 10
+    },
+    {
+      "name": "source-quotes.md — at least 5 quotes",
+      "description": "examples/source-quotes.md contains at least 5 quoted phrases from the Graze website",
+      "max_score": 8
+    },
+    {
+      "name": "source-quotes.md — each quote ≤15 words",
+      "description": "Every individual quote in source-quotes.md is 15 words or fewer — no quote exceeds this limit",
+      "max_score": 12
+    },
+    {
+      "name": "source-quotes.md — URL per quote",
+      "description": "Each quote in source-quotes.md includes the source URL it was pulled from (a URL near each individual quote, not just at the top of the file)",
+      "max_score": 7
+    }
+  ]
+}

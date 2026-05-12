@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent produces hook variants that cover the required types and follow the minimum/maximum count constraint. The skill specifies 3-5 hooks with five named types: Curiosity, Pain-point, Social proof, Promise/aspirational, and Contrarian. This scenario emphasizes the hook section specifically.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Hook count — 3 to 5 variants",
+      "description": "Hook variants section contains between 3 and 5 hooks (not fewer than 3, not more than 5)",
+      "max_score": 15
+    },
+    {
+      "name": "Curiosity hook present",
+      "description": "At least one hook is explicitly labeled 'Curiosity' and its angle uses intrigue or an open question to draw clicks",
+      "max_score": 12
+    },
+    {
+      "name": "Pain-point hook present",
+      "description": "At least one hook is explicitly labeled 'Pain-point' and its angle addresses a frustration or problem the audience has",
+      "max_score": 12
+    },
+    {
+      "name": "Social proof hook present",
+      "description": "At least one hook is explicitly labeled 'Social proof' and references numbers, testimonials, or community size",
+      "max_score": 12
+    },
+    {
+      "name": "Promise/aspirational hook present",
+      "description": "At least one hook is explicitly labeled 'Promise / aspirational' and offers a positive outcome or vision",
+      "max_score": 12
+    },
+    {
+      "name": "Contrarian hook present",
+      "description": "At least one hook is explicitly labeled 'Contrarian' and challenges a common belief or expectation about pet subscriptions",
+      "max_score": 12
+    },
+    {
+      "name": "Hook labels match required type names",
+      "description": "Each hook's label matches one of the five specified type names exactly (Curiosity, Pain-point, Social proof, Promise / aspirational, Contrarian) — no substitutions or paraphrasing of the type names",
+      "max_score": 10
+    },
+    {
+      "name": "Hook section present in correct location",
+      "description": "Hook variants appear in their own '## Hook variants' section (not embedded inside Copy variants or another section)",
+      "max_score": 8
+    },
+    {
+      "name": "Brief file saved",
+      "description": "Brief is saved to briefs/furbox-acquisition.md or an equivalent valid path",
+      "max_score": 7
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent reads the provided brand vault files (voice.md, palette.json, visual.md) and correctly incorporates them into the ads brief — specifically into the Tone guardrails section (reflecting voice.md dos/don'ts) and Image direction section (reflecting palette.json colors and visual.md photography style).",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Tone DO list from voice.md",
+      "description": "Tone guardrails DO section contains at least two items drawn from voice.md (e.g., discovery framing, education angle, community reference)",
+      "max_score": 12
+    },
+    {
+      "name": "Tone DON'T list from voice.md",
+      "description": "Tone guardrails DON'T section contains at least two items drawn from voice.md (e.g., no discount framing, no urgency pressure, no generic lifestyle imagery)",
+      "max_score": 12
+    },
+    {
+      "name": "Vocabulary compliance in copy",
+      "description": "Brief copy does NOT use any of the prohibited words listed in voice.md: 'premium', 'artisanal', 'luxury', or 'finest'",
+      "max_score": 10
+    },
+    {
+      "name": "Image direction — Color from palette.json",
+      "description": "Image direction Color field references the brand's warm brown/caramel palette (e.g., espresso brown, #2C1810, warm caramel) rather than generic color descriptions",
+      "max_score": 12
+    },
+    {
+      "name": "Image direction — What to avoid from visual.md",
+      "description": "Image direction 'What to avoid' field reflects at least one item from visual.md (e.g., no studio white backgrounds, no stock-photo interiors, no cool-toned environments)",
+      "max_score": 12
+    },
+    {
+      "name": "Image direction — Subject/Mood from visual.md",
+      "description": "Image direction Subject and/or Mood fields reflect the visual style in visual.md (e.g., warm natural light, rustic surfaces, coffee as subject)",
+      "max_score": 10
+    },
+    {
+      "name": "Tone guardrails section present",
+      "description": "Brief contains a Tone guardrails section with both a DO list and a DON'T list",
+      "max_score": 8
+    },
+    {
+      "name": "Image direction all 5 fields",
+      "description": "Image direction subsection contains all five fields: Subject, Mood, Color, Type treatment, and What to avoid",
+      "max_score": 10
+    },
+    {
+      "name": "Output file path",
+      "description": "Brief is saved to briefs/northbrew-discovery.md (or equivalent vault path)",
+      "max_score": 8
+    },
+    {
+      "name": "Hook copy reflects brand voice",
+      "description": "Hook variants use discovery/education/community angles (as specified in voice.md) rather than discount or urgency framing",
+      "max_score": 6
+    }
+  ]
+}

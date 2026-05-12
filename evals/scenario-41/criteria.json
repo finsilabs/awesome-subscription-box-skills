@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent produces a complete Audience section with all four required subsections: Primary (demo + interests + lookalikes), Secondary (fallback if primary underperforms), Exclusions (existing customers, recent buyers), and Estimated audience size. This scenario emphasizes the Audience section structure.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Audience — Primary subsection",
+      "description": "Audience section has a Primary subsection that includes demographic targeting AND at least one of: interest targeting, lookalike seed reference, or behavioral targeting",
+      "max_score": 15
+    },
+    {
+      "name": "Primary — lookalike source",
+      "description": "Primary audience references a lookalike source (e.g., current subscriber list, email list) consistent with cold-audience building",
+      "max_score": 10
+    },
+    {
+      "name": "Audience — Secondary subsection",
+      "description": "Audience section has a Secondary subsection that describes a fallback audience if the Primary underperforms",
+      "max_score": 15
+    },
+    {
+      "name": "Audience — Exclusions subsection",
+      "description": "Audience section has an Exclusions subsection that is not empty",
+      "max_score": 12
+    },
+    {
+      "name": "Exclusions include current subscribers",
+      "description": "Exclusions field specifically mentions excluding current/active subscribers or existing customers from the campaign",
+      "max_score": 15
+    },
+    {
+      "name": "Exclusions include recent purchasers",
+      "description": "Exclusions field mentions excluding recent purchasers or recent buyers (in addition to current subscribers)",
+      "max_score": 10
+    },
+    {
+      "name": "Audience — Estimated audience size",
+      "description": "Audience section has an Estimated audience size field (even if the value is an estimate or 'TBD')",
+      "max_score": 10
+    },
+    {
+      "name": "Audience four subsections all labeled",
+      "description": "All four subsections are explicitly labeled as bold fields: Primary, Secondary, Exclusions, and Estimated audience size",
+      "max_score": 8
+    },
+    {
+      "name": "Output file saved",
+      "description": "Brief is saved to briefs/ghb-fathersday.md or equivalent vault path",
+      "max_score": 5
+    }
+  ]
+}

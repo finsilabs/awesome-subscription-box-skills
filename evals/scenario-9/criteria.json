@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent applies the quick first-pass mode correctly: fetching only the homepage and About page (not product pages, blog posts, or other sections), skipping the examples/ subfolder, but still producing all the core vault files. This reflects the skill's depth-vs-speed guidance.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Only 1–2 pages fetched",
+      "description": "source.json 'sources' array (or research-log.txt) lists at most 2 URLs, both from the Grove Collaborative domain — no product pages, blog posts, or other deep pages analyzed",
+      "max_score": 20
+    },
+    {
+      "name": "No examples/ subfolder",
+      "description": "The brand vault folder does NOT contain an examples/ subfolder or a source-quotes.md file — the examples step was correctly skipped for the quick pass",
+      "max_score": 20
+    },
+    {
+      "name": "voice.md present",
+      "description": "voice.md exists in the vault and contains usable brand voice content",
+      "max_score": 10
+    },
+    {
+      "name": "visual.md present",
+      "description": "visual.md exists in the vault and contains visual identity content",
+      "max_score": 8
+    },
+    {
+      "name": "palette.json present",
+      "description": "palette.json exists in the vault with color entries",
+      "max_score": 8
+    },
+    {
+      "name": "principles.md present",
+      "description": "principles.md exists in the vault with brand principles",
+      "max_score": 8
+    },
+    {
+      "name": "audience.md present",
+      "description": "audience.md exists in the vault with audience information",
+      "max_score": 8
+    },
+    {
+      "name": "source.json present",
+      "description": "source.json exists and records the pages that were analyzed",
+      "max_score": 8
+    },
+    {
+      "name": "research-log.txt documents pages visited",
+      "description": "research-log.txt exists and lists the specific pages visited during the research (showing the quick-pass scope)",
+      "max_score": 10
+    }
+  ]
+}

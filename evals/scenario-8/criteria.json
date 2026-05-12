@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent classifies the brand's imagery style using a specific category (editorial photography, illustration, lifestyle, minimalist, or similar named style) and provides usable photo direction and iconography guidance in visual.md.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Imagery style categorized",
+      "description": "visual.md explicitly names the imagery style category used by the brand — e.g., 'editorial photography', 'lifestyle', 'minimalist', 'illustrative', 'flat-lay product' — using a specific descriptive label, not vague adjectives like 'nice' or 'clean'",
+      "max_score": 20
+    },
+    {
+      "name": "Imagery style section distinct",
+      "description": "The imagery style classification appears in a dedicated section or subsection of visual.md (with a heading or label), not buried in a paragraph about something else",
+      "max_score": 10
+    },
+    {
+      "name": "Photo direction — subjects or settings",
+      "description": "visual.md describes what subjects or settings are appropriate for brand photography (e.g., 'close-up beauty products', 'diverse women in everyday settings', 'clean white backgrounds')",
+      "max_score": 15
+    },
+    {
+      "name": "Photo direction — mood or lighting",
+      "description": "visual.md describes the mood, lighting style, or color temperature appropriate for brand photography (e.g., 'warm natural light', 'studio-clean with soft shadows', 'bright and airy')",
+      "max_score": 15
+    },
+    {
+      "name": "Iconography / illustration rules",
+      "description": "visual.md addresses how the brand uses iconography or illustration — whether they use custom illustrated elements, simple line icons, or rely on photography — with at least one specific directional statement",
+      "max_score": 15
+    },
+    {
+      "name": "palette.json — six color roles",
+      "description": "palette.json contains all six required keys: primary, secondary, page_bg, card_bg, text, muted",
+      "max_score": 10
+    },
+    {
+      "name": "palette.json — hex + use",
+      "description": "Each entry in palette.json has both a 'hex' sub-field (a color value) and a 'use' sub-field describing the role of that color",
+      "max_score": 10
+    },
+    {
+      "name": "source.json — multiple pages",
+      "description": "source.json 'sources' array contains at least 2 URLs, confirming more than just the homepage was analyzed",
+      "max_score": 5
+    }
+  ]
+}

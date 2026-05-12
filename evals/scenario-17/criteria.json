@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent only uses valid Dawn heading_size values: h2, h1, h0, hxl, hxxl. Using invalid values (like 'large', 'xl', 'medium', 'small', 'h3', 'h4', or any others) causes theme check failures. All heading_size fields in the JSON must be from the allowed set.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "All heading_size values are valid",
+      "description": "Every heading_size value in templates/index.json is one of: h2, h1, h0, hxl, hxxl — verified across all sections and blocks",
+      "max_score": 20
+    },
+    {
+      "name": "No invalid size strings",
+      "description": "The strings 'large', 'medium', 'small', 'h3', 'h4', 'xl', 'xxl', 'heading-1', 'heading-2' do NOT appear as heading_size values in templates/index.json",
+      "max_score": 15
+    },
+    {
+      "name": "Hero uses large heading (hxl or hxxl)",
+      "description": "The hero image-banner's heading block (or equivalent) uses heading_size of 'hxl' or 'hxxl' — the largest options for the most prominent heading",
+      "max_score": 12
+    },
+    {
+      "name": "How-it-works heading size valid",
+      "description": "The how-it-works multicolumn section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "max_score": 8
+    },
+    {
+      "name": "Tier picker heading size valid",
+      "description": "The tier picker multicolumn section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "max_score": 8
+    },
+    {
+      "name": "Testimonials heading size valid",
+      "description": "The testimonials multicolumn section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "max_score": 8
+    },
+    {
+      "name": "FAQ heading size valid",
+      "description": "The FAQ collapsible-content section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "max_score": 8
+    },
+    {
+      "name": "heading_size explicit in 5+ sections",
+      "description": "At least 5 sections or blocks in templates/index.json have an explicit heading_size value set (not relying solely on defaults)",
+      "max_score": 8
+    },
+    {
+      "name": "Full section structure present",
+      "description": "templates/index.json contains all required sections: image-banner hero, custom-liquid anchors, how-it-works multicolumn, tiers multicolumn, collage, testimonials multicolumn, collapsible-content FAQ, newsletter email capture",
+      "max_score": 7
+    },
+    {
+      "name": "Valid JSON",
+      "description": "templates/index.json is valid JSON that can be parsed without errors",
+      "max_score": 6
+    }
+  ]
+}

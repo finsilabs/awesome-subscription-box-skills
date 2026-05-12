@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly produces the copy variants section with the right counts and word/character length constraints: exactly 3 primary text versions with specified word counts (30-90, 25-50, 100-200), exactly 5 headlines each under 40 characters, and exactly 3 descriptions each under 30 characters.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Primary text — exactly 3 versions",
+      "description": "Primary text subsection contains exactly 3 numbered versions (not 2, not 4)",
+      "max_score": 12
+    },
+    {
+      "name": "Primary text v1 — 30-90 words",
+      "description": "First primary text version is between 30 and 90 words (count the words; version must not be shorter than 30 or longer than 90)",
+      "max_score": 10
+    },
+    {
+      "name": "Primary text v2 — 25-50 words",
+      "description": "Second primary text version is between 25 and 50 words, described or labeled as the 'short' or 'punchy' version",
+      "max_score": 10
+    },
+    {
+      "name": "Primary text v3 — 100-200 words",
+      "description": "Third primary text version is between 100 and 200 words and includes line breaks (not a single block of text)",
+      "max_score": 10
+    },
+    {
+      "name": "Headlines — exactly 5",
+      "description": "Headlines subsection contains exactly 5 numbered versions",
+      "max_score": 12
+    },
+    {
+      "name": "Headlines — all under 40 chars",
+      "description": "Every headline is 40 characters or fewer (count including spaces; all 5 must pass)",
+      "max_score": 12
+    },
+    {
+      "name": "Descriptions — exactly 3",
+      "description": "Descriptions subsection contains exactly 3 versions",
+      "max_score": 12
+    },
+    {
+      "name": "Descriptions — all under 30 chars",
+      "description": "Every description is 30 characters or fewer (count including spaces; all 3 must pass)",
+      "max_score": 12
+    },
+    {
+      "name": "Output file saved",
+      "description": "Brief is saved to briefs/sweetbox-valentines.md or equivalent vault path",
+      "max_score": 10
+    }
+  ]
+}

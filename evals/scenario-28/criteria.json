@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly structures a Klaviyo flow with a metric trigger, time-delay action using the correct timezone setting, send-email action with all required fields, and correct flow/email status.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Metric trigger type",
+      "description": "The flow trigger uses type 'metric' (since it's triggered by the Placed Order event, not a list or segment)",
+      "max_score": 12
+    },
+    {
+      "name": "time-delay timezone: profile",
+      "description": "The time-delay action's data contains timezone: 'profile' (not a hard-coded timezone like 'US/Eastern' or UTC)",
+      "max_score": 15
+    },
+    {
+      "name": "time-delay 10 days",
+      "description": "The time-delay action specifies a delay of 10 days (value: 10, unit: 'days')",
+      "max_score": 10
+    },
+    {
+      "name": "template_id in data.message",
+      "description": "The send-email action places template_id inside data.message.template_id, not at data.template_id",
+      "max_score": 12
+    },
+    {
+      "name": "from_email required field",
+      "description": "The send-email action includes from_email inside data.message",
+      "max_score": 10
+    },
+    {
+      "name": "subject_line required field",
+      "description": "The send-email action includes subject_line inside data.message (not empty or omitted)",
+      "max_score": 10
+    },
+    {
+      "name": "Email action status draft",
+      "description": "The send-email action's data includes status: 'draft'",
+      "max_score": 8
+    },
+    {
+      "name": "API revision 2025-04-15",
+      "description": "The script uses revision '2025-04-15' in the API headers",
+      "max_score": 12
+    },
+    {
+      "name": "Rate limit / 429 handling",
+      "description": "The script handles 429 rate-limit responses with a retry or backoff mechanism",
+      "max_score": 11
+    }
+  ]
+}

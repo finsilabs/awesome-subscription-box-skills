@@ -1,0 +1,46 @@
+{
+  "context": "Tests two complementary placement rules: (1) collapsible-content FAQ row_content must not contain <code> HTML tags (they are rejected by Dawn schema validation) — use <strong> for emphasis instead; and (2) pre-order/pre-launch messaging belongs on tier product templates via a custom-liquid section, not embedded in the homepage template.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "No <code> tags in FAQ row_content",
+      "description": "The collapsible-content FAQ section's row_content fields in templates/index.json contain NO <code> or </code> tags",
+      "max_score": 20
+    },
+    {
+      "name": "Strong used for emphasis in FAQ",
+      "description": "At least one FAQ row_content uses <strong> tags for emphasis (instead of <code>) when highlighting technical terms, commands, or key phrases",
+      "max_score": 10
+    },
+    {
+      "name": "Pre-order message on product template",
+      "description": "templates/product.subscription.json exists and contains a section (custom-liquid or announcement-bar type) with pre-order ship date messaging (contains 'ships' or 'pre-order' or 'pre order' text)",
+      "max_score": 18
+    },
+    {
+      "name": "Pre-order on product template before main",
+      "description": "In templates/product.subscription.json, the pre-order announcement section appears before the main product section in the 'order' array",
+      "max_score": 12
+    },
+    {
+      "name": "No pre-order message on homepage",
+      "description": "templates/index.json does NOT contain 'ships November 15' or other pre-order ship date copy in its sections — the homepage is clean of pre-order messaging",
+      "max_score": 15
+    },
+    {
+      "name": "At least 4 FAQ questions",
+      "description": "The collapsible-content FAQ section in templates/index.json has at least 4 collapsible_row blocks",
+      "max_score": 10
+    },
+    {
+      "name": "Full homepage structure",
+      "description": "templates/index.json contains all standard sections: image-banner hero, custom-liquid anchors, multicolumn how-it-works, multicolumn tiers, collage, multicolumn testimonials, collapsible-content FAQ, newsletter email capture",
+      "max_score": 7
+    },
+    {
+      "name": "Both files valid JSON",
+      "description": "Both templates/index.json and templates/product.subscription.json are valid JSON parseable without errors",
+      "max_score": 8
+    }
+  ]
+}

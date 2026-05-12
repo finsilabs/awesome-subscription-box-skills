@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent captures tone classification along the specific axes the skill specifies — formal/casual, masculine/feminine/neutral, and technical/lifestyle — in voice.md, rather than giving a vague tonal description. Also checks that the full voice.md required content is present.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Formal/casual axis stated",
+      "description": "voice.md explicitly positions the brand on the formal-to-casual spectrum (e.g., 'casual', 'conversational', 'semi-formal', 'informal') — not just implied through examples",
+      "max_score": 15
+    },
+    {
+      "name": "Gender-coded or neutral axis stated",
+      "description": "voice.md explicitly describes the brand's tone as masculine-coded, feminine-coded, gender-neutral, or a specific variant (e.g., 'empowering feminine', 'neutral-inclusive') — not just implied",
+      "max_score": 15
+    },
+    {
+      "name": "Technical/lifestyle axis stated",
+      "description": "voice.md explicitly places the brand on the technical-to-lifestyle spectrum (e.g., 'lifestyle-forward', 'beauty-expert', 'accessible, not clinical') — not just implied",
+      "max_score": 15
+    },
+    {
+      "name": "Tone summary section",
+      "description": "voice.md has a dedicated tone summary section (a labeled heading or block) that consolidates the tonal description, not just scattered mentions",
+      "max_score": 10
+    },
+    {
+      "name": "Vocabulary — words to use",
+      "description": "voice.md contains a list or section of specific words or phrases the brand should use",
+      "max_score": 10
+    },
+    {
+      "name": "Vocabulary — words to avoid",
+      "description": "voice.md contains a list or section of specific words or phrases that are off-brand or should be avoided",
+      "max_score": 10
+    },
+    {
+      "name": "3–5 sample paragraphs",
+      "description": "voice.md contains between 3 and 5 sample paragraphs written in the brand's voice",
+      "max_score": 10
+    },
+    {
+      "name": "Opening lines",
+      "description": "voice.md includes examples of common opening lines or how the brand typically begins communications",
+      "max_score": 8
+    },
+    {
+      "name": "Closing lines",
+      "description": "voice.md includes examples of common closing lines or how the brand typically ends communications",
+      "max_score": 7
+    }
+  ]
+}

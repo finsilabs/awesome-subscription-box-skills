@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent applies the correct budget allocation percentages by funnel type and lifecycle stage from the ads-calendar-plan skill. The brand is new (no ads history), so the agent must apply the conservative starting budget guidance and the lifecycle-stage allocation table.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Cold acquisition % range",
+      "description": "The cold acquisition funnel is allocated 60-70% of total monthly budget (for the baseline/default allocation — not necessarily pre-launch stage)",
+      "max_score": 10
+    },
+    {
+      "name": "Retargeting % range",
+      "description": "Retargeting is allocated 15-25% of total monthly budget in the default/baseline allocation",
+      "max_score": 10
+    },
+    {
+      "name": "Brand/awareness % range",
+      "description": "Brand/awareness is allocated 5-10% of total monthly budget in the default allocation",
+      "max_score": 8
+    },
+    {
+      "name": "Pre-launch stage percentages",
+      "description": "Pre-launch stage shows approximately 80% acquisition, 10% retargeting, 10% brand (or matches the exact lifecycle table values)",
+      "max_score": 12
+    },
+    {
+      "name": "Launch stage percentages",
+      "description": "Launch (first 30 days) stage shows approximately 70% acquisition, 25% retargeting, 5% brand",
+      "max_score": 12
+    },
+    {
+      "name": "Scaling stage percentages",
+      "description": "Scaling (next 60 days) stage shows approximately 60% acquisition, 30% retargeting, 10% brand",
+      "max_score": 8
+    },
+    {
+      "name": "Mature stage percentages",
+      "description": "Mature (post-90 days) stage shows approximately 50% acquisition, 35% retargeting, 15% brand",
+      "max_score": 8
+    },
+    {
+      "name": "Conservative cold ad set budget",
+      "description": "Recommends starting cold acquisition ad set daily budgets in the $30-50/day range (for a brand with no ads history)",
+      "max_score": 12
+    },
+    {
+      "name": "Conservative retargeting budget",
+      "description": "Recommends starting retargeting ad set daily budgets in the $10-20/day range",
+      "max_score": 10
+    },
+    {
+      "name": "Catalog budget range",
+      "description": "If catalog/dynamic ads are mentioned, the recommended daily budget is in the $20-40/day range OR the agent notes catalog is less relevant for a 3-SKU subscription brand",
+      "max_score": 10
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent produces a correctly structured Klaviyo campaign with the required HTML compliance elements, correct API revision header, proper campaign scheduling method, and keeps the campaign in DRAFT status for human review.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Subject line length",
+      "description": "The email subject line in the campaign payload is under 50 characters",
+      "max_score": 8
+    },
+    {
+      "name": "Preview text length",
+      "description": "The preview text (if present) is under 100 characters and does NOT repeat the same wording as the subject line",
+      "max_score": 8
+    },
+    {
+      "name": "Unsubscribe tag in HTML",
+      "description": "The HTML template contains the Klaviyo unsubscribe tag: {% unsubscribe 'Unsubscribe' %} or equivalent Klaviyo unsubscribe syntax",
+      "max_score": 12
+    },
+    {
+      "name": "Postal address in footer",
+      "description": "The HTML template footer contains a postal/mailing address (required by CAN-SPAM)",
+      "max_score": 10
+    },
+    {
+      "name": "API revision header",
+      "description": "The Python script uses revision '2025-10-15' in the Klaviyo API request headers",
+      "max_score": 12
+    },
+    {
+      "name": "Campaign in DRAFT / not auto-sent",
+      "description": "The Python script creates the campaign without immediately sending it (no auto-send call), and/or the output notes the campaign is in DRAFT for human review",
+      "max_score": 10
+    },
+    {
+      "name": "Send strategy method static",
+      "description": "The campaign payload uses send_strategy.method = 'static' (not 'immediate' or other values)",
+      "max_score": 10
+    },
+    {
+      "name": "ISO 8601 send datetime",
+      "description": "The scheduled send time is specified in ISO 8601 format (e.g., '2026-06-15T09:00:00-04:00' or similar)",
+      "max_score": 8
+    },
+    {
+      "name": "Concrete email opening",
+      "description": "The email body does NOT start with a generic phrase like 'In today's fast-paced world' — it opens with a concrete, specific line",
+      "max_score": 8
+    },
+    {
+      "name": "Single CTA button",
+      "description": "The HTML template contains exactly one primary CTA button (not multiple competing calls to action)",
+      "max_score": 7
+    },
+    {
+      "name": "Three-step API pattern",
+      "description": "The Python script follows the three-step pattern: (1) create template, (2) create campaign, (3) assign template to campaign via campaign-message-assign-template endpoint",
+      "max_score": 7
+    }
+  ]
+}

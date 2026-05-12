@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent produces the ads calendar with all required output sections, correct audience refresh cadence (lookalike 60-90 days, interest stack 30-45 days, email sync monthly), correct creative refresh cadence per funnel stage, and references the Klaviyo calendar for paid-email coordination.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Always-on baseline table",
+      "description": "Output includes an always-on baseline table with columns for campaign name, daily budget, audience, and creative cadence",
+      "max_score": 10
+    },
+    {
+      "name": "Quarterly schedule sections",
+      "description": "Output has explicit Q1/Q2/Q3/Q4 (or monthly breakdown) sections showing time-bound budget changes",
+      "max_score": 8
+    },
+    {
+      "name": "Creative production schedule",
+      "description": "Output includes a creative production schedule section showing asset due dates, associated campaigns, and where the brief comes from",
+      "max_score": 10
+    },
+    {
+      "name": "Lookalike audience refresh cadence",
+      "description": "1% lookalike audiences are scheduled to refresh every 60-90 days (not every month, not annually)",
+      "max_score": 10
+    },
+    {
+      "name": "Interest stack refresh cadence",
+      "description": "Interest stack audiences are scheduled to refresh every 30-45 days",
+      "max_score": 10
+    },
+    {
+      "name": "Email subs sync monthly",
+      "description": "Custom audience from email subscribers is synced from Klaviyo monthly (or a monthly sync is noted)",
+      "max_score": 10
+    },
+    {
+      "name": "Klaviyo calendar coordination",
+      "description": "Output references the Klaviyo calendar file path (~/.claude/brand-voice-vault/brewbox/calendar/2026.md or similar) and notes alignment between ad pulses and email sends",
+      "max_score": 10
+    },
+    {
+      "name": "Total budget pacing table",
+      "description": "Output includes a total budget pacing table showing monthly budget totals",
+      "max_score": 8
+    },
+    {
+      "name": "Open questions section",
+      "description": "Output includes an open questions section with outstanding decisions (e.g., TikTok expansion, Google testing)",
+      "max_score": 8
+    },
+    {
+      "name": "Cold creative refresh every 2 weeks",
+      "description": "Cold acquisition creative refresh cadence is stated as every 2 weeks (not monthly or weekly)",
+      "max_score": 10
+    },
+    {
+      "name": "Retargeting creative refresh 3-4 weeks",
+      "description": "Retargeting creative refresh cadence is stated as every 3-4 weeks",
+      "max_score": 6
+    }
+  ]
+}

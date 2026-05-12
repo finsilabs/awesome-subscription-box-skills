@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent follows the shopify-blog-post skill's HTML conventions, voice rules, SEO metadata requirements, and blog post structure. The agent should produce correct heading hierarchy (h2 for sections), compliant SEO fields, and a properly structured article with the prescribed skeleton.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Section headings use h2",
+      "description": "article.html uses <h2> tags for section headings throughout — NOT <h1> (which is reserved for the article title rendered by Shopify)",
+      "max_score": 12
+    },
+    {
+      "name": "Paragraphs in p tags",
+      "description": "All body paragraph text in article.html is wrapped in <p> tags (not plain text or only in div tags)",
+      "max_score": 8
+    },
+    {
+      "name": "No generic intro phrase",
+      "description": "The article does NOT open with a generic phrase like 'In today's fast-paced world', 'In the world of', or similar filler opening — it starts with a concrete, specific statement or scene",
+      "max_score": 12
+    },
+    {
+      "name": "Hook paragraph first",
+      "description": "The article opens with a short hook paragraph (1-3 sentences) before moving into the main content — it does not jump straight into a list or background summary",
+      "max_score": 8
+    },
+    {
+      "name": "Soft CTA at end",
+      "description": "The article closes with a soft CTA paragraph linking to a product, collection, or relevant page (not a hard sales pitch, but a gentle invitation)",
+      "max_score": 8
+    },
+    {
+      "name": "Title under 60 characters",
+      "description": "The title field in article-metadata.json is under 60 characters",
+      "max_score": 10
+    },
+    {
+      "name": "Handle is kebab-case and ≤50 chars",
+      "description": "The handle field in article-metadata.json is kebab-case (lowercase, hyphenated, no spaces or underscores) and is 50 characters or fewer",
+      "max_score": 10
+    },
+    {
+      "name": "Summary length 120-160 chars",
+      "description": "The summary field in article-metadata.json is between 120 and 160 characters",
+      "max_score": 10
+    },
+    {
+      "name": "Tags 3-5 lowercase hyphenated",
+      "description": "The tags field contains 3-5 tags, all lowercase and hyphenated (no camelCase, no spaces, no underscores)",
+      "max_score": 10
+    },
+    {
+      "name": "Summary includes primary keyword",
+      "description": "The summary field includes the primary keyword from the title at least once",
+      "max_score": 12
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "context": "Tests whether the agent applies the correct BFCM budget bump percentages, creative refresh cadence by funnel stage, and produces the required calendar format with always-on baseline, quarterly schedule, and coordination with Klaviyo email sends.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "BFCM core budget bump",
+      "description": "The BFCM core period (approximately Nov 28-Dec 2) shows a budget increase of +200% to +300% over baseline",
+      "max_score": 12
+    },
+    {
+      "name": "Pre-BFCM budget bump",
+      "description": "The pre-BFCM period (early-to-mid November) shows a budget increase of approximately +30%",
+      "max_score": 8
+    },
+    {
+      "name": "Holiday gift budget bump",
+      "description": "The December holiday gifting period shows a budget increase of approximately +50%",
+      "max_score": 8
+    },
+    {
+      "name": "Cold creative refresh cadence",
+      "description": "Cold acquisition creatives are scheduled to rotate every 2 weeks (not monthly, not weekly)",
+      "max_score": 12
+    },
+    {
+      "name": "Retargeting creative refresh cadence",
+      "description": "Retargeting creatives are scheduled to rotate every 3-4 weeks",
+      "max_score": 12
+    },
+    {
+      "name": "BFCM creative cadence",
+      "description": "BFCM-period creatives are described as always-fresh or refreshed daily/very frequently during BFCM week",
+      "max_score": 10
+    },
+    {
+      "name": "Always-on baseline table",
+      "description": "Output includes an always-on table listing campaigns with daily budget, audience, and creative cadence columns",
+      "max_score": 10
+    },
+    {
+      "name": "Klaviyo coordination section",
+      "description": "Output includes a section on coordinating paid ad pulses with email send dates for BFCM or holiday moments",
+      "max_score": 10
+    },
+    {
+      "name": "Boxing Day or NYE budget",
+      "description": "If December 26+ or New Year period is covered, a budget increase of +30-50% is noted (or budget drop in January)",
+      "max_score": 8
+    },
+    {
+      "name": "Open questions section",
+      "description": "Output includes an open questions section noting outstanding decisions (e.g., platform additions, creative direction questions)",
+      "max_score": 10
+    }
+  ]
+}
