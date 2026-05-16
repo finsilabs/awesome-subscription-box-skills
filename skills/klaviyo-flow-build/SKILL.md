@@ -193,7 +193,7 @@ Scripts (copy to your project's `scripts/` directory and run with `uv run`):
 - `scripts/klaviyo_push_templates.py`
 
 Reference templates / examples (copy or adapt):
-- `examples/02_preorder_welcome_1.html`
+- `references/02_preorder_welcome_1.html`
 
 Reference docs:
 - `REFERENCE.md` — full schema rules, trigger type table, all action types, tradeoffs

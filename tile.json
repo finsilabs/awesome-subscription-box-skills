@@ -1,6 +1,6 @@
 {
   "name": "finsi/awesome-subscription-box-skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "Collection of skills for running a subscription box business",
   "private": true,
   "skills": {
@@ -63,6 +63,9 @@
     },
     "subscription-homepage-build": {
       "path": "skills/subscription-homepage-build/SKILL.md"
+    },
+    "subscription-store-build": {
+      "path": "skills/subscription-store-build/SKILL.md"
     }
   }
 }

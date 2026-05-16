@@ -118,4 +118,4 @@ Scripts (copy to your project's `scripts/` directory and run with `uv run`):
 - `scripts/klaviyo_push_templates.py`
 
 Reference templates / examples (copy or adapt):
-- `examples/01_newsletter_welcome.html`
+- `references/01_newsletter_welcome.html`

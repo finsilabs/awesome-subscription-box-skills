@@ -147,5 +147,5 @@ Scripts (copy to your project's `scripts/` directory and run with `uv run`):
 - `scripts/upload_staged.py`
 
 Reference templates / examples (copy or adapt):
-- `examples/product.subscription.json`
+- `references/product.subscription.json`
 - `PROMPTS.md` — prompt patterns and worked examples for product photography
