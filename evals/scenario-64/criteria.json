@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly implements the image_asset theme-asset fallback pattern in the image-banner section when Shopify Files library access is unavailable. The pattern requires three specific changes: adding a text setting to the schema, adding a Liquid branch that renders the asset_url, and using the image_asset key in template JSON instead of shopify://shop_images/ URLs.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "image_asset text setting in schema",
+      "description": "The updated image-banner.liquid adds a text setting with id \"image_asset\" to the schema settings array",
+      "max_score": 20
+    },
+    {
+      "name": "Setting label present",
+      "description": "The image_asset setting has a label field (e.g. 'Theme asset filename (fallback)')",
+      "max_score": 5
+    },
+    {
+      "name": "Setting info field present",
+      "description": "The image_asset setting has an info field explaining its use (e.g. 'Used when no image is picked')",
+      "max_score": 5
+    },
+    {
+      "name": "Liquid branch for blank picker",
+      "description": "The Liquid code adds a branch that checks for image_asset when the picker image is blank (e.g. elsif section.settings.image_asset != blank or equivalent)",
+      "max_score": 20
+    },
+    {
+      "name": "asset_url filter used",
+      "description": "The Liquid branch renders the image using the asset_url filter (e.g. section.settings.image_asset | asset_url)",
+      "max_score": 15
+    },
+    {
+      "name": "CSS object-fit cover",
+      "description": "The fallback img tag includes style properties for full coverage (width:100%; height:100%; object-fit:cover or equivalent)",
+      "max_score": 5
+    },
+    {
+      "name": "Template uses image_asset key",
+      "description": "templates/index.json uses the \"image_asset\" key with a filename value (e.g. \"image_asset\": \"hero.png\") for the image-banner section",
+      "max_score": 15
+    },
+    {
+      "name": "No shopify://shop_images/ in template",
+      "description": "templates/index.json does NOT use a \"image\": \"shopify://shop_images/...\" value for the banner (relies on image_asset instead)",
+      "max_score": 10
+    },
+    {
+      "name": "Original image picker preserved",
+      "description": "The image_picker setting and its normal rendering path are still present in the updated section (not removed)",
+      "max_score": 5
+    }
+  ]
+}

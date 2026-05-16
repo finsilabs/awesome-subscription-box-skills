@@ -1,0 +1,66 @@
+{
+  "context": "Tests whether the agent produces a complete scope intake document that captures all seven required pieces of information specified in Phase 0 of the subscription store build skill. The agent must identify what is missing from the client brief and ask for it explicitly, especially treating the tier structure as a prerequisite before proceeding.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Brand name & description",
+      "description": "Document confirms brand name and asks for or includes a one-line description of the box",
+      "max_score": 5
+    },
+    {
+      "name": "Category field",
+      "description": "Document asks for or confirms the box category/niche (e.g. stationery, beauty, food)",
+      "max_score": 5
+    },
+    {
+      "name": "Tier names requested",
+      "description": "Document asks for the official name for each subscription tier",
+      "max_score": 10
+    },
+    {
+      "name": "Tier prices requested",
+      "description": "Document asks for the confirmed monthly price for each tier (or flags that pricing is undecided)",
+      "max_score": 10
+    },
+    {
+      "name": "Tier value propositions",
+      "description": "Document asks for a one-line value proposition or description for each tier",
+      "max_score": 10
+    },
+    {
+      "name": "Cadence field",
+      "description": "Document asks for the shipping cadence (monthly, weekly, or quarterly)",
+      "max_score": 10
+    },
+    {
+      "name": "Launch state field",
+      "description": "Document asks whether the launch will be live immediately or as a pre-order, and requests a ship date if pre-order",
+      "max_score": 10
+    },
+    {
+      "name": "Store URL confirmed",
+      "description": "Document confirms or asks for the *.myshopify.com store handle",
+      "max_score": 5
+    },
+    {
+      "name": "Existing brand site",
+      "description": "Document asks whether there is an existing brand website or URL to extract brand voice from",
+      "max_score": 10
+    },
+    {
+      "name": "Tier structure prerequisite",
+      "description": "Document explicitly identifies tier structure (names, prices, value props) as a prerequisite before other build work can begin",
+      "max_score": 10
+    },
+    {
+      "name": "Missing fields highlighted",
+      "description": "Document clearly marks which fields are missing or incomplete from the client brief (at minimum: tier names, confirmed pricing, value props, cadence, launch state, existing brand site)",
+      "max_score": 10
+    },
+    {
+      "name": "1-4 tier range acknowledged",
+      "description": "Document supports or acknowledges the 1–4 tier range (not requiring exactly 2 or any fixed number)",
+      "max_score": 5
+    }
+  ]
+}

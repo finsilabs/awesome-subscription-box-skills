@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent includes the two mandatory visual review checkpoints specified in the skill — after the homepage phase (Phase 5) and after the navigation phase (Phase 7) — and whether the agent correctly specifies preview/unpublished theme deployment rather than live deployment for these review pushes.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Preview push after homepage phase",
+      "description": "Runbook includes a step to push the theme to a preview or unpublished theme after the homepage is built (Phase 5 / after templates/index.json is complete)",
+      "max_score": 20
+    },
+    {
+      "name": "Visual check after homepage",
+      "description": "Runbook includes a step to visually verify the homepage in a browser (via browser MCP, preview URL, or equivalent) after the homepage push",
+      "max_score": 15
+    },
+    {
+      "name": "Preview push after navigation phase",
+      "description": "Runbook includes a step to push the theme to a preview or unpublished theme after the navigation/menus are wired (Phase 7)",
+      "max_score": 20
+    },
+    {
+      "name": "Visual check after navigation",
+      "description": "Runbook includes a step to visually verify the store after the navigation push",
+      "max_score": 10
+    },
+    {
+      "name": "Two distinct checkpoints",
+      "description": "The two visual review checkpoints are in different phases (one after homepage, one after navigation) — not merged into a single final check",
+      "max_score": 10
+    },
+    {
+      "name": "Preview not live for review pushes",
+      "description": "The visual review pushes target an unpublished or preview theme, NOT the live/published theme",
+      "max_score": 15
+    },
+    {
+      "name": "--allow-live flag noted",
+      "description": "Runbook mentions or includes the --allow-live flag (or warning about it) for any push to the live theme",
+      "max_score": 5
+    },
+    {
+      "name": "Visual bug types identified",
+      "description": "Runbook mentions at least two types of visual bugs to check for (e.g. misaligned cards, invisible buttons, text overlap, mobile layout)",
+      "max_score": 5
+    }
+  ]
+}

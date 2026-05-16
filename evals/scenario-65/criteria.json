@@ -1,0 +1,41 @@
+{
+  "context": "Tests whether the agent implements the product media override in main-product.liquid by branching on product.handle using a case/when structure, assigning a tier-specific theme asset, rendering it with the asset_url filter, and falling back to the product-media-gallery render tag for non-tier products.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Branches on product.handle",
+      "description": "main-product.liquid includes a conditional that checks product.handle (via case/when, if/elsif, or equivalent Liquid)",
+      "max_score": 20
+    },
+    {
+      "name": "All three tier handles mapped",
+      "description": "The branching logic maps all three tier handles (base-camp or basecamp, ridge-runner or ridgerunner, summit) to tier-specific assets",
+      "max_score": 15
+    },
+    {
+      "name": "Assigns tier_asset variable",
+      "description": "The code assigns a variable (tier_asset or similar) with the asset filename for each matched handle",
+      "max_score": 15
+    },
+    {
+      "name": "Renders with asset_url filter",
+      "description": "The tier image is rendered using the asset_url Liquid filter (e.g. tier_asset | asset_url)",
+      "max_score": 20
+    },
+    {
+      "name": "Falls back to product-media-gallery",
+      "description": "When no tier handle matches (else branch), the code renders the standard product-media-gallery (render 'product-media-gallery' or equivalent)",
+      "max_score": 15
+    },
+    {
+      "name": "Override replaces gallery in media wrapper",
+      "description": "The tier asset image replaces or wraps the gallery render tag within the media wrapper area of the section (not placed in a separate unrelated location)",
+      "max_score": 10
+    },
+    {
+      "name": "Asset filenames match expected names",
+      "description": "The code references asset filenames that correspond to the tier assets described in the task (tier_basecamp.png, tier_ridgerunner.png, tier_summit.png or very similar)",
+      "max_score": 5
+    }
+  ]
+}

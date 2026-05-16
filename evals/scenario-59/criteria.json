@@ -1,0 +1,66 @@
+{
+  "context": "Tests whether the agent correctly sequences all build phases for a subscription box store according to the dependency chain, and articulates why each ordering constraint exists. The agent should demonstrate understanding of the hard dependencies between phases — not just list phases, but explain why each must precede the next.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Brand voice first",
+      "description": "Brand voice / vault phase appears before theme and all other phases in the plan",
+      "max_score": 10
+    },
+    {
+      "name": "Products before homepage",
+      "description": "Tier products phase appears before homepage build phase in the sequence",
+      "max_score": 10
+    },
+    {
+      "name": "Subscriptions before launch",
+      "description": "Subscriptions/selling-plan configuration phase appears before any launch or QA phase",
+      "max_score": 10
+    },
+    {
+      "name": "Imagery after products and pages",
+      "description": "Imagery generation phase appears after both tier products and supporting pages phases",
+      "max_score": 10
+    },
+    {
+      "name": "Email after imagery",
+      "description": "Email automation phase appears after the imagery phase",
+      "max_score": 10
+    },
+    {
+      "name": "QA as final phase",
+      "description": "QA is the last phase in the sequence, after email automation",
+      "max_score": 10
+    },
+    {
+      "name": "Dead-link rationale",
+      "description": "Plan explains that building the homepage before products would create dead links (to /products/<handle>)",
+      "max_score": 10
+    },
+    {
+      "name": "Brand voice rationale",
+      "description": "Plan explains that brand voice must come first so all copy phases (theme, homepage, email) draw from one source",
+      "max_score": 10
+    },
+    {
+      "name": "Specialist skill references",
+      "description": "Plan names specialist skills for at least 4 phases (e.g. brand-voice-extract, shopify-product-with-images, subscription-homepage-build, klaviyo-flow-build)",
+      "max_score": 5
+    },
+    {
+      "name": "Handle write-down step",
+      "description": "Plan mentions writing down / documenting tier product handles after the products phase, before subsequent phases",
+      "max_score": 5
+    },
+    {
+      "name": "Visual review checkpoint",
+      "description": "Plan includes at least one visual review / preview-theme push checkpoint during the build sequence",
+      "max_score": 5
+    },
+    {
+      "name": "Imagery rationale",
+      "description": "Plan explains that imagery is generated late because products and pages must exist first to know the full image set needed",
+      "max_score": 5
+    }
+  ]
+}
