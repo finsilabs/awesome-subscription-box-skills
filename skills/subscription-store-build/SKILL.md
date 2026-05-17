@@ -97,7 +97,7 @@ Wire the header and footer menus to the pages and the tier collection. Header: H
 
 ### Phase 8 — Imagery
 
-With every page and product in place, you know the exact image manifest. Generate the set in one batch via the project's Nano Banana script (`scripts/generate_images.py` reading a prompts JSON). Keep one consistent visual treatment across all of them — same palette, same lighting, same era — so the store reads as one brand. See `references/build-playbook.md` for the image manifest and the asset-fallback pattern when the Shopify Files MCP is unavailable.
+With every page and product in place, you know the exact image manifest. Generate the set in one batch via the project's Nano Banana script (`scripts/generate_images.py` reading a prompts JSON). Keep one consistent visual treatment across all of them — same palette, same lighting, same era — so the store reads as one brand. See [references/build-playbook.md](references/build-playbook.md) for the image manifest and the asset-fallback pattern when the Shopify Files MCP is unavailable.
 
 ### Phase 9 — Email automation → `klaviyo-flow-build` + `klaviyo-campaign-create`
 
@@ -117,7 +117,7 @@ The failure mode of a multi-phase build is drift — phase 9 forgets what phase 
 - **One set of tier handles.** Decided in Phase 3, referenced verbatim everywhere after. Keep them written down.
 - **One voice.** Theme copy, page copy, and email copy all read `voice.md`. The store should sound like one person.
 - **Pre-order in three places.** If launching pre-order: announcement bar, every tier PDP (a banner above `main`), and the email welcome series all need the same ship-date line. Miss one and the customer gets mixed signals.
-- **Imagery is theme-asset-portable.** If the Shopify Files MCP is down, drop images into the theme `assets/` folder and use the `image_asset` fallback pattern (see `references/build-playbook.md`) rather than blocking the whole build.
+- **Imagery is theme-asset-portable.** If the Shopify Files MCP is down, drop images into the theme `assets/` folder and use the `image_asset` fallback pattern (see [references/build-playbook.md](references/build-playbook.md)) rather than blocking the whole build.
 
 ## A realistic build is iterative
 
@@ -125,7 +125,7 @@ Don't try to land all ten phases in one perfect pass. Real builds loop: scaffold
 
 ## Reference
 
-`references/build-playbook.md` — the concrete artifact checklist, the image manifest, the `image_asset` theme-asset fallback pattern, schema gotchas, and the canonical example (the Gear Head Box build at `~/dev/gearheadbox/`).
+[references/build-playbook.md](references/build-playbook.md) — the concrete artifact checklist, the image manifest, the `image_asset` theme-asset fallback pattern, schema gotchas, and the canonical example (the Gear Head Box build at `~/dev/gearheadbox/`).
 
 ## Cross-skill map
 
