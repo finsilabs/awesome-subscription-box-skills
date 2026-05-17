@@ -52,7 +52,7 @@ git commit -q -m "Initial commit: cloned theme '<theme-name>' from <store>"
 ls config templates sections | head -30
 ```
 
-Confirm the standard Dawn-or-derivative directories are present.
+Confirm the standard Shopify theme directories are present (Horizon, Dawn, or any derivative all share this layout).
 
 ### 5. Hand off
 

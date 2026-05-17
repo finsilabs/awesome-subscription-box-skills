@@ -1,46 +1,41 @@
 {
-  "context": "Tests whether the agent uses only valid Dawn multicolumn image_ratio values: adapt, portrait, square, circle. Invalid values like 'landscape', 'wide', '16:9', '4:3', 'cover', 'contain', or others will cause theme validation failures.",
+  "context": "Tests whether the agent uses only valid Horizon 'image' block image_ratio values: adapt, portrait, square, landscape. Horizon has no 'multicolumn' section — images live in 'image' blocks (inside group/section containers), and image_ratio is a per-block setting. Invalid values like 'circle' (a Dawn value), 'wide', '16:9', '4:3', 'cover', or 'contain' are rejected by Horizon schema validation.",
   "type": "weighted_checklist",
   "checklist": [
     {
       "name": "All image_ratio values are valid",
-      "description": "Every image_ratio value on multicolumn sections in templates/index.json is one of: adapt, portrait, square, circle",
-      "max_score": 20
+      "description": "Every image_ratio value on image blocks in templates/index.json is one of: adapt, portrait, square, landscape",
+      "max_score": 22
     },
     {
       "name": "No invalid image_ratio strings",
-      "description": "The strings 'landscape', 'wide', '16:9', '4:3', '1:1', 'cover', 'contain', 'fill', 'crop' do NOT appear as image_ratio values in templates/index.json",
+      "description": "The strings 'circle', 'wide', '16:9', '4:3', '1:1', 'cover', 'contain', 'fill', 'crop' do NOT appear as image_ratio values in templates/index.json",
       "max_score": 18
     },
     {
-      "name": "image_ratio on how-it-works multicolumn",
-      "description": "The how-it-works multicolumn section has an explicit image_ratio setting with a valid value (adapt, portrait, square, or circle)",
-      "max_score": 10
+      "name": "image_ratio on tier card images",
+      "description": "The image blocks inside the three tier card groups each have an explicit image_ratio setting with a valid value (adapt, portrait, square, or landscape)",
+      "max_score": 14
     },
     {
-      "name": "image_ratio on tiers multicolumn",
-      "description": "The tier picker multicolumn section has an explicit image_ratio setting with a valid value (adapt, portrait, square, or circle)",
+      "name": "image_ratio on testimonial images",
+      "description": "The image blocks in the testimonials section have an explicit image_ratio setting with a valid value",
       "max_score": 12
     },
     {
-      "name": "image_ratio on testimonials multicolumn",
-      "description": "The testimonials multicolumn section has an explicit image_ratio setting with a valid value (adapt, portrait, square, or circle)",
+      "name": "image_ratio on recent boxes gallery images",
+      "description": "The image blocks in the recent boxes gallery section have an explicit image_ratio setting with a valid value",
       "max_score": 10
     },
     {
-      "name": "Consistent image_ratio on tiers",
-      "description": "All three tier column blocks in the tier picker use the same image_ratio (set at the section level), ensuring a uniform tier card presentation",
-      "max_score": 8
-    },
-    {
-      "name": "All three multicolumn sections present",
-      "description": "templates/index.json contains three distinct multicolumn sections: how-it-works, tier picker, and testimonials — each with explicit image_ratio settings",
+      "name": "Consistent image_ratio across tier cards",
+      "description": "All three tier card image blocks use the same image_ratio value, ensuring a uniform tier card presentation",
       "max_score": 8
     },
     {
       "name": "Full section structure",
-      "description": "templates/index.json contains all expected sections: image-banner hero, custom-liquid anchors, how-it-works multicolumn, tiers multicolumn, collage, testimonials multicolumn, collapsible-content FAQ, newsletter email capture",
-      "max_score": 8
+      "description": "templates/index.json contains all expected parts of the Horizon homepage: a 'hero' section, two 'custom-liquid' anchors, and 'section' containers for how-it-works, tiers, recent boxes gallery, testimonials, FAQ (with an 'accordion' block), and email capture (with an 'email-signup' block)",
+      "max_score": 10
     },
     {
       "name": "Valid JSON",

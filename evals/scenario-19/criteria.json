@@ -1,5 +1,5 @@
 {
-  "context": "Tests whether the agent produces the specific CSS pattern required to make multicolumn tier cards fully clickable via a stretched-link overlay. The skill specifies exact CSS selectors and properties: .multicolumn-card { position: relative }, a ::before pseudo-element with inset: 0 and z-index: 1, and the link itself with position: relative and z-index: 2.",
+  "context": "Tests whether the agent makes Horizon tier cards fully clickable the Horizon-native way. Horizon 'group' blocks have a built-in 'link' setting — populating it makes the entire card a single clickable link with no CSS overlay/stretched-link hack required (the Dawn-era '.multicolumn-card ::before' technique is obsolete on Horizon). The agent should set 'link' on each tier-card group block and add a CSS hover affordance so the clickable card reads as interactive.",
   "type": "weighted_checklist",
   "checklist": [
     {
@@ -8,34 +8,29 @@
       "max_score": 8
     },
     {
-      "name": ".multicolumn-card position:relative",
-      "description": "assets/custom.css contains a rule targeting .multicolumn-card that includes position: relative",
+      "name": "Tier card group blocks have link set",
+      "description": "Each of the 3 tier-card 'group' blocks in templates/index.json has a non-empty 'link' setting pointing to its product URL (/products/taster, /products/enthusiast, /products/cellar)",
+      "max_score": 26
+    },
+    {
+      "name": "Native group link used (no CSS overlay hack)",
+      "description": "The agent makes the card clickable via the group block's native 'link' setting — it does NOT rely on a Dawn-era CSS stretched-link hack (a ::before pseudo-element with inset:0 over a '.multicolumn-card'), which is unnecessary and incorrect on Horizon",
       "max_score": 18
     },
     {
-      "name": "::before pseudo-element overlay",
-      "description": "assets/custom.css contains a ::before pseudo-element rule on the multicolumn card link (targeting .multicolumn-card and the link's ::before), with content: '' or content: \"\"",
-      "max_score": 15
+      "name": "CSS hover affordance present",
+      "description": "assets/custom.css contains a :hover rule on the tier card that provides a visual affordance (e.g., cursor: pointer, transform/translate lift, box-shadow, or border change) so visitors recognize the whole card is clickable",
+      "max_score": 18
     },
     {
-      "name": "::before has inset:0 or equivalent",
-      "description": "The ::before pseudo-element rule in assets/custom.css sets inset: 0 (or equivalent top/right/bottom/left: 0) to cover the full card area",
-      "max_score": 15
-    },
-    {
-      "name": "::before z-index lower than link",
-      "description": "The ::before pseudo-element has a lower z-index than the explicit link element (e.g., overlay z-index: 1, link z-index: 2), ensuring the link text still has its own focus ring",
+      "name": "Subscribe button retained on each card",
+      "description": "Each of the 3 tier cards still contains a 'button' block with a 'Subscribe to [tier]' label and a link to the matching product page",
       "max_score": 12
     },
     {
-      "name": "Link position:relative",
-      "description": "assets/custom.css includes position: relative on the .multicolumn-card link selector so it appears above the ::before overlay",
-      "max_score": 12
-    },
-    {
-      "name": "Tier cards have link_label and link",
-      "description": "Each of the 3 tier column blocks in templates/index.json has both link_label and link fields populated with non-empty values",
-      "max_score": 12
+      "name": "Full homepage structure",
+      "description": "templates/index.json contains all expected parts of the Horizon homepage: a 'hero' section, two 'custom-liquid' anchors, and 'section' containers for how-it-works, tiers, recent drops, testimonials, FAQ (with an 'accordion' block), and email capture (with an 'email-signup' block)",
+      "max_score": 10
     },
     {
       "name": "Valid JSON",

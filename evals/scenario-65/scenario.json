@@ -1,1 +1,1 @@
-{ "description": "Product media override in main-product.liquid per tier handle", "include": ["./inputs"] }
+{ "description": "Product media override in the Horizon _product-media-gallery block per tier handle", "include": ["./inputs"] }

@@ -6,7 +6,7 @@ WildRoots is a monthly indoor plant subscription — subscribers receive two to 
 
 The marketing team has done user testing and learned that visitors who immediately understand the tier options have twice the conversion rate of those who scroll to find them. They also want a "how it works" education section for first-time plant subscription customers who aren't sure what to expect. The CTA strategy in the hero must therefore drive visitors directly to these two sections as their first action.
 
-The dev team needs a complete Dawn homepage template. The hero banner should have exactly two calls to action: a primary action that guides conversion-ready visitors straight to where they choose their subscription tier, and a secondary action for curious visitors who first want to understand the process.
+The dev team needs a complete Horizon homepage template. The hero banner should have exactly two calls to action: a primary action that guides conversion-ready visitors straight to where they choose their subscription tier, and a secondary action for curious visitors who first want to understand the process.
 
 ## Output Specification
 

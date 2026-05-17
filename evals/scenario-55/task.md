@@ -10,7 +10,7 @@ The developer has the Shopify Page record created. They need the custom JSON tem
 
 ## Output Specification
 
-Produce `templates/page.how-it-works.json` — a Dawn-compatible JSON template for the how-it-works education page. The template must include:
+Produce `templates/page.how-it-works.json` — a Horizon-compatible JSON template for the how-it-works education page. The template must include:
 
 - A hero section
 - The standard section that renders page body content

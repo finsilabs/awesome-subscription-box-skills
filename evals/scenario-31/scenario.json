@@ -1,1 +1,1 @@
-{ "description": "Dawn theme scaffold — git clone sequence, custom.css, theme.liquid link, and gitignore", "include": ["./inputs"] }
+{ "description": "Horizon theme scaffold — git clone sequence, custom.css, stylesheets.liquid link, and gitignore", "include": ["./inputs"] }

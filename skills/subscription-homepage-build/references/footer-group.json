@@ -1,53 +1,111 @@
 {
-  "name": "t:sections.footer.name",
   "type": "footer",
+  "name": "t:names.footer",
   "sections": {
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
+        "brand_group": {
+          "type": "group",
+          "name": "Brand",
           "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "inherit_color_scheme": true
+          },
+          "blocks": {
+            "brand_heading": {
+              "type": "text",
+              "name": "Heading",
+              "settings": {
+                "text": "<h3>Built by gearheads, for gearheads</h3>",
+                "type_preset": "h4",
+                "alignment": "left",
+                "color": "var(--color-foreground-heading)"
+              }
+            },
+            "brand_text": {
+              "type": "text",
+              "name": "Text",
+              "settings": {
+                "text": "<p>Gear Head Box is a monthly subscription for the kind of guy who'd rather rebuild a carb than scroll Instagram. Apex-spec curation, no algorithmic junk.</p>",
+                "type_preset": "rte",
+                "alignment": "left",
+                "color": "var(--color-foreground)"
+              }
+            }
+          },
+          "block_order": ["brand_heading", "brand_text"]
+        },
+        "quick_links": {
+          "type": "menu",
+          "name": "Quick links",
+          "settings": {
+            "menu": "footer",
             "heading": "Quick links",
-            "menu": "footer"
+            "menu_spacing": 12,
+            "inherit_color_scheme": true,
+            "heading_preset": "h6",
+            "link_preset": "paragraph"
           }
         },
-        "footer-1": {
-          "type": "link_list",
+        "email_signup": {
+          "type": "email-signup",
+          "name": "Email signup",
           "settings": {
-            "heading": "Info",
-            "menu": "footer"
-          }
-        },
-        "footer-2": {
-          "type": "text",
-          "settings": {
-            "heading": "Built by gearheads, for gearheads",
-            "subtext": "<p>Gear Head Box is a monthly subscription for the kind of guy who'd rather rebuild a carb than scroll Instagram. Apex-spec curation, no algorithmic junk.<\/p>"
+            "width": "fill",
+            "inherit_color_scheme": true,
+            "heading": "Get the inside line",
+            "heading_preset": "h6",
+            "label": "Sign up",
+            "style_class": "button",
+            "integrated_button": true
           }
         }
       },
-      "block_order": [
-        "footer-0",
-        "footer-1",
-        "footer-2"
-      ],
+      "block_order": ["brand_group", "quick_links", "email_signup"],
+      "name": "t:names.footer",
       "settings": {
+        "section_width": "page-width",
+        "gap": 20,
         "color_scheme": "scheme-4",
-        "newsletter_enable": true,
-        "newsletter_heading": "Get the inside line",
-        "show_social": true,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
-        "payment_enable": true,
-        "show_policy": false,
-        "margin_top": 48,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding-block-start": 36,
+        "padding-block-end": 36
       }
+    },
+    "utilities": {
+      "type": "footer-utilities",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 24,
+        "divider_thickness": 1,
+        "color_scheme": "scheme-4",
+        "padding-block-start": 12,
+        "padding-block-end": 16
+      },
+      "blocks": {
+        "copyright": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": true,
+            "font_size": "0.75rem",
+            "case": "none"
+          }
+        },
+        "social_icons": {
+          "type": "social-links",
+          "settings": {
+            "instagram_url": "https://www.instagram.com",
+            "youtube_url": "https://www.youtube.com",
+            "tiktok_url": "https://www.tiktok.com"
+          }
+        }
+      },
+      "block_order": ["copyright", "social_icons"]
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["footer", "utilities"]
 }

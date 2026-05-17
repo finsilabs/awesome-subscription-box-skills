@@ -1,25 +1,25 @@
 {
-  "context": "Tests two complementary placement rules: (1) collapsible-content FAQ row_content must not contain <code> HTML tags (they are rejected by Dawn schema validation) — use <strong> for emphasis instead; and (2) pre-order/pre-launch messaging belongs on tier product templates via a custom-liquid section, not embedded in the homepage template.",
+  "context": "Tests two complementary placement rules on a Horizon theme: (1) FAQ answer text must not contain <code> HTML tags — the Horizon FAQ is built with an 'accordion' block whose '_accordion-row' rows hold 'text' blocks, and the 'richtext' setting type rejects <code> tags, so <strong> should be used for emphasis instead; and (2) pre-order/pre-launch messaging belongs on the tier product template via a 'custom-liquid' section placed before the main 'product-information' section, not embedded in the homepage template.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "No <code> tags in FAQ row_content",
-      "description": "The collapsible-content FAQ section's row_content fields in templates/index.json contain NO <code> or </code> tags",
+      "name": "No <code> tags in FAQ answer text",
+      "description": "The FAQ accordion's answer text blocks in templates/index.json contain NO <code> or </code> tags in their richtext content",
       "max_score": 20
     },
     {
       "name": "Strong used for emphasis in FAQ",
-      "description": "At least one FAQ row_content uses <strong> tags for emphasis (instead of <code>) when highlighting technical terms, commands, or key phrases",
+      "description": "At least one FAQ answer text block uses <strong> tags for emphasis (instead of <code>) when highlighting technical terms, commands, or key phrases",
       "max_score": 10
     },
     {
       "name": "Pre-order message on product template",
-      "description": "templates/product.subscription.json exists and contains a section (custom-liquid or announcement-bar type) with pre-order ship date messaging (contains 'ships' or 'pre-order' or 'pre order' text)",
+      "description": "templates/product.subscription.json exists and contains a 'custom-liquid' section with pre-order ship date messaging (contains 'ships' or 'pre-order' or 'pre order' text)",
       "max_score": 18
     },
     {
       "name": "Pre-order on product template before main",
-      "description": "In templates/product.subscription.json, the pre-order announcement section appears before the main product section in the 'order' array",
+      "description": "In templates/product.subscription.json, the pre-order custom-liquid section appears before the main 'product-information' section in the 'order' array",
       "max_score": 12
     },
     {
@@ -29,12 +29,12 @@
     },
     {
       "name": "At least 4 FAQ questions",
-      "description": "The collapsible-content FAQ section in templates/index.json has at least 4 collapsible_row blocks",
+      "description": "The FAQ accordion block in templates/index.json has at least 4 '_accordion-row' blocks",
       "max_score": 10
     },
     {
       "name": "Full homepage structure",
-      "description": "templates/index.json contains all standard sections: image-banner hero, custom-liquid anchors, multicolumn how-it-works, multicolumn tiers, collage, multicolumn testimonials, collapsible-content FAQ, newsletter email capture",
+      "description": "templates/index.json contains all expected parts of the Horizon homepage: a 'hero' section, two 'custom-liquid' anchors, and 'section' containers for how-it-works, tiers, recent drops, testimonials, FAQ (with an 'accordion' block), and email capture (with an 'email-signup' block)",
       "max_score": 7
     },
     {

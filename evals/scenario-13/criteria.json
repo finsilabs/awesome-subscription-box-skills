@@ -1,40 +1,40 @@
 {
-  "context": "Tests whether the agent produces a templates/index.json that follows the prescribed 9-section structure for a Dawn-based subscription-box homepage: hero, how-it-works, tier-picker, recent drops, testimonials, FAQ, email capture — each using the correct Dawn section type and appearing in the specified order.",
+  "context": "Tests whether the agent produces a templates/index.json that follows the prescribed homepage journey for a Horizon-based subscription-box theme: hero, how-it-works, tier-picker, recent drops, testimonials, FAQ, email capture — appearing in the specified order. Horizon is block-based: the hero uses the dedicated 'hero' section and anchors use 'custom-liquid', but how-it-works, tiers, recent drops, testimonials, FAQ, and email capture are built as generic 'section' containers distinguished by the blocks they hold (group, text, image, accordion, email-signup) rather than by distinct Dawn section types.",
   "type": "weighted_checklist",
   "checklist": [
     {
       "name": "Hero section present",
-      "description": "templates/index.json contains a section of type 'image-banner' that serves as the hero",
+      "description": "templates/index.json contains a section of type 'hero' that serves as the hero, with heading/text and call-to-action button blocks",
       "max_score": 6
     },
     {
       "name": "How-it-works section present",
-      "description": "templates/index.json contains a section of type 'multicolumn' used for the how-it-works step explanation",
+      "description": "templates/index.json contains a 'section' container used for the how-it-works step explanation — a heading plus three step items (each typically a 'group' block with title and body text)",
       "max_score": 6
     },
     {
       "name": "Tier picker section present",
-      "description": "templates/index.json contains a section of type 'multicolumn' for the tier picker (3 tier blocks)",
+      "description": "templates/index.json contains a 'section' container for the tier picker holding three tier cards (each a 'group' block)",
       "max_score": 6
     },
     {
       "name": "Recent drops section present",
-      "description": "templates/index.json contains a section of type 'collage' for recent drops / past box images",
+      "description": "templates/index.json contains a 'section' container for recent drops / past box images, holding 'image' blocks",
       "max_score": 6
     },
     {
       "name": "Testimonials section present",
-      "description": "templates/index.json contains a section of type 'multicolumn' used for testimonials",
+      "description": "templates/index.json contains a 'section' container used for testimonials, holding customer quote content",
       "max_score": 6
     },
     {
       "name": "FAQ section present",
-      "description": "templates/index.json contains a section of type 'collapsible-content' for the FAQ",
+      "description": "templates/index.json contains a 'section' container for the FAQ that holds an 'accordion' block with collapsible '_accordion-row' blocks",
       "max_score": 6
     },
     {
       "name": "Email capture section present",
-      "description": "templates/index.json contains a section of type 'newsletter' for email capture",
+      "description": "templates/index.json contains a 'section' container for email capture that holds an 'email-signup' block",
       "max_score": 6
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "name": "Hero before how-it-works",
-      "description": "In the 'order' array, the image-banner hero section appears before the how-it-works multicolumn section",
+      "description": "In the 'order' array, the 'hero' section appears before the how-it-works section",
       "max_score": 6
     },
     {
@@ -64,12 +64,12 @@
     },
     {
       "name": "FAQ before email capture",
-      "description": "In the 'order' array, the collapsible-content FAQ section appears before the newsletter email capture section",
+      "description": "In the 'order' array, the FAQ section appears before the email capture section",
       "max_score": 8
     },
     {
       "name": "Three tier blocks",
-      "description": "The tier picker multicolumn section contains exactly 3 column blocks (one per tier: Drip, Pour Over, Espresso Enthusiast)",
+      "description": "The tier picker section contains exactly 3 tier card blocks (one per tier: Drip, Pour Over, Espresso Enthusiast)",
       "max_score": 8
     },
     {

@@ -1,10 +1,10 @@
 {
-  "context": "Tests whether the agent clones Dawn using the correct git sequence (clone, remove .git, reinit), creates assets/custom.css, links custom.css in layout/theme.liquid right after base.css, creates a .gitignore with the required entries, applies palette.json colors to config/settings_data.json, and does NOT push automatically.",
+  "context": "Tests whether the agent clones Horizon using the correct git sequence (clone, remove .git, reinit), creates assets/custom.css, links custom.css in snippets/stylesheets.liquid right after base.css, creates a .gitignore with the required entries, applies palette.json colors to config/settings_data.json, and does NOT push automatically.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "Dawn cloned from GitHub",
-      "description": "Agent clones Dawn from https://github.com/Shopify/dawn.git (not another source) using --depth=1 flag",
+      "name": "Horizon cloned from GitHub",
+      "description": "Agent clones Horizon from https://github.com/Shopify/horizon.git (not another source) using --depth=1 flag",
       "max_score": 10
     },
     {
@@ -23,8 +23,8 @@
       "max_score": 12
     },
     {
-      "name": "custom.css linked in theme.liquid",
-      "description": "layout/theme.liquid contains a stylesheet reference to custom.css positioned after base.css (not before, not in a random location)",
+      "name": "custom.css linked in stylesheets.liquid",
+      "description": "snippets/stylesheets.liquid contains a stylesheet reference to custom.css positioned after base.css (not before, not in a random location)",
       "max_score": 12
     },
     {

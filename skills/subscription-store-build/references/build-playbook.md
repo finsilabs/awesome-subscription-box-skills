@@ -19,7 +19,7 @@ checklist, the image manifest, the asset-fallback pattern, or schema gotchas.
 A finished subscription-box store has all of this. Use it as a definition of done.
 
 **Theme**
-- [ ] Dawn-based theme, versioned in git, in the working directory
+- [ ] Horizon-based theme, versioned in git, in the working directory
 - [ ] `config/settings_data.json` color schemes wired to the brand palette
 - [ ] `assets/custom.css` for brand component styling
 - [ ] Pushed to a preview/unpublished theme and visually checked
@@ -83,7 +83,7 @@ URLs for email images; the version hash changes on every push.
 
 ## 3. The `image_asset` theme-asset fallback pattern
 
-**Problem:** Dawn section JSON references images as `shopify://shop_images/<file>.png`,
+**Problem:** section JSON references images as `shopify://shop_images/<file>.png`,
 which only resolves if the file is in the store's Files library. Uploading there
 needs the Shopify MCP / Admin API. When that's unavailable, the build stalls.
 
@@ -91,8 +91,9 @@ needs the Shopify MCP / Admin API. When that's unavailable, the build stalls.
 `image_asset` text setting to the sections that need them, rendered via
 `{{ filename | asset_url }}` when no Files-library image is picked.
 
-For each affected section (`image-banner`, `image-with-text`, and the
-`multicolumn` / `collage` block schemas):
+For each affected section that takes an image (on Horizon: `hero`,
+`media-with-content`, and the relevant block schemas — on a Dawn-derived theme:
+`image-banner`, `image-with-text`, `multicolumn`, `collage`):
 
 1. Add a text setting to the section/block schema:
    ```json
@@ -149,24 +150,32 @@ checkout should create a subscription contract, not a one-time order.
 
 ## 5. Schema gotchas
 
-From real builds — pre-validate to avoid push failures:
+From real builds — pre-validate to avoid push failures.
 
-- **Range steps:** `card_shadow_blur` is a multiple of 5; `page_width` step 100;
-  `padding_top`/`padding_bottom` step 4; `buttons_radius` step 2. An off-step
-  value rejects the whole `settings_data.json`.
-- **`email-signup-banner`** is restricted to the `password` template — use the
-  `newsletter` section on the homepage.
+**Horizon vs. Dawn:** Horizon is block-based with a `blocks/` directory and
+CSS-variable-driven settings; its sections (`hero`, `media-with-content`,
+`product-list`, …) and block schemas differ from Dawn's. Always read the actual
+schema in the scaffolded Horizon theme before authoring template JSON — don't
+assume a section name or setting carries over. The notes below marked *(Dawn)*
+are legacy and apply only to Dawn-derived themes.
+
+- **Range steps:** off-step range values reject the whole `settings_data.json`.
+  Check each range setting's `step` in the theme's own schema before writing a
+  value (e.g. Dawn used `card_shadow_blur` multiple of 5, `page_width` step 100,
+  `padding_*` step 4, `buttons_radius` step 2).
 - **`collapsible-content` `row_content`** rejects `<code>`. Use `<strong>`.
-- **Heading sizes:** valid are `h2 / h1 / h0 / hxl / hxxl`.
-- **`multicolumn` `image_ratio`:** `adapt / portrait / square / circle`.
-- **Announcement bar color:** Dawn's `utility-bar` wrapper uses the
-  section-level `color_scheme`; set it on the announcement-bar section in
-  `header-group.json`, not globally.
 - **Theme push to live** needs `--allow-live`; prefer pushing to an
   unpublished/preview theme and previewing before publishing.
-- **Clickable cards:** to make a whole `multicolumn` tier card a link (not just
-  the "Subscribe" text), wrap the card in an `<a>` when the block has a link,
-  and convert the inner link to a `<span>` to avoid nested `<a>` elements.
+- **Clickable cards:** to make a whole tier card a link (not just the
+  "Subscribe" text), wrap the card in an `<a>` when the block has a link, and
+  convert the inner link to a `<span>` to avoid nested `<a>` elements.
+- *(Dawn)* **`email-signup-banner`** is restricted to the `password` template —
+  use the `newsletter` section on the homepage.
+- *(Dawn)* **Heading sizes:** valid are `h2 / h1 / h0 / hxl / hxxl`.
+- *(Dawn)* **`multicolumn` `image_ratio`:** `adapt / portrait / square / circle`.
+- *(Dawn)* **Announcement bar color:** Dawn's `utility-bar` wrapper uses the
+  section-level `color_scheme`; set it on the announcement-bar section in
+  `header-group.json`, not globally.
 
 ---
 
@@ -175,6 +184,11 @@ From real builds — pre-validate to avoid push failures:
 `~/dev/gearheadbox/` is a complete worked example of this entire orchestration —
 a vintage-racing-themed monthly car-gear box with three tiers (Pit Stop $54,
 Apex $84, Podium $119).
+
+> Note: this build predates the Horizon switch and was scaffolded on Dawn. The
+> orchestration order, brand-voice flow, image manifest, and `image_asset`
+> fallback all still apply; the specific section names (`image-banner`,
+> `multicolumn`, `collage`) are Dawn's and map to different Horizon sections.
 
 Worth studying:
 - `templates/index.json` — the 9-section homepage

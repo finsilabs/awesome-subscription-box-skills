@@ -10,6 +10,6 @@ The developer has the Shopify Page record already created. They now need the cus
 
 ## Output Specification
 
-Produce `templates/page.gift.json` — a Dawn-compatible JSON template for the gift landing page. The template should contain multiple sections that together serve both individual and corporate gift buyers, structured appropriately for a premium gift experience.
+Produce `templates/page.gift.json` — a Horizon-compatible JSON template for the gift landing page. The template should contain multiple sections that together serve both individual and corporate gift buyers, structured appropriately for a premium gift experience.
 
-Also produce `gift-page-notes.md` explaining which Dawn sections were used and in what order, and why the color scheme choices suit a gifting context.
+Also produce `gift-page-notes.md` explaining which Horizon sections were used and in what order, and why the color scheme choices suit a gifting context.

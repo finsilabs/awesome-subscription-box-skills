@@ -12,6 +12,6 @@ The store is currently in pre-order mode. Subscribers who land on the product pa
 
 Produce two files in the current working directory:
 
-1. `templates/index.json` — the complete Dawn homepage template with all standard sections: hero, how-it-works, tier picker (Hobbyist, Builder, Pro Maker), recent drops gallery, testimonials, FAQ with at least 4 questions (including at least one about hardware compatibility or programming environments), and email capture.
+1. `templates/index.json` — the complete Horizon homepage template with all standard sections: hero, how-it-works, tier picker (Hobbyist, Builder, Pro Maker), recent drops gallery, testimonials, FAQ with at least 4 questions (including at least one about hardware compatibility or programming environments), and email capture.
 
-2. `templates/product.subscription.json` — a Dawn product template for subscription tier product pages. This template should make the pre-order ship date ("ships November 15") clearly visible to customers viewing a subscription tier product page.
+2. `templates/product.subscription.json` — a Horizon product template for subscription tier product pages. This template should make the pre-order ship date ("ships November 15") clearly visible to customers viewing a subscription tier product page.

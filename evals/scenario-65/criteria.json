@@ -1,10 +1,10 @@
 {
-  "context": "Tests whether the agent implements the product media override in main-product.liquid by branching on product.handle using a case/when structure, assigning a tier-specific theme asset, rendering it with the asset_url filter, and falling back to the product-media-gallery render tag for non-tier products.",
+  "context": "Tests whether the agent implements a product media override in Horizon's `_product-media-gallery` block (blocks/_product-media-gallery.liquid) by branching on closest.product.handle using a case/when (or if/elsif) structure, assigning a tier-specific theme asset, rendering it with the asset_url filter, and falling back to the standard `product-media-gallery-content` snippet for non-tier products. Horizon blocks access the current product via the `closest.product` object.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "Branches on product.handle",
-      "description": "main-product.liquid includes a conditional that checks product.handle (via case/when, if/elsif, or equivalent Liquid)",
+      "name": "Branches on product handle",
+      "description": "blocks/_product-media-gallery.liquid includes a conditional that checks closest.product.handle (via case/when, if/elsif, or equivalent Liquid)",
       "max_score": 20
     },
     {
@@ -23,13 +23,13 @@
       "max_score": 20
     },
     {
-      "name": "Falls back to product-media-gallery",
-      "description": "When no tier handle matches (else branch), the code renders the standard product-media-gallery (render 'product-media-gallery' or equivalent)",
+      "name": "Falls back to standard gallery",
+      "description": "When no tier handle matches (else branch), the code renders the standard Horizon product media gallery — i.e. it still calls `render 'product-media-gallery-content'` with the existing parameters",
       "max_score": 15
     },
     {
-      "name": "Override replaces gallery in media wrapper",
-      "description": "The tier asset image replaces or wraps the gallery render tag within the media wrapper area of the section (not placed in a separate unrelated location)",
+      "name": "Override replaces gallery for tier products",
+      "description": "For a matched tier handle, the tier asset image is rendered in place of (instead of) the product-media-gallery-content render — the two paths are mutually exclusive, not both output",
       "max_score": 10
     },
     {

@@ -16,9 +16,9 @@ Each skill is a self-contained `SKILL.md` under `skills/<name>/`, packaged as a 
 
 | Skill | What it does |
 |---|---|
-| [shopify-theme-create](skills/shopify-theme-create/SKILL.md) | Scaffold a new Dawn-based Shopify theme with brand styling applied. |
+| [shopify-theme-create](skills/shopify-theme-create/SKILL.md) | Scaffold a new Horizon-based Shopify theme with brand styling applied. |
 | [shopify-theme-clone](skills/shopify-theme-clone/SKILL.md) | Pull an existing live or unpublished theme from a Shopify store and initialize git. |
-| [subscription-homepage-build](skills/subscription-homepage-build/SKILL.md) | Generate a Dawn `templates/index.json` for a subscription-box homepage (hero → tiers → testimonials → FAQ → capture). |
+| [subscription-homepage-build](skills/subscription-homepage-build/SKILL.md) | Generate a Horizon `templates/index.json` for a subscription-box homepage (hero → tiers → testimonials → FAQ → capture). |
 | [shopify-landing-page](skills/shopify-landing-page/SKILL.md) | Create a campaign-specific landing page (Black Friday, gifting, how-it-works, etc.) with a custom Liquid/JSON template. |
 | [shopify-product-with-images](skills/shopify-product-with-images/SKILL.md) | Create/update a Shopify product with AI-generated imagery (Gemini Nano Banana) and a custom PDP template. |
 | [shopify-blog-post](skills/shopify-blog-post/SKILL.md) | Draft and publish a brand-voiced blog article (with hero image) via the Shopify Articles API. |

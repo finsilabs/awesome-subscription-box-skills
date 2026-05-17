@@ -1,50 +1,50 @@
 {
-  "context": "Tests whether the agent only uses valid Dawn heading_size values: h2, h1, h0, hxl, hxxl. Using invalid values (like 'large', 'xl', 'medium', 'small', 'h3', 'h4', or any others) causes theme check failures. All heading_size fields in the JSON must be from the allowed set.",
+  "context": "Tests whether the agent only uses valid Horizon 'type_preset' values for heading text. Horizon has no Dawn-style 'heading_size' setting — headings are 'text' (or block) elements whose size is set via 'type_preset'. Valid type_preset values on text/heading blocks are: rte, paragraph, h1, h2, h3, h4, h5, h6, custom. The 'accordion' block's type_preset allows paragraph, h1-h6. Dawn values like 'h0', 'hxl', 'hxxl', or generic strings like 'large'/'medium'/'small' are invalid and cause theme check failures.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "All heading_size values are valid",
-      "description": "Every heading_size value in templates/index.json is one of: h2, h1, h0, hxl, hxxl — verified across all sections and blocks",
+      "name": "All type_preset values are valid",
+      "description": "Every 'type_preset' value in templates/index.json is one of: rte, paragraph, h1, h2, h3, h4, h5, h6, custom — verified across all sections and blocks",
       "max_score": 20
     },
     {
-      "name": "No invalid size strings",
-      "description": "The strings 'large', 'medium', 'small', 'h3', 'h4', 'xl', 'xxl', 'heading-1', 'heading-2' do NOT appear as heading_size values in templates/index.json",
+      "name": "No invalid preset strings",
+      "description": "The Dawn-era strings 'h0', 'hxl', 'hxxl' and generic strings 'large', 'medium', 'small', 'xl', 'xxl', 'heading-1', 'heading-2' do NOT appear as type_preset (or any heading-size) values in templates/index.json",
       "max_score": 15
     },
     {
-      "name": "Hero uses large heading (hxl or hxxl)",
-      "description": "The hero image-banner's heading block (or equivalent) uses heading_size of 'hxl' or 'hxxl' — the largest options for the most prominent heading",
+      "name": "Hero heading uses a prominent preset",
+      "description": "The hero section's heading text block uses a type_preset of 'h1' or 'h2' — the largest heading presets, for the most prominent heading on the page",
       "max_score": 12
     },
     {
-      "name": "How-it-works heading size valid",
-      "description": "The how-it-works multicolumn section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "name": "How-it-works heading preset valid",
+      "description": "The how-it-works section's heading text block has an explicit type_preset with a valid value (h1-h6)",
       "max_score": 8
     },
     {
-      "name": "Tier picker heading size valid",
-      "description": "The tier picker multicolumn section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "name": "Tier picker heading preset valid",
+      "description": "The tier picker section's heading text block has an explicit type_preset with a valid value (h1-h6)",
       "max_score": 8
     },
     {
-      "name": "Testimonials heading size valid",
-      "description": "The testimonials multicolumn section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "name": "Testimonials heading preset valid",
+      "description": "The testimonials section's heading text block has an explicit type_preset with a valid value (h1-h6)",
       "max_score": 8
     },
     {
-      "name": "FAQ heading size valid",
-      "description": "The FAQ collapsible-content section has an explicit heading_size setting with a valid value (h2, h1, h0, hxl, or hxxl)",
+      "name": "FAQ heading preset valid",
+      "description": "The FAQ section's heading text block (and/or the accordion block's type_preset) has an explicit valid value (h1-h6)",
       "max_score": 8
     },
     {
-      "name": "heading_size explicit in 5+ sections",
-      "description": "At least 5 sections or blocks in templates/index.json have an explicit heading_size value set (not relying solely on defaults)",
+      "name": "type_preset explicit on 5+ heading blocks",
+      "description": "At least 5 heading text blocks (or heading-bearing blocks) in templates/index.json have an explicit type_preset value set (not relying solely on defaults)",
       "max_score": 8
     },
     {
-      "name": "Full section structure present",
-      "description": "templates/index.json contains all required sections: image-banner hero, custom-liquid anchors, how-it-works multicolumn, tiers multicolumn, collage, testimonials multicolumn, collapsible-content FAQ, newsletter email capture",
+      "name": "Clear visual hierarchy",
+      "description": "Heading presets descend in prominence — the hero heading is larger (lower h-number) than section headings, and section headings are larger than FAQ row headings — creating a coherent hierarchy",
       "max_score": 7
     },
     {

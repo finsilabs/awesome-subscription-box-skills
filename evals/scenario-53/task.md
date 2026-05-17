@@ -16,6 +16,6 @@ Produce two files:
    - The exact Shopify GraphQL mutation (with variables) to create the Shopify Page record, including the intro body paragraph and all fields needed for the page to appear at its URL with the correct template applied
    - The shopify theme push command to deploy the new template
 
-2. `templates/page.black-friday.json` — The custom Dawn-compatible JSON template for the Black Friday landing page. The template should render the full campaign experience: a strong hero, the page copy, and at least one campaign-specific section (product highlights or CTA).
+2. `templates/page.black-friday.json` — The custom Horizon-compatible JSON template for the Black Friday landing page. The template should render the full campaign experience: a strong hero, the page copy, and at least one campaign-specific section (product highlights or CTA).
 
 The store URL is `paddlepack.myshopify.com` and the theme ID is `139847562302`.

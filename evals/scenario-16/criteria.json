@@ -1,55 +1,50 @@
 {
-  "context": "Tests whether the agent respects Dawn schema range step constraints: padding_top and padding_bottom must be multiples of 4; card_shadow_blur must be a multiple of 5 (if used); page_width must be a multiple of 100 (if used); buttons_radius step is 2 (if used). Off-step values cause theme validation failures.",
+  "context": "Tests whether the agent respects Horizon schema range constraints and uses the correct Horizon setting keys. Horizon section/block padding uses the keys 'padding-block-start' and 'padding-block-end' (NOT Dawn's 'padding_top'/'padding_bottom'), each a range of 0-100 with step 1 (whole integers only). 'gap' is also 0-100 step 1. 'border_width' uses step 0.5 (range 0-10). Off-range, non-integer, or wrong-key values cause theme validation failures or are silently dropped.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "padding_top multiples of 4 (all sections)",
-      "description": "Every padding_top value present in templates/index.json is a multiple of 4 (e.g., 0, 4, 8, 16, 24, 32, 40, 48, 56, 64 — NOT 10, 15, 30, 50, 60, 100)",
+      "name": "Correct Horizon padding keys",
+      "description": "Padding settings in templates/index.json use the Horizon keys 'padding-block-start' and 'padding-block-end' (and optionally 'padding-inline-start'/'padding-inline-end'). The Dawn-style keys 'padding_top' and 'padding_bottom' do NOT appear.",
       "max_score": 18
     },
     {
-      "name": "padding_bottom multiples of 4 (all sections)",
-      "description": "Every padding_bottom value present in templates/index.json is a multiple of 4 (e.g., 0, 4, 8, 16, 24, 32, 40, 48, 56, 64 — NOT 10, 15, 30, 50, 60, 100)",
-      "max_score": 18
+      "name": "Padding values within 0-100",
+      "description": "Every padding-block-start / padding-block-end value present in templates/index.json is between 0 and 100 inclusive (e.g., 0, 16, 24, 48, 64, 100 — NOT 120, 150, 200, or negative values)",
+      "max_score": 16
     },
     {
-      "name": "No step-1 padding values",
-      "description": "Common invalid padding values (10, 15, 20, 30, 50, 60, 100) do NOT appear as padding_top or padding_bottom in templates/index.json",
-      "max_score": 10
+      "name": "Padding values are whole integers",
+      "description": "Every padding-block-start / padding-block-end value is a whole integer (step is 1). No fractional values like 12.5 or 33.3 appear.",
+      "max_score": 12
     },
     {
-      "name": "card_shadow_blur step 5 (if used)",
-      "description": "If card_shadow_blur appears in templates/index.json, its value is a multiple of 5 (e.g., 0, 5, 10, 15, 20 — NOT 8, 12, 18)",
-      "max_score": 7
+      "name": "gap values within range",
+      "description": "If 'gap' settings appear on sections or group blocks in templates/index.json, every value is a whole integer between 0 and 100 inclusive",
+      "max_score": 8
     },
     {
-      "name": "page_width step 100 (if used)",
-      "description": "If page_width appears in templates/index.json, its value is a multiple of 100 (e.g., 1100, 1200, 1300 — NOT 1150, 1280, 1440)",
-      "max_score": 7
-    },
-    {
-      "name": "buttons_radius step 2 (if used)",
-      "description": "If buttons_radius appears in templates/index.json, its value is a multiple of 2 (e.g., 0, 2, 4, 6, 8 — NOT 3, 5, 7)",
-      "max_score": 5
+      "name": "border_width step 0.5 (if used)",
+      "description": "If 'border_width' appears in templates/index.json, its value is a multiple of 0.5 within 0-10 (e.g., 0, 0.5, 1, 1.5, 2 — NOT 0.3, 0.7, 12)",
+      "max_score": 8
     },
     {
       "name": "Explicit padding on hero section",
-      "description": "The hero (image-banner) section in templates/index.json has explicit padding_top and padding_bottom values set",
-      "max_score": 5
+      "description": "The 'hero' section in templates/index.json has explicit padding-block-start and padding-block-end values set",
+      "max_score": 6
     },
     {
       "name": "Explicit padding on tiers section",
-      "description": "The tier picker (multicolumn) section in templates/index.json has explicit padding_top and padding_bottom values set",
-      "max_score": 5
+      "description": "The tier picker section in templates/index.json has explicit padding-block-start and padding-block-end values set",
+      "max_score": 6
     },
     {
       "name": "Explicit padding on FAQ section",
-      "description": "The FAQ (collapsible-content) section in templates/index.json has explicit padding_top and padding_bottom values set",
-      "max_score": 5
+      "description": "The FAQ section in templates/index.json has explicit padding-block-start and padding-block-end values set",
+      "max_score": 6
     },
     {
       "name": "Full homepage structure",
-      "description": "templates/index.json contains all expected sections: image-banner hero, custom-liquid anchors, how-it-works multicolumn, tiers multicolumn, collage recent drops, testimonials multicolumn, collapsible-content FAQ, newsletter email capture",
+      "description": "templates/index.json contains all expected parts of the Horizon homepage: a 'hero' section, two 'custom-liquid' anchor sections, and 'section' containers for how-it-works, tiers, recent drops, testimonials, FAQ (with an 'accordion' block), and email capture (with an 'email-signup' block)",
       "max_score": 10
     },
     {

@@ -2,7 +2,7 @@
 
 ## Problem/Feature Description
 
-FreshHarvest Box is a seasonal produce subscription that ships farm-direct fruit and vegetable crates every month. Their Shopify Dawn homepage is almost done, but the marketing team has flagged a UX issue: when visitors click "How it works" or "Choose your crate" in the hero, they jump to the right section but the sticky header overlaps the section heading, making it look broken on desktop. The development team needs the homepage rebuilt so the anchor-based navigation works correctly — the target section headings must be visible below the sticky header after scroll.
+FreshHarvest Box is a seasonal produce subscription that ships farm-direct fruit and vegetable crates every month. Their Shopify Horizon homepage is almost done, but the marketing team has flagged a UX issue: when visitors click "How it works" or "Choose your crate" in the hero, they jump to the right section but the sticky header overlaps the section heading, making it look broken on desktop. The development team needs the homepage rebuilt so the anchor-based navigation works correctly — the target section headings must be visible below the sticky header after scroll.
 
 The fix requires a specific HTML approach to inject invisible anchor targets that account for the sticky header offset. The developer has asked for a complete `templates/index.json` that implements this correctly, with two properly placed anchor targets: one for the "how-it-works" section and one for the "tiers" / "crates" section.
 

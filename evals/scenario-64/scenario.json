@@ -1,1 +1,1 @@
-{ "description": "image_asset theme fallback pattern — schema setting, Liquid branch, template JSON", "include": ["./inputs"] }
+{ "description": "image_asset theme fallback pattern in the Horizon image block — schema setting, Liquid branch, template JSON", "include": ["./inputs"] }

@@ -1,4 +1,4 @@
-/* Gear Head Box — brand overrides on top of Dawn */
+/* Gear Head Box — brand overrides on top of Horizon's base.css */
 
 /* Header menu: bigger, condensed, slightly tracked, baseline-aligned */
 .header__menu-item {
@@ -13,7 +13,7 @@
   line-height: 1;
 }
 
-/* Override Dawn's default underline-on-active so it doesn't shift baseline */
+/* Override the theme's default underline-on-active so it doesn't shift baseline */
 .header__active-menu-item {
   text-decoration: none !important;
   position: relative;

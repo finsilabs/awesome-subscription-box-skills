@@ -60,10 +60,10 @@ If the user has an existing brand/site, run `brand-voice-extract` on the URL to 
 
 ### Phase 2 — Theme → `shopify-theme-create` (or `shopify-theme-clone`)
 
-Greenfield: `shopify-theme-create` scaffolds Dawn and applies the palette.
+Greenfield: `shopify-theme-create` scaffolds Horizon and applies the palette.
 Existing theme to keep: `shopify-theme-clone` pulls it down for local editing.
 
-Output: a versioned Dawn theme in the working directory, color schemes wired to the brand palette.
+Output: a versioned Horizon theme in the working directory, color schemes wired to the brand palette.
 
 ### Phase 3 — Tier products → `shopify-product-with-images`
 

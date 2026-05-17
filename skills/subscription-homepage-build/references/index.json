@@ -1,46 +1,72 @@
 {
   "sections": {
     "hero": {
-      "type": "image-banner",
+      "type": "hero",
       "blocks": {
         "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Built for the redline crowd.",
-            "heading_size": "hxl"
-          }
-        },
-        "text": {
           "type": "text",
+          "name": "Heading",
           "settings": {
-            "text": "A monthly box of gear, tools, and toys for the guy who'd rather be at the track. Curated by gearheads, not algorithms. Pre-orders open now — first boxes ship early August 2026.",
-            "text_style": "body"
+            "text": "<h1>Built for the redline crowd.</h1>",
+            "type_preset": "h1",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "center",
+            "wrap": "balance",
+            "color": "var(--color-foreground-heading)"
           }
         },
-        "buttons": {
-          "type": "buttons",
+        "body": {
+          "type": "text",
+          "name": "Text",
           "settings": {
-            "button_label_1": "Pick your tier",
-            "button_link_1": "#tiers",
-            "button_style_secondary_1": false,
-            "button_label_2": "How it works",
-            "button_link_2": "#how-it-works",
-            "button_style_secondary_2": true
+            "text": "<p>A monthly box of gear, tools, and toys for the guy who'd rather be at the track. Curated by gearheads, not algorithms. Pre-orders open now — first boxes ship early August 2026.</p>",
+            "type_preset": "paragraph",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "center",
+            "color": "var(--color-foreground)"
+          }
+        },
+        "button_primary": {
+          "type": "button",
+          "name": "Primary button",
+          "settings": {
+            "label": "Pick your tier",
+            "link": "#tiers",
+            "open_in_new_tab": false,
+            "style_class": "button"
+          }
+        },
+        "button_secondary": {
+          "type": "button",
+          "name": "Secondary button",
+          "settings": {
+            "label": "How it works",
+            "link": "#how-it-works",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary"
           }
         }
       },
-      "block_order": ["heading", "text", "buttons"],
+      "block_order": ["heading", "body", "button_primary", "button_secondary"],
+      "name": "Hero",
       "settings": {
-        "image": "shopify://shop_images/hero_pit_garage.png",
-        "image_overlay_opacity": 60,
-        "image_height": "large",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/hero_pit_garage.png",
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 24,
+        "section_width": "full-width",
+        "section_height": "large",
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "toggle_overlay": true,
+        "overlay_color": "#12121299",
+        "overlay_style": "solid",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "anchor_how_it_works": {
@@ -48,57 +74,145 @@
       "settings": {
         "custom_liquid": "<a id=\"how-it-works\" style=\"display:block;scroll-margin-top:120px\"></a>",
         "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "how_it_works": {
-      "type": "multicolumn",
+      "type": "section",
       "blocks": {
-        "step1": {
-          "type": "column",
+        "section_heading": {
+          "type": "text",
+          "name": "Section heading",
           "settings": {
-            "title": "1. Pick your tier",
-            "text": "<p>Choose Pit Stop, Apex, or Podium. Cancel anytime — no long-term commitment, no fine print.</p>",
-            "link_label": "",
-            "link": ""
+            "text": "<h2>How it works</h2>",
+            "type_preset": "h2",
+            "width": "fit-content",
+            "alignment": "center",
+            "color": "var(--color-foreground-heading)"
           }
         },
-        "step2": {
-          "type": "column",
+        "steps": {
+          "type": "group",
+          "name": "Steps row",
           "settings": {
-            "title": "2. We curate",
-            "text": "<p>Every month, our team of motorheads picks 4–8 items worth more than what you paid. Tools, apparel, gadgets, garage essentials.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "step3": {
-          "type": "column",
-          "settings": {
-            "title": "3. Box at your door",
-            "text": "<p>Free shipping in the US. Boxes ship the 15th of every month. Get back to your garage.</p>",
-            "link_label": "",
-            "link": ""
-          }
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-start",
+            "gap": 24,
+            "width": "fill",
+            "inherit_color_scheme": true
+          },
+          "blocks": {
+            "step1": {
+              "type": "group",
+              "name": "Step 1",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "gap": 8,
+                "width": "fill"
+              },
+              "blocks": {
+                "step1_title": {
+                  "type": "text",
+                  "name": "Title",
+                  "settings": {
+                    "text": "<h3>1. Pick your tier</h3>",
+                    "type_preset": "h4",
+                    "alignment": "center"
+                  }
+                },
+                "step1_body": {
+                  "type": "text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p>Choose Pit Stop, Apex, or Podium. Cancel anytime — no long-term commitment, no fine print.</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["step1_title", "step1_body"]
+            },
+            "step2": {
+              "type": "group",
+              "name": "Step 2",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "gap": 8,
+                "width": "fill"
+              },
+              "blocks": {
+                "step2_title": {
+                  "type": "text",
+                  "name": "Title",
+                  "settings": {
+                    "text": "<h3>2. We curate</h3>",
+                    "type_preset": "h4",
+                    "alignment": "center"
+                  }
+                },
+                "step2_body": {
+                  "type": "text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p>Every month, our team of motorheads picks 4–8 items worth more than what you paid. Tools, apparel, gadgets, garage essentials.</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["step2_title", "step2_body"]
+            },
+            "step3": {
+              "type": "group",
+              "name": "Step 3",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "gap": 8,
+                "width": "fill"
+              },
+              "blocks": {
+                "step3_title": {
+                  "type": "text",
+                  "name": "Title",
+                  "settings": {
+                    "text": "<h3>3. Box at your door</h3>",
+                    "type_preset": "h4",
+                    "alignment": "center"
+                  }
+                },
+                "step3_body": {
+                  "type": "text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p>Free shipping in the US. Boxes ship the 15th of every month. Get back to your garage.</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["step3_title", "step3_body"]
+            }
+          },
+          "block_order": ["step1", "step2", "step3"]
         }
       },
-      "block_order": ["step1", "step2", "step3"],
+      "block_order": ["section_heading", "steps"],
+      "name": "How it works",
       "settings": {
-        "title": "How it works",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": true,
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
         "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 64,
-        "padding_bottom": 48
+        "padding-block-start": 64,
+        "padding-block-end": 48
       }
     },
     "anchor_tiers": {
@@ -106,242 +220,683 @@
       "settings": {
         "custom_liquid": "<a id=\"tiers\" style=\"display:block;scroll-margin-top:120px\"></a>",
         "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "tiers": {
-      "type": "multicolumn",
+      "type": "section",
       "blocks": {
-        "pit_stop": {
-          "type": "column",
+        "section_heading": {
+          "type": "text",
+          "name": "Section heading",
           "settings": {
-            "image": "shopify://shop_images/tier_pit_stop_box.png",
-            "title": "PIT STOP — $54/mo",
-            "text": "<p><em>Entry-level. The starter kit for monthly grins.</em></p><p>4–5 items worth $80+:</p><ul><li>Branded enamel pin and sticker pack</li><li>Premium microfiber towel</li><li>Garage consumable (tire shine, polish, or wipes)</li><li>1 surprise drop</li></ul>",
-            "link_label": "Subscribe to Pit Stop",
-            "link": "/products/pit-stop"
+            "text": "<h2>Pick your tier</h2>",
+            "type_preset": "h2",
+            "width": "fit-content",
+            "alignment": "center",
+            "color": "var(--color-foreground-heading)"
           }
         },
-        "apex": {
-          "type": "column",
+        "tier_cards": {
+          "type": "group",
+          "name": "Tier cards row",
           "settings": {
-            "image": "shopify://shop_images/tier_apex_box.png",
-            "title": "APEX — $84/mo  ★ Most popular",
-            "text": "<p><em>Usable gear you'll actually reach for.</em></p><p>Everything in Pit Stop, plus 6–7 items worth $140+:</p><ul><li>Branded apparel piece (tee, cap, or hoodie)</li><li>Mid-tier tool: torque adapter, OBD2 reader, tire pressure gauge</li><li>Premium detailing item</li><li>Limited-edition collectible</li></ul>",
-            "link_label": "Subscribe to Apex",
-            "link": "/products/apex"
-          }
-        },
-        "podium": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/tier_podium_box.png",
-            "title": "PODIUM — $119/mo",
-            "text": "<p><em>The flex tier. One hero item every month.</em></p><p>Everything in Apex, plus a $60+ retail hero piece:</p><ul><li>Driving gloves, helmet bag, or racing-branded jacket</li><li>GoPro mount kits, dashcam accessories</li><li>Track-day essentials</li><li>First dibs on limited drops and member-only merch</li></ul>",
-            "link_label": "Subscribe to Podium",
-            "link": "/products/podium"
-          }
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-start",
+            "gap": 20,
+            "width": "fill",
+            "inherit_color_scheme": true
+          },
+          "blocks": {
+            "tier_pit_stop": {
+              "type": "group",
+              "name": "Pit Stop",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "width": "fill",
+                "link": "/products/pit-stop",
+                "open_in_new_tab": false,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-2",
+                "border": "solid",
+                "border_width": 1,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "pit_stop_image": {
+                  "type": "image",
+                  "name": "Image",
+                  "settings": {
+                    "image": "shopify://shop_images/tier_pit_stop_box.png",
+                    "image_ratio": "square",
+                    "width": "fill"
+                  }
+                },
+                "pit_stop_title": {
+                  "type": "text",
+                  "name": "Title",
+                  "settings": {
+                    "text": "<h3>PIT STOP — $54/mo</h3>",
+                    "type_preset": "h4",
+                    "alignment": "left"
+                  }
+                },
+                "pit_stop_body": {
+                  "type": "text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p><em>Entry-level. The starter kit for monthly grins.</em></p><p>4–5 items worth $80+:</p><ul><li>Branded enamel pin and sticker pack</li><li>Premium microfiber towel</li><li>Garage consumable (tire shine, polish, or wipes)</li><li>1 surprise drop</li></ul>",
+                    "type_preset": "rte",
+                    "alignment": "left"
+                  }
+                },
+                "pit_stop_button": {
+                  "type": "button",
+                  "name": "Button",
+                  "settings": {
+                    "label": "Subscribe to Pit Stop",
+                    "link": "/products/pit-stop",
+                    "open_in_new_tab": false,
+                    "style_class": "button"
+                  }
+                }
+              },
+              "block_order": ["pit_stop_image", "pit_stop_title", "pit_stop_body", "pit_stop_button"]
+            },
+            "tier_apex": {
+              "type": "group",
+              "name": "Apex",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "width": "fill",
+                "link": "/products/apex",
+                "open_in_new_tab": false,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-4",
+                "border": "solid",
+                "border_width": 1,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "apex_image": {
+                  "type": "image",
+                  "name": "Image",
+                  "settings": {
+                    "image": "shopify://shop_images/tier_apex_box.png",
+                    "image_ratio": "square",
+                    "width": "fill"
+                  }
+                },
+                "apex_title": {
+                  "type": "text",
+                  "name": "Title",
+                  "settings": {
+                    "text": "<h3>APEX — $84/mo  ★ Most popular</h3>",
+                    "type_preset": "h4",
+                    "alignment": "left"
+                  }
+                },
+                "apex_body": {
+                  "type": "text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p><em>Usable gear you'll actually reach for.</em></p><p>Everything in Pit Stop, plus 6–7 items worth $140+:</p><ul><li>Branded apparel piece (tee, cap, or hoodie)</li><li>Mid-tier tool: torque adapter, OBD2 reader, tire pressure gauge</li><li>Premium detailing item</li><li>Limited-edition collectible</li></ul>",
+                    "type_preset": "rte",
+                    "alignment": "left"
+                  }
+                },
+                "apex_button": {
+                  "type": "button",
+                  "name": "Button",
+                  "settings": {
+                    "label": "Subscribe to Apex",
+                    "link": "/products/apex",
+                    "open_in_new_tab": false,
+                    "style_class": "button"
+                  }
+                }
+              },
+              "block_order": ["apex_image", "apex_title", "apex_body", "apex_button"]
+            },
+            "tier_podium": {
+              "type": "group",
+              "name": "Podium",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "width": "fill",
+                "link": "/products/podium",
+                "open_in_new_tab": false,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-2",
+                "border": "solid",
+                "border_width": 1,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 20,
+                "padding-inline-end": 20
+              },
+              "blocks": {
+                "podium_image": {
+                  "type": "image",
+                  "name": "Image",
+                  "settings": {
+                    "image": "shopify://shop_images/tier_podium_box.png",
+                    "image_ratio": "square",
+                    "width": "fill"
+                  }
+                },
+                "podium_title": {
+                  "type": "text",
+                  "name": "Title",
+                  "settings": {
+                    "text": "<h3>PODIUM — $119/mo</h3>",
+                    "type_preset": "h4",
+                    "alignment": "left"
+                  }
+                },
+                "podium_body": {
+                  "type": "text",
+                  "name": "Text",
+                  "settings": {
+                    "text": "<p><em>The flex tier. One hero item every month.</em></p><p>Everything in Apex, plus a $60+ retail hero piece:</p><ul><li>Driving gloves, helmet bag, or racing-branded jacket</li><li>GoPro mount kits, dashcam accessories</li><li>Track-day essentials</li><li>First dibs on limited drops and member-only merch</li></ul>",
+                    "type_preset": "rte",
+                    "alignment": "left"
+                  }
+                },
+                "podium_button": {
+                  "type": "button",
+                  "name": "Button",
+                  "settings": {
+                    "label": "Subscribe to Podium",
+                    "link": "/products/podium",
+                    "open_in_new_tab": false,
+                    "style_class": "button"
+                  }
+                }
+              },
+              "block_order": ["podium_image", "podium_title", "podium_body", "podium_button"]
+            }
+          },
+          "block_order": ["tier_pit_stop", "tier_apex", "tier_podium"]
         }
       },
-      "block_order": ["pit_stop", "apex", "podium"],
+      "block_order": ["section_heading", "tier_cards"],
+      "name": "Tiers",
       "settings": {
-        "title": "Pick your tier",
-        "heading_size": "h0",
-        "image_width": "full",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": true,
-        "color_scheme": "scheme-4",
-        "columns_mobile": "1",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     },
     "past_boxes": {
-      "type": "collage",
+      "type": "section",
       "blocks": {
-        "heading_text": {
-          "type": "image",
+        "section_heading": {
+          "type": "text",
+          "name": "Section heading",
           "settings": {
-            "image": "shopify://shop_images/recent_drop_1.png"
+            "text": "<h2>Recent drops</h2>",
+            "type_preset": "h2",
+            "width": "fit-content",
+            "alignment": "center",
+            "color": "var(--color-foreground-heading)"
           }
         },
-        "second": {
-          "type": "image",
+        "gallery": {
+          "type": "group",
+          "name": "Gallery row",
           "settings": {
-            "image": "shopify://shop_images/recent_drop_2.png"
-          }
-        },
-        "third": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/recent_drop_3.png"
-          }
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "center",
+            "gap": 16,
+            "width": "fill",
+            "inherit_color_scheme": true
+          },
+          "blocks": {
+            "drop1": {
+              "type": "image",
+              "name": "Drop 1",
+              "settings": {
+                "image": "shopify://shop_images/recent_drop_1.png",
+                "image_ratio": "landscape",
+                "width": "fill"
+              }
+            },
+            "drop2": {
+              "type": "image",
+              "name": "Drop 2",
+              "settings": {
+                "image": "shopify://shop_images/recent_drop_2.png",
+                "image_ratio": "landscape",
+                "width": "fill"
+              }
+            },
+            "drop3": {
+              "type": "image",
+              "name": "Drop 3",
+              "settings": {
+                "image": "shopify://shop_images/recent_drop_3.png",
+                "image_ratio": "landscape",
+                "width": "fill"
+              }
+            }
+          },
+          "block_order": ["drop1", "drop2", "drop3"]
         }
       },
-      "block_order": ["heading_text", "second", "third"],
+      "block_order": ["section_heading", "gallery"],
+      "name": "Recent drops",
       "settings": {
-        "heading": "Recent drops",
-        "heading_size": "h1",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 24,
+        "section_width": "page-width",
         "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "testimonials": {
-      "type": "multicolumn",
+      "type": "section",
       "blocks": {
-        "t1": {
-          "type": "column",
+        "section_heading": {
+          "type": "text",
+          "name": "Section heading",
           "settings": {
-            "image": "shopify://shop_images/testimonial_mike.png",
-            "title": "Mike R., Charlotte NC",
-            "text": "<p>\"Got the Apex box for my 45th. My wife says I'm worse than a kid at Christmas every 15th of the month. Worth every dollar.\"</p>",
-            "link_label": "",
-            "link": ""
+            "text": "<h2>From the garage</h2>",
+            "type_preset": "h2",
+            "width": "fit-content",
+            "alignment": "center",
+            "color": "var(--color-foreground-heading)"
           }
         },
-        "t2": {
-          "type": "column",
+        "quotes": {
+          "type": "group",
+          "name": "Quotes row",
           "settings": {
-            "image": "shopify://shop_images/testimonial_dave.png",
-            "title": "Dave T., Austin TX",
-            "text": "<p>\"The Podium hero items alone are worth the sub. Got driving gloves last month I'd have never picked out myself — now I wear them every track day.\"</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "t3": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/testimonial_jim.png",
-            "title": "Jim K., Phoenix AZ",
-            "text": "<p>\"Started with Pit Stop, upgraded to Apex after two months. The tool curation is on point — actually useful stuff, not landfill swag.\"</p>",
-            "link_label": "",
-            "link": ""
-          }
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-start",
+            "gap": 20,
+            "width": "fill",
+            "inherit_color_scheme": true
+          },
+          "blocks": {
+            "quote1": {
+              "type": "group",
+              "name": "Mike R.",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill"
+              },
+              "blocks": {
+                "quote1_image": {
+                  "type": "image",
+                  "name": "Avatar",
+                  "settings": {
+                    "image": "shopify://shop_images/testimonial_mike.png",
+                    "image_ratio": "square",
+                    "width": "custom",
+                    "custom_width": 30
+                  }
+                },
+                "quote1_text": {
+                  "type": "text",
+                  "name": "Quote",
+                  "settings": {
+                    "text": "<p>\"Got the Apex box for my 45th. My wife says I'm worse than a kid at Christmas every 15th of the month. Worth every dollar.\"</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center"
+                  }
+                },
+                "quote1_name": {
+                  "type": "text",
+                  "name": "Attribution",
+                  "settings": {
+                    "text": "<p>Mike R., Charlotte NC</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center",
+                    "color": "var(--color-foreground-heading)"
+                  }
+                }
+              },
+              "block_order": ["quote1_image", "quote1_text", "quote1_name"]
+            },
+            "quote2": {
+              "type": "group",
+              "name": "Dave T.",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill"
+              },
+              "blocks": {
+                "quote2_image": {
+                  "type": "image",
+                  "name": "Avatar",
+                  "settings": {
+                    "image": "shopify://shop_images/testimonial_dave.png",
+                    "image_ratio": "square",
+                    "width": "custom",
+                    "custom_width": 30
+                  }
+                },
+                "quote2_text": {
+                  "type": "text",
+                  "name": "Quote",
+                  "settings": {
+                    "text": "<p>\"The Podium hero items alone are worth the sub. Got driving gloves last month I'd have never picked out myself — now I wear them every track day.\"</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center"
+                  }
+                },
+                "quote2_name": {
+                  "type": "text",
+                  "name": "Attribution",
+                  "settings": {
+                    "text": "<p>Dave T., Austin TX</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center",
+                    "color": "var(--color-foreground-heading)"
+                  }
+                }
+              },
+              "block_order": ["quote2_image", "quote2_text", "quote2_name"]
+            },
+            "quote3": {
+              "type": "group",
+              "name": "Jim K.",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill"
+              },
+              "blocks": {
+                "quote3_image": {
+                  "type": "image",
+                  "name": "Avatar",
+                  "settings": {
+                    "image": "shopify://shop_images/testimonial_jim.png",
+                    "image_ratio": "square",
+                    "width": "custom",
+                    "custom_width": 30
+                  }
+                },
+                "quote3_text": {
+                  "type": "text",
+                  "name": "Quote",
+                  "settings": {
+                    "text": "<p>\"Started with Pit Stop, upgraded to Apex after two months. The tool curation is on point — actually useful stuff, not landfill swag.\"</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center"
+                  }
+                },
+                "quote3_name": {
+                  "type": "text",
+                  "name": "Attribution",
+                  "settings": {
+                    "text": "<p>Jim K., Phoenix AZ</p>",
+                    "type_preset": "paragraph",
+                    "alignment": "center",
+                    "color": "var(--color-foreground-heading)"
+                  }
+                }
+              },
+              "block_order": ["quote3_image", "quote3_text", "quote3_name"]
+            }
+          },
+          "block_order": ["quote1", "quote2", "quote3"]
         }
       },
-      "block_order": ["t1", "t2", "t3"],
+      "block_order": ["section_heading", "quotes"],
+      "name": "Testimonials",
       "settings": {
-        "title": "From the garage",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": true,
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
         "color_scheme": "scheme-2",
-        "columns_mobile": "1",
-        "padding_top": 56,
-        "padding_bottom": 56
+        "padding-block-start": 56,
+        "padding-block-end": 56
       }
     },
     "faq": {
-      "type": "collapsible-content",
+      "type": "section",
       "blocks": {
-        "q0": {
-          "type": "collapsible_row",
+        "section_heading": {
+          "type": "text",
+          "name": "Section heading",
           "settings": {
-            "heading": "Wait — this is a pre-order?",
-            "icon": "stopwatch",
-            "row_content": "<p>Yes. We're launching with a pre-order window. First boxes ship the first week of August 2026. Your card is charged today and you lock in your tier — after the first box, the regular monthly cadence kicks in (boxes ship on the 15th of every month).</p><p>Founding pre-order subscribers get first dibs on limited drops and a small thank-you item in their first box.</p>"
+            "text": "<h2>Questions before you subscribe</h2>",
+            "type_preset": "h2",
+            "width": "fit-content",
+            "alignment": "center",
+            "color": "var(--color-foreground-heading)"
           }
         },
-        "q1": {
-          "type": "collapsible_row",
+        "accordion": {
+          "type": "accordion",
+          "name": "FAQ accordion",
           "settings": {
-            "heading": "When does my box ship after the first one?",
-            "icon": "box",
-            "row_content": "<p>After the August 2026 launch box, the regular cadence kicks in: boxes ship on the 15th of every month. Order by the 10th to receive that month's drop — anything later ships the following month. Free US shipping on every tier.</p>"
-          }
-        },
-        "q2": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Can I cancel anytime?",
-            "icon": "check_mark",
-            "row_content": "<p>Yes. No commitment, no cancellation fee. Manage your subscription from your account at any time. Skip a month, swap tiers, or pause when life gets in the way.</p>"
-          }
-        },
-        "q3": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Is this stuff legit, or random AliExpress junk?",
-            "icon": "fire",
-            "row_content": "<p>Every box is curated by people who actually wrench, drive, and track. We work directly with brands like K&N, ARP, OEM tool makers, and small-batch automotive artisans. Each box's items add up to more than your subscription price — guaranteed.</p>"
-          }
-        },
-        "q4": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "What if I already have something?",
-            "icon": "shirt",
-            "row_content": "<p>You can submit your interest profile after subscribing — favorite car platforms, garage setup, sizes — and we use it to avoid duplicates. Apex and Podium subscribers can also swap an item in any box.</p>"
-          }
-        },
-        "q5": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Is this a good gift?",
-            "icon": "heart",
-            "row_content": "<p>It's the gift. Pick a 3, 6, or 12-month prepaid plan at checkout — no auto-renew, just a card explaining what's coming. Most popular gift: 6 months of Apex.</p>"
-          }
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "h6",
+            "inherit_color_scheme": true
+          },
+          "blocks": {
+            "q0": {
+              "type": "_accordion-row",
+              "name": "Pre-order question",
+              "settings": {
+                "heading": "Wait — this is a pre-order?",
+                "open_by_default": false,
+                "icon": "stopwatch"
+              },
+              "blocks": {
+                "q0_answer": {
+                  "type": "text",
+                  "name": "Answer",
+                  "settings": {
+                    "text": "<p>Yes. We're launching with a pre-order window. First boxes ship the first week of August 2026. Your card is charged today and you lock in your tier — after the first box, the regular monthly cadence kicks in (boxes ship on the 15th of every month).</p><p>Founding pre-order subscribers get first dibs on limited drops and a small thank-you item in their first box.</p>",
+                    "type_preset": "rte"
+                  }
+                }
+              },
+              "block_order": ["q0_answer"]
+            },
+            "q1": {
+              "type": "_accordion-row",
+              "name": "Shipping question",
+              "settings": {
+                "heading": "When does my box ship after the first one?",
+                "open_by_default": false,
+                "icon": "box"
+              },
+              "blocks": {
+                "q1_answer": {
+                  "type": "text",
+                  "name": "Answer",
+                  "settings": {
+                    "text": "<p>After the August 2026 launch box, the regular cadence kicks in: boxes ship on the 15th of every month. Order by the 10th to receive that month's drop — anything later ships the following month. Free US shipping on every tier.</p>",
+                    "type_preset": "rte"
+                  }
+                }
+              },
+              "block_order": ["q1_answer"]
+            },
+            "q2": {
+              "type": "_accordion-row",
+              "name": "Cancel question",
+              "settings": {
+                "heading": "Can I cancel anytime?",
+                "open_by_default": false,
+                "icon": "check_box"
+              },
+              "blocks": {
+                "q2_answer": {
+                  "type": "text",
+                  "name": "Answer",
+                  "settings": {
+                    "text": "<p>Yes. No commitment, no cancellation fee. Manage your subscription from your account at any time. Skip a month, swap tiers, or pause when life gets in the way.</p>",
+                    "type_preset": "rte"
+                  }
+                }
+              },
+              "block_order": ["q2_answer"]
+            },
+            "q3": {
+              "type": "_accordion-row",
+              "name": "Quality question",
+              "settings": {
+                "heading": "Is this stuff legit, or random junk?",
+                "open_by_default": false,
+                "icon": "fire"
+              },
+              "blocks": {
+                "q3_answer": {
+                  "type": "text",
+                  "name": "Answer",
+                  "settings": {
+                    "text": "<p>Every box is curated by people who actually wrench, drive, and track. We work directly with brands like K&N, ARP, OEM tool makers, and small-batch automotive artisans. Each box's items add up to <strong>more than your subscription price</strong> — guaranteed.</p>",
+                    "type_preset": "rte"
+                  }
+                }
+              },
+              "block_order": ["q3_answer"]
+            },
+            "q4": {
+              "type": "_accordion-row",
+              "name": "Duplicates question",
+              "settings": {
+                "heading": "What if I already have something?",
+                "open_by_default": false,
+                "icon": "shirt"
+              },
+              "blocks": {
+                "q4_answer": {
+                  "type": "text",
+                  "name": "Answer",
+                  "settings": {
+                    "text": "<p>You can submit your interest profile after subscribing — favorite car platforms, garage setup, sizes — and we use it to avoid duplicates. Apex and Podium subscribers can also swap an item in any box.</p>",
+                    "type_preset": "rte"
+                  }
+                }
+              },
+              "block_order": ["q4_answer"]
+            },
+            "q5": {
+              "type": "_accordion-row",
+              "name": "Gift question",
+              "settings": {
+                "heading": "Is this a good gift?",
+                "open_by_default": false,
+                "icon": "heart"
+              },
+              "blocks": {
+                "q5_answer": {
+                  "type": "text",
+                  "name": "Answer",
+                  "settings": {
+                    "text": "<p>It's <strong>the</strong> gift. Pick a 3, 6, or 12-month prepaid plan at checkout — no auto-renew, just a card explaining what's coming. Most popular gift: 6 months of Apex.</p>",
+                    "type_preset": "rte"
+                  }
+                }
+              },
+              "block_order": ["q5_answer"]
+            }
+          },
+          "block_order": ["q0", "q1", "q2", "q3", "q4", "q5"]
         }
       },
-      "block_order": ["q0", "q1", "q2", "q3", "q4", "q5"],
+      "block_order": ["section_heading", "accordion"],
+      "name": "FAQ",
       "settings": {
-        "caption": "FAQ",
-        "heading": "Questions before you subscribe",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "container_color_scheme": "scheme-2",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
         "color_scheme": "scheme-1",
-        "open_first_collapsible_row": false,
-        "image": "",
-        "image_ratio": "adapt",
-        "desktop_layout": "image_first",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     },
     "email_capture": {
-      "type": "newsletter",
+      "type": "section",
       "blocks": {
         "heading": {
-          "type": "heading",
+          "type": "text",
+          "name": "Heading",
           "settings": {
-            "heading": "Not ready to sub? Get the inside line.",
-            "heading_size": "h1"
+            "text": "<h2>Not ready to sub? Get the inside line.</h2>",
+            "type_preset": "h2",
+            "width": "fit-content",
+            "alignment": "center",
+            "color": "var(--color-foreground-heading)"
           }
         },
-        "paragraph": {
-          "type": "paragraph",
+        "body": {
+          "type": "text",
+          "name": "Text",
           "settings": {
-            "text": "<p>Monthly emails: spoilers from upcoming boxes, member-only drops, track-day picks, and the occasional rant about manuals dying.</p>"
+            "text": "<p>Monthly emails: spoilers from upcoming boxes, member-only drops, track-day picks, and the occasional rant about manuals dying.</p>",
+            "type_preset": "paragraph",
+            "width": "fit-content",
+            "alignment": "center"
           }
         },
-        "email_form": {
-          "type": "email_form"
+        "signup": {
+          "type": "email-signup",
+          "name": "Email signup",
+          "settings": {
+            "width": "custom",
+            "custom_width": 60,
+            "inherit_color_scheme": true,
+            "label": "Sign up",
+            "style_class": "button",
+            "integrated_button": true
+          }
         }
       },
-      "block_order": ["heading", "paragraph", "email_form"],
+      "block_order": ["heading", "body", "signup"],
+      "name": "Email capture",
       "settings": {
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
         "color_scheme": "scheme-4",
-        "full_width": true,
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     }
   },

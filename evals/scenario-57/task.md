@@ -10,6 +10,6 @@ This year they want a redesigned campaign page at `/pages/cyber-monday` that con
 
 ## Output Specification
 
-Produce `templates/page.cyber-monday.json` — a Dawn-compatible JSON template for the Cyber Monday sale landing page. The page should be structured to maximize conversion throughout the scroll depth.
+Produce `templates/page.cyber-monday.json` — a Horizon-compatible JSON template for the Cyber Monday sale landing page. The page should be structured to maximize conversion throughout the scroll depth.
 
 Also produce `page-strategy.md` explaining the section structure chosen, where each CTA appears in the page flow, and how the page handles objections before a visitor exits.

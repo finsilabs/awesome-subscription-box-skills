@@ -14,6 +14,6 @@ Produce the following:
 
 1. `scripts/upload_teabox_images.py` — A Python script following the Shopify staged upload pattern to upload the local image files to the Shopify CDN. The script should use the 3-step staged upload workflow (create staged upload targets, POST the binary files to the targets, create the file records). Write the script but do not run it.
 
-2. `templates/product.subscription.json` — A Shopify Dawn-compatible product template JSON for the subscription tier PDP. Include sections appropriate for a subscription product (a featured product section, a tier comparison or value proposition section, and a related products section).
+2. `templates/product.subscription.json` — A Shopify Horizon-compatible product template JSON for the subscription tier PDP. Include sections appropriate for a subscription product (a featured product section, a tier comparison or value proposition section, and a related products section).
 
 3. `product_creation_commands.md` — Documentation showing the Shopify GraphQL mutation to: (a) create one of the tier products with the correct SKU format, and (b) apply the custom template to the product using the correct templateSuffix approach.
